@@ -38,6 +38,8 @@ public class CameraController : MonoBehaviour
         ASDWControls();
 
         ZoomControls();
+
+        ClampControl();
     }
 
     /* ASDWControls() 
@@ -73,12 +75,7 @@ public class CameraController : MonoBehaviour
             transform.Translate(Vector3.left * panSpeed * Time.deltaTime, Space.World);
         }
 
-        Vector3 pos = transform.position;
-        // sets edge  bounds - how far you can zoom in/out
-        pos.x = Mathf.Clamp(pos.x, minX, maxX);
-        pos.z = Mathf.Clamp(pos.z, minZ, maxZ);
-
-        transform.position = pos;
+        
 
     }
 
@@ -94,11 +91,26 @@ public class CameraController : MonoBehaviour
         Vector3 pos = transform.position;
         pos.y -= scroll * 1000 * scrollSpeed * Time.deltaTime;
 
-        // sets edge  bounds - how far you can zoom in/out
-        pos.y = Mathf.Clamp(pos.y, minY, maxY);
-
         transform.position = pos;
 
 
+    }
+
+    /* ClampControl()
+     *
+     * sets edge bounds for how user can move camera
+     *
+     *
+     */
+    void ClampControl()
+    {
+        // user can't infinitely pan in one direction
+        Vector3 pos = transform.position;
+        // sets edge  bounds - how far you can zoom in/out
+        pos.x = Mathf.Clamp(pos.x, minX, maxX);
+        pos.y = Mathf.Clamp(pos.y, minY, maxY);
+        pos.z = Mathf.Clamp(pos.z, minZ, maxZ);
+
+        transform.position = pos;
     }
 }
