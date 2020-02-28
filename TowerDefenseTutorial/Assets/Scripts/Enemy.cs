@@ -4,6 +4,8 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public float speed = 10f;
+    public float startHealth = 2f;
+    public float health = 2f;
 
     private Transform target;
     private int waypointIndex = 0;
@@ -24,6 +26,11 @@ public class Enemy : MonoBehaviour
         }
 
         
+    }
+
+    public void takeDamage(float damage)
+    {
+        health -= damage;
     }
 
     void GetNextWaypoint()
