@@ -5111,6 +5111,10 @@ MonoBehaviour:
   scrollSpeed: 5
   minY: 10
   maxY: 80
+  minX: 0
+  maxX: 100
+  minZ: -70
+  maxZ: 80
 --- !u!1001 &538749228
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11446,11 +11450,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25552460f43a243c89a0f4a0d29c4959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeBetweenWaves: 5.5
+  WaveCountdownText: {fileID: 860617248}
   enemyPrefab: {fileID: 3624781714316447033, guid: 73e5bbef6049a4b339b32aa2f384eca5,
     type: 3}
   spawnPoint: {fileID: 1924707104}
-  timeBetweenWaves: 5.5
-  WaveCountdownText: {fileID: 860617248}
 --- !u!4 &1267783132
 Transform:
   m_ObjectHideFlags: 0
