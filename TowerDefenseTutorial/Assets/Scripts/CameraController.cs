@@ -10,8 +10,17 @@ public class CameraController : MonoBehaviour
     public float minY = 10f;
     public float maxY = 80f;
 
+
+    /* Update() - executes every frame
+     *
+     * controls left/right/up/down movement and scrolling
+     *
+     * TODO: split into different methods for better style
+     *
+     */
     void Update()
     {
+        // escape key = no more movement - does this
         if(Input.GetKeyDown (KeyCode.Escape))
         {
             doMovement = !doMovement;
@@ -20,7 +29,7 @@ public class CameraController : MonoBehaviour
         {
             return;
         }
-
+        // if asdw pressed or mouse near edge of screen move in the correct direction
         if(Input.GetKey("w") || Input.mousePosition.y >= Screen.height - panBoarderThickness)
         {
             transform.Translate(Vector3.forward * panSpeed * Time.deltaTime, Space.World);
@@ -38,10 +47,11 @@ public class CameraController : MonoBehaviour
             transform.Translate(Vector3.left * panSpeed * Time.deltaTime, Space.World);
         }
 
-
+        // determines how to zoom in/out with 
         float scroll = Input.GetAxis("Mouse ScrollWheel");
         Vector3 pos = transform.position;
         pos.y -= scroll * 1000 * scrollSpeed * Time.deltaTime;
+        // sets edge  bounds - how far you can zoom in/out
         pos.y = Mathf.Clamp(pos.y, minY, maxY);
 
         transform.position = pos;
