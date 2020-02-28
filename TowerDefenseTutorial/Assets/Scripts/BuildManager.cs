@@ -1,10 +1,17 @@
 ﻿
 using UnityEngine;
 
+// idk how this really works but for some reason we need it?
 public class BuildManager : MonoBehaviour
 {
     public static BuildManager instance;
 
+
+    /* Awake() - done right before  game starts
+     *
+     * instantiates BuildManager
+     *
+     */
     private void Awake()
     {
         if(instance != null)
