@@ -12,7 +12,7 @@ public class Turret : MonoBehaviour
     public float damage = 1f;
     private float fireCountdown = 0f;
 
-    [Header("Unity Setup  Fields")]
+    [Header("Unity Setup Fields")]
 
     public string enemyTag = "Enemy";
     public Transform partToRotate;

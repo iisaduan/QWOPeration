@@ -5,9 +5,8 @@ using UnityEngine.UI;
 
 public class WaveSpawner : MonoBehaviour
 {
-    public Transform enemyPrefab;
 
-    public Transform spawnPoint;
+    [Header("Attributes")]
 
     public float timeBetweenWaves = 5f;
 
@@ -15,25 +14,46 @@ public class WaveSpawner : MonoBehaviour
 
     public Text WaveCountdownText;
 
+    [Header("Unity Setup Fields")]
+
+    public Transform enemyPrefab;
+
+    public Transform spawnPoint;
+
     private int waveIndex = 0;
 
+    /* Update() - every frame
+     * 
+     * determines if wave should spawn this frame
+     *
+     * decreases countdown to next wave and updates wave countdown text
+     *
+     */
     private void Update()
     {
+        // if countdown = 0, spawn a wave and reset countdown
         if(countdown <= 0)
         {
             StartCoroutine(SpawnWave());
             countdown = timeBetweenWaves;
         }
-
+        // decrease countdown by amount of time passed since last frame
         countdown -= Time.deltaTime;
-
+        // update wave countdown text
         WaveCountdownText.text = Mathf.Round(countdown).ToString();
     }
 
+    /* SpawnWave()
+     *
+     * spawns correct number of enemies for a wave
+     * 
+     */
     IEnumerator SpawnWave()
     {
+        // in this wave spawning, there's just one more enemy per wave
+        // so here, increase index to  show another wave is happening
         waveIndex++;
-
+        // spawns waveIndex number of enemies, each enemy has a gap of .5 seconds to  next enemy
         for (int i = 0; i < waveIndex; i++)
         {
             SpawnEnemy();
@@ -42,6 +62,13 @@ public class WaveSpawner : MonoBehaviour
         
     }
 
+    /* SpawnEnemy()
+     *
+     * Instantiates enemy prefab at spawn point
+     *
+     * TODO: if want to add more enemy spawning locations, edit this and spawn position stuff
+     * 
+     */
     void SpawnEnemy()
     {
         Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
