@@ -15,6 +15,11 @@ public class Node : MonoBehaviour
 
     BuildManager buildManager;
 
+    /* Start() - called at beginning of game
+     *
+     * sets up instance  variables
+     *
+     */
     private void Start()
     {
         rend = GetComponent<Renderer>();
@@ -29,6 +34,8 @@ public class Node : MonoBehaviour
      * If they can't build, does nothing
      *
      * else, it will build a new turret
+     *
+     * TODO:display message on screen if you can't build a turret at node
      * 
      */
 
@@ -56,6 +63,11 @@ public class Node : MonoBehaviour
 
     }
 
+    /* OnMouseEnter() - when mouse hovers over node
+     *
+     * changes color of node if player can build a turret there
+     *
+     */
     private void OnMouseEnter()
     {
         if (EventSystem.current.IsPointerOverGameObject())
@@ -69,6 +81,11 @@ public class Node : MonoBehaviour
         rend.material.color = hoverColor;
     }
 
+    /* OnMouseExit() - when mouse leaves node
+     *
+     * returns color of node to basic color
+     *
+     */
     private void OnMouseExit()
     {
         rend.material.color = startColor;
