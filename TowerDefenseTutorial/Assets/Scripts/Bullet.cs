@@ -53,9 +53,7 @@ public class Bullet : MonoBehaviour
     /* HitTarget()
      *
      * Creates impact effect, destroys bullet, destroys target/enemy
-     *
-     * TODO: in here probably? make bullet decrease health instead of destroying it
-     *
+     * 
      */
     void HitTarget()
     {
@@ -75,8 +73,14 @@ public class Bullet : MonoBehaviour
 
     }
 
+    /* Explode()
+     *
+     * creates explosion for missile launcher
+     *
+     */
     void Explode()
     {
+        // finds all objects in explosionRadius, determines  which are enemies, and damages them
         Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
         foreach (Collider collider in colliders)
         {
@@ -87,11 +91,24 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    void  Damage(Transform enemy)
+    /* Damage(Transform enemy)
+     *
+     * damages enemy - right now just destroys it
+     *
+     * TODO: in here probably? make bullet decrease health instead of destroying it
+     *
+     */
+    void Damage(Transform enemy)
     {
         Destroy(enemy.gameObject);
     }
 
+    /* OnDrawGizmosSelected()
+     *
+     * shows range of turret using a red sphere
+     * Only works in "create" mode
+     * 
+     */
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;

@@ -61,6 +61,7 @@ public class Enemy : MonoBehaviour
      * sets target to next waypoint, if no more waypoints destroy enemy
      * 
      * TODO: take damage from user if enemy gets to end
+     * 
      */
     void GetNextWaypoint()
     {

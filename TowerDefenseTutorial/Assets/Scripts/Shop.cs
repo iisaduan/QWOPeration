@@ -15,7 +15,9 @@ public class Shop : MonoBehaviour
         buildManager = BuildManager.instance;
     }
 
-    /* PurchaseStandardTurret() - makes standard turret the turret to buy
+    /* PurchaseStandardTurret()
+     *
+     * makes standard turret the turret to buy
      * 
      */
     public void PurchaseStandardTurret()
@@ -24,9 +26,9 @@ public class Shop : MonoBehaviour
         buildManager.setTurretToBuild(buildManager.standardTurretPrefab);
     }
 
-    /* PurchaseAnotherTurret() - makes another turret the turret to buy
+    /* PurchaseMissileLauncher
      *
-     * TODO: this doesn't do anything yet - wait until there is another turret
+     * makes missile launcher the turret to buy
      * 
      */
     public void PurchaseMissileLauncher()
