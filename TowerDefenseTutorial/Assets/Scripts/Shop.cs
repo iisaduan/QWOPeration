@@ -20,7 +20,7 @@ public class Shop : MonoBehaviour
      */
     public void PurchaseStandardTurret()
     {
-        Debug.Log("Standard Turret Purchased");
+        Debug.Log("Standard Turret Selected");
         buildManager.setTurretToBuild(buildManager.standardTurretPrefab);
     }
 
@@ -29,9 +29,9 @@ public class Shop : MonoBehaviour
      * TODO: this doesn't do anything yet - wait until there is another turret
      * 
      */
-    public void PurchaseAnotherTurret()
+    public void PurchaseMissileLauncher()
     {
-        Debug.Log("Another Turret Purchased");
-        buildManager.setTurretToBuild(buildManager.anotherTurretPrefab);
+        Debug.Log("Missile Launcher Selected");
+        buildManager.setTurretToBuild(buildManager.missileLauncherPrefab);
     }
 }
