@@ -97,6 +97,8 @@ public class Bullet : MonoBehaviour
      *
      * TODO: in here probably? make bullet decrease health instead of destroying it
      *
+     * TODO: if enemy dies, player gets money
+     *
      */
     void Damage(Transform enemy)
     {

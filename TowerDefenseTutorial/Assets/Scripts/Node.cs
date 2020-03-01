@@ -77,11 +77,7 @@ public class Node : MonoBehaviour
     /* OnMouseEnter() - when mouse hovers over node
      *
      * changes color of node if player can build a turret there
-     *
-     * TODO: dont do it if turret already in square
-     *
-     * TODO: do something different if user doesnt have enough money
-     *
+     * 
      */
     private void OnMouseEnter()
     {
@@ -91,6 +87,15 @@ public class Node : MonoBehaviour
         }
         if (!buildManager.CanBuild)
         {
+            return;
+        }
+        if (turret != null)
+        {
+            return;
+        }
+        if (!buildManager.EnoughMoney())
+        {
+            //TODO?:make a different color if don't have enough money
             return;
         }
         rend.material.color = hoverColor;
