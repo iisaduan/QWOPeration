@@ -7,7 +7,8 @@ public class Node : MonoBehaviour
     public Color hoverColor;
     public Vector3 positionOffset;
 
-    private GameObject turret;
+    [Header ("Optional")]
+    public GameObject turret;
 
 
     private Renderer rend;
@@ -26,6 +27,17 @@ public class Node : MonoBehaviour
         startColor = rend.material.color;
         buildManager = BuildManager.instance;
     }
+
+    /* GetBuildPosition()
+     *
+     * gets build position
+     *
+     */
+    public Vector3 GetBuildPosition()
+    {
+        return transform.position + positionOffset;
+    }
+
 
     /* OnMouseDown()
      *
@@ -47,7 +59,7 @@ public class Node : MonoBehaviour
             return;
         }
         // if user has not selected a turret to build, do nothing
-        if (buildManager.GetTurretToBuild() == null)
+        if (!buildManager.CanBuild)
         {
             return;
         }
@@ -58,14 +70,17 @@ public class Node : MonoBehaviour
             return;
         }
         // else, build turret
-        GameObject turretToBuild = buildManager.GetTurretToBuild();
-        turret  = (GameObject) Instantiate(turretToBuild, transform.position + positionOffset, transform.rotation);
+        buildManager.BuildTurretOn(this);
 
     }
 
     /* OnMouseEnter() - when mouse hovers over node
      *
      * changes color of node if player can build a turret there
+     *
+     * TODO: dont do it if turret already in square
+     *
+     * TODO: do something different if user doesnt have enough money
      *
      */
     private void OnMouseEnter()
@@ -74,7 +89,7 @@ public class Node : MonoBehaviour
         {
             return;
         }
-        if (buildManager.GetTurretToBuild() == null)
+        if (!buildManager.CanBuild)
         {
             return;
         }

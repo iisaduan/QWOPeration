@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class Shop : MonoBehaviour
 {
+    public TurretBlueprint standardTurret;
+    public TurretBlueprint missileLauncher;
+
     BuildManager buildManager;
 
     /* Start() - called when game starts
@@ -15,25 +18,25 @@ public class Shop : MonoBehaviour
         buildManager = BuildManager.instance;
     }
 
-    /* PurchaseStandardTurret()
+    /* SelectStandardTurret()
      *
-     * makes standard turret the turret to buy
+     * makes standard turret the turretToBuild
      * 
      */
-    public void PurchaseStandardTurret()
+    public void SelectStandardTurret()
     {
         Debug.Log("Standard Turret Selected");
-        buildManager.setTurretToBuild(buildManager.standardTurretPrefab);
+        buildManager.SelectTurretToBuild(standardTurret);
     }
 
-    /* PurchaseMissileLauncher
+    /* SelectMissileLauncher
      *
-     * makes missile launcher the turret to buy
+     * makes missile launcher the turretToBuild
      * 
      */
-    public void PurchaseMissileLauncher()
+    public void SelectMissileLauncher()
     {
         Debug.Log("Missile Launcher Selected");
-        buildManager.setTurretToBuild(buildManager.missileLauncherPrefab);
+        buildManager.SelectTurretToBuild(missileLauncher);
     }
 }
