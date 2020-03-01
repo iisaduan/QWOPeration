@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 public class Node : MonoBehaviour
 {
     public Color hoverColor;
+    public Color notEnoughMoneyColor;
     public Vector3 positionOffset;
 
     [Header ("Optional")]
@@ -93,12 +94,16 @@ public class Node : MonoBehaviour
         {
             return;
         }
-        if (!buildManager.EnoughMoney())
+        if (buildManager.EnoughMoney())
         {
-            //TODO?:make a different color if don't have enough money
-            return;
+            rend.material.color = hoverColor;
         }
-        rend.material.color = hoverColor;
+        else
+        {
+            // TODO: design choice - square can just not highlight when not enough money
+            rend.material.color = notEnoughMoneyColor;
+        }
+        
     }
 
     /* OnMouseExit() - when mouse leaves node

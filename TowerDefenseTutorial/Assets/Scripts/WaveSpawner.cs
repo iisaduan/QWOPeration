@@ -39,8 +39,11 @@ public class WaveSpawner : MonoBehaviour
         }
         // decrease countdown by amount of time passed since last frame
         countdown -= Time.deltaTime;
+        // makes sure countdown never is  below 0
+        countdown = Mathf.Clamp(countdown, 0f, Mathf.Infinity);
+
         // update wave countdown text
-        WaveCountdownText.text = Mathf.Round(countdown).ToString();
+        WaveCountdownText.text = string.Format("{0:00.00}", countdown);
     }
 
     /* SpawnWave()
