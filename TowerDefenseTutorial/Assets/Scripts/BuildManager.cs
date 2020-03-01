@@ -25,6 +25,8 @@ public class BuildManager : MonoBehaviour
     public GameObject standardTurretPrefab;
     public GameObject missileLauncherPrefab;
 
+    public GameObject buildEffect;
+
     private TurretBlueprint turretToBuild;
 
     // weird syntax - basically like a little method
@@ -42,7 +44,7 @@ public class BuildManager : MonoBehaviour
 
     /* BuildTurretOn(Node node)
      *
-     * builds a turretToBuild on node parameter
+     * builds a turretToBuild on node parameter with  build effect
      *
      * if user does not have enough money - returns
      *
@@ -58,11 +60,15 @@ public class BuildManager : MonoBehaviour
 
         PlayerStats.Money -= turretToBuild.cost;
 
-        // TODO: display on screen to user
-        Debug.Log("Turret Built. Money left: " + PlayerStats.Money);
-
+        // build  turret
         GameObject turret = (GameObject) Instantiate(turretToBuild.prefab, node.GetBuildPosition(), Quaternion.identity);
         node.turret = turret;
+        // instantiate build  effect
+        GameObject effect = Instantiate(buildEffect, node.GetBuildPosition(), Quaternion.identity);
+        Destroy(effect, 5f);
+
+        // TODO: display on screen to user
+        Debug.Log("Turret Built. Money left: " + PlayerStats.Money);
 
 
     }
