@@ -7,10 +7,20 @@ public class PlayerStats : MonoBehaviour
     public static int Money;
     public int startMoney = 400;
 
-    // TODO: add health and other player attributes here
+    public static int Lives;
 
+    public int startLives = 20;
+
+    // TODO: add any other player attributes here
+
+    /* Start() - called at beginning of game
+     *
+     * Instantiate player money and lives
+     *
+     */
     private void Start()
     {
         Money = startMoney;
+        Lives = startLives;
     }
 }

@@ -3,9 +3,15 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    [Header("Attributes")]
     private Transform target;
     public float speed = 70f;
+
+    public int damage = 50;
+
     public float explosionRadius = 0f;
+
+    [Header("Unity Setup Fields")]
     public GameObject impactEffect;
 
 
@@ -95,14 +101,15 @@ public class Bullet : MonoBehaviour
      *
      * damages enemy - right now just destroys it
      *
-     * TODO: in here probably? make bullet decrease health instead of destroying it
-     *
-     * TODO: if enemy dies, player gets money
-     *
      */
     void Damage(Transform enemy)
     {
-        Destroy(enemy.gameObject);
+        Enemy e = enemy.GetComponent<Enemy>();
+
+        if (e != null)
+        {
+            e.TakeDamage(damage);
+        }
     }
 
     /* OnDrawGizmosSelected()
