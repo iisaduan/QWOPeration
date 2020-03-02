@@ -11,6 +11,8 @@ public class Bullet : MonoBehaviour
 
     public float explosionRadius = 0f;
 
+    public Vector3 direction = new Vector3(0f, 0f, 0f);
+
     [Header("Unity Setup Fields")]
     public GameObject impactEffect;
 
@@ -31,6 +33,8 @@ public class Bullet : MonoBehaviour
      *
      * determines if bullet hits something - calls HitTarget() if so
      *
+     * TODO: add straight shooting functionality - currently  does notwork
+     * 
      */
     void Update()
     {
@@ -39,9 +43,20 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+        Vector3 dir;
 
-        Vector3 dir = target.position - transform.position;
+        // if bullet is a straight shooter
+        if (direction != new Vector3(0f, 0f, 0f))
+        {
+            dir = direction;
+        }
+        
+        else
+        { 
+            dir = target.position - transform.position;
+        }
         float distanceThisFrame = speed * Time.deltaTime;
+            
 
 
         // if bullet will hit the target within this frame - hit the target
@@ -54,6 +69,16 @@ public class Bullet : MonoBehaviour
         transform.Translate(dir.normalized * distanceThisFrame, Space.World);
         transform.LookAt(target);
         
+    }
+
+    /* setDirection(Vector3 dir)
+     *
+     * sets start direction of bullet for straight shooting bullets
+     *
+     */
+    void setDirection(Vector3 startPos, Vector3 targetPos)
+    {
+        direction = targetPos - startPos;
     }
 
     /* HitTarget()

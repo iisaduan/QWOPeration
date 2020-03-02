@@ -9,8 +9,9 @@ public class Turret : MonoBehaviour
 
     public float range = 15f;
     public float fireRate = 1f;
-    public float damage = 1f;
     private float fireCountdown = 0f;
+
+    public bool straightShooter = false;
 
     [Header("Unity Setup Fields")]
 
@@ -112,7 +113,16 @@ public class Turret : MonoBehaviour
         if(bullet != null)
         {
             bullet.Seek(target);
+            
         }
+
+        // TODO: fix this bug - this  lines doesn't work  for some reason
+        /*
+        if (straightShooter)
+        {
+            bullet.setDirection(bullet.transform.position, target.transform.position);
+        }
+        */
     }
 
     /* OnDrawGizmosSelected()

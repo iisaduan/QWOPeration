@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+
+    // TODO: add pausing and fastforwarding feature here probably?
+
     private bool gameEnded = false;
 
     /* Update() - called once per frame
