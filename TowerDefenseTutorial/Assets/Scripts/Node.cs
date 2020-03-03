@@ -59,17 +59,19 @@ public class Node : MonoBehaviour
         {
             return;
         }
+        // if there is already a turret there, return error message
+        if (turret != null)
+        {
+            buildManager.SelectNode(this);
+            return;
+        }
+
         // if user has not selected a turret to build, do nothing
         if (!buildManager.CanBuild)
         {
             return;
         }
-        // if there is already a turret there, return error message
-        if (turret != null)
-        {
-            Debug.Log("Can't build there! -- TODO: display on screen");
-            return;
-        }
+
         // else, build turret
         buildManager.BuildTurretOn(this);
 
