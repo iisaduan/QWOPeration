@@ -34,7 +34,7 @@ public class BuildManager : MonoBehaviour
 
     // weird syntax - basically like a little method
     public bool CanBuild { get { return turretToBuild != null;  } }
-
+    public bool HasMoney { get { return PlayerStats.Money >= turretToBuild.cost; } }
 
     // selects a node (so that the upgrade/sell menu can appear on top)
     public void SelectNode(Node node)
@@ -73,48 +73,8 @@ public class BuildManager : MonoBehaviour
         DeselectNode();
     }
 
-    /* BuildTurretOn(Node node)
-     *
-     * builds a turretToBuild on node parameter with  build effect
-     *
-     * if user does not have enough money - returns
-     *
-     */
-    public void BuildTurretOn(Node node)
+    public TurretBlueprint GetTurretToBuild()
     {
-        if (!EnoughMoney())
-        {
-            // TODO: add some text to user
-            Debug.Log("Not Enough Money");
-            return;
-        }
-
-        PlayerStats.Money -= turretToBuild.cost;
-
-        // build  turret
-        GameObject turret = (GameObject) Instantiate(turretToBuild.prefab, node.GetBuildPosition(), Quaternion.identity);
-        node.turret = turret;
-        // instantiate build  effect
-        GameObject effect = Instantiate(buildEffect, node.GetBuildPosition(), Quaternion.identity);
-        Destroy(effect, 5f);
-
-        // TODO: display on screen to user
-        Debug.Log("Turret Built. Money left: " + PlayerStats.Money);
-
-
+        return turretToBuild;
     }
-
-    /* EnoughMoney()
-     *
-     * determines if player has enough money to buy selected turret
-     * 
-     */
-    public bool EnoughMoney()
-    {
-        return PlayerStats.Money >= turretToBuild.cost;
-    }
-
-
-    
-
 }

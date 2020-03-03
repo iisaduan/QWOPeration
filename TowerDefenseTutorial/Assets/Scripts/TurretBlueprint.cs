@@ -8,5 +8,9 @@ public class TurretBlueprint
 {
     public GameObject prefab;
     public int cost;
-    // TODO: add upgrades, info about turrets, etc here
+
+    public GameObject upgradedPrefab;
+    public int upgradeCost;
+
+    // TODO: add info about turrets, etc here
 }

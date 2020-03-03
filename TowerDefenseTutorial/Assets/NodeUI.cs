@@ -1,8 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class NodeUI : MonoBehaviour
 {
     public GameObject ui;   // the upgrade/sell button
+
+    public Text upgradeCost;
+    public Button upgradeButton;
 
     private Node target;
 
@@ -16,11 +20,28 @@ public class NodeUI : MonoBehaviour
 
         transform.position = target.GetBuildPosition();
 
+        if (!target.isUpgraded)
+        {
+            // display the amount the upgrade costs on the button
+            upgradeCost.text = "$" + target.turretBlueprint.upgradeCost;
+            upgradeButton.interactable = true;
+        } else
+        {
+            upgradeCost.text = "DONE";
+            upgradeButton.interactable = false;  // prevents players from upgrading more than once
+        }
+
         ui.SetActive(true);
     }
 
     public void Hide()
     {
         ui.SetActive(false);
+    }
+
+    public void Upgrade()
+    {
+        target.UpgradeTurret();
+        BuildManager.instance.DeselectNode(); // close the menu after upgrading
     }
 }
