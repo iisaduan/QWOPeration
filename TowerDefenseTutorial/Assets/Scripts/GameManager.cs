@@ -7,7 +7,16 @@ public class GameManager : MonoBehaviour
 
     // TODO: add pausing and fastforwarding feature here probably?
 
-    private bool gameEnded = false;
+    public static bool gameIsOver;
+
+    public GameObject gameOverUI;
+
+
+    // Start method is called everytime we load a new scene, sets gameIsOver to false every time we start a new scene
+    void Start()
+    {
+        gameIsOver = false;
+    }
 
     /* Update() - called once per frame
      *
@@ -16,27 +25,32 @@ public class GameManager : MonoBehaviour
      */
     void Update()
     {
-        if(PlayerStats.Lives <= 0)
+        if (gameIsOver)
         {
-            if(gameEnded)
-            {
-                return;
-            }
+            return;
+        }
+
+        if(Input.GetKeyDown("e"))
+        {
+            EndGame();
+        }
+        if (PlayerStats.Lives <= 0)
+        {
+
             EndGame();
         }
     }
 
     /* EndGame()
      *
-     * ends game - HAS NOFUNCTIONALITY YET
-     *
-     * TODO: make this do things
+     * ends game
      * 
      */
     private void EndGame()
     {
-        gameEnded = true;
-        Debug.Log("Game Over!");
+        gameIsOver = true;
+
+        gameOverUI.SetActive(true);
 
     }
 

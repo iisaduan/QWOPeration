@@ -25,6 +25,13 @@ public class CameraController : MonoBehaviour
      */
     void Update()
     {
+        // if game is over, disable the camera
+        if (GameManager.gameIsOver)
+        {
+            this.enabled = false;
+            return;
+        }
+
         // escape key = no more movement - does this
         if(Input.GetKeyDown (KeyCode.Escape))
         {

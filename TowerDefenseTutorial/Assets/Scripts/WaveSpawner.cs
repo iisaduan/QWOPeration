@@ -56,6 +56,10 @@ public class WaveSpawner : MonoBehaviour
         // in this wave spawning, there's just one more enemy per wave
         // so here, increase index to  show another wave is happening
         waveIndex++;
+        //each time a new wave of enemies is spawned, the player has survived another round
+        //Todo: maybe change later to keep track of if the enemies of a "round" have been killed
+        // and use that to keep track of how many rounds player has survived
+        PlayerStats.Rounds++; 
         // spawns waveIndex number of enemies, each enemy has a gap of .5 seconds to  next enemy
         for (int i = 0; i < waveIndex; i++)
         {
