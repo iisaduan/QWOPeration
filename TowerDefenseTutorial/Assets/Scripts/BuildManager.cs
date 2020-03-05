@@ -22,9 +22,6 @@ public class BuildManager : MonoBehaviour
         instance = this;
     }
 
-    public GameObject standardTurretPrefab;
-    public GameObject missileLauncherPrefab;
-
     public GameObject buildEffect;
 
     private TurretBlueprint turretToBuild;
@@ -46,7 +43,7 @@ public class BuildManager : MonoBehaviour
         }
 
         selectedNode = node;
-       // turretToBuild = null;  // so that we will only build the node
+        turretToBuild = null;  // so that we will only build the node
 
         nodeUI.SetTarget(node);
     }
