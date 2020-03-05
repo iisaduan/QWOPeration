@@ -1,51 +1,28 @@
 ﻿
 using UnityEngine;
-
 public class Enemy : MonoBehaviour
 {
 
     [Header("Attributes")]
 
+    public float startSpeed;
+    [HideInInspector]
     public float speed = 10f;
     // public int startHealth = 100;
-    public int health = 100;
+    public float health = 100;
 
     public int moneyGain = 50; 
 
     [Header("Unity Setup Fields")]
     public GameObject deathEffect;
-    private Transform target;
-    private int waypointIndex = 0;
-    
+
+    // Note: movement aspeccts of the enemy moved into EnemyMovement Script
 
 
-    /* Start() - when game begins
-     *
-     * initializes waypoints 
-     *
-     */
-    private void Start()
+
+    public void Start()
     {
-        target = Waypoints.points[0];
-    }
-
-    /* Update() - every frame
-     *
-     * goes towards closest waypoint, switches waypoints when necessary
-     * 
-     */
-    private void Update()
-    {
-        Vector3 dir = target.position - transform.position;
-        transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
-
-        // if close the waypoint - go towards next waypoint
-        if (Vector3.Distance(transform.position, target.position) <= .4f)
-        {
-            GetNextWaypoint();
-        }
-
-
+        startSpeed = speed;
     }
 
     /* TakeDamage(float damage)
@@ -55,7 +32,7 @@ public class Enemy : MonoBehaviour
      * if enemy has 0 health, it  dies
      *
      */
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         health -= damage;
 
@@ -63,6 +40,11 @@ public class Enemy : MonoBehaviour
         {
             Die();
         }
+    }
+
+    public void Slow(float pct)
+    {
+        speed = startSpeed * (1 - pct); 
     }
 
     /* Die()
@@ -84,34 +66,4 @@ public class Enemy : MonoBehaviour
 
     }
 
-    /* GetNextWaypoint()
-     *
-     * sets target to next waypoint
-     *
-     * if no more waypoints, calls EndPath()
-     *
-     */
-    void GetNextWaypoint()
-    {
-        if(waypointIndex >= Waypoints.points.Length - 1)
-        {
-            EndPath();
-            return;
-        }
-
-        waypointIndex++;
-        target = Waypoints.points[waypointIndex];
-    }
-
-    /* EndPath()
-     *
-     * decreaes player lives and destroys enemy game object
-     *
-     *
-     */
-    void EndPath()
-    {
-        PlayerStats.Lives--;
-        Destroy(gameObject);
-    }
 }
