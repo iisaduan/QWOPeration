@@ -46,7 +46,7 @@ public class BuildManager : MonoBehaviour
         }
 
         selectedNode = node;
-        turretToBuild = null;  // so that we will only build the node
+       // turretToBuild = null;  // so that we will only build the node
 
         nodeUI.SetTarget(node);
     }

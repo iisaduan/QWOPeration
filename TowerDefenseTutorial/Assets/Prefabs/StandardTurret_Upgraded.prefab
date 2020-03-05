@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 3948351134324855636}
   - component: {fileID: 29689674}
   m_Layer: 0
-  m_Name: StandardTurret
+  m_Name: StandardTurret_Upgraded
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -251,9 +251,9 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 33b0f7f88c94848c1865a694c1650447, type: 2}
-  - {fileID: 2100000, guid: cf3c3c4a296ff48879c05c1de15f67fb, type: 2}
-  - {fileID: 2100000, guid: cca8319fce7cb4fa79f5826d96bbad22, type: 2}
+  - {fileID: 2100000, guid: 05aa15bc95d7a4211b5c3379a6f0ac5d, type: 2}
+  - {fileID: 2100000, guid: d5039e2e0ae014e9aa13d1ea10e6cf54, type: 2}
+  - {fileID: 2100000, guid: 9316ac27b20cb4a799640cd58baa2697, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

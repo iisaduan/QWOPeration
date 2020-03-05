@@ -20,16 +20,17 @@ public class NodeUI : MonoBehaviour
 
         transform.position = target.GetBuildPosition();
 
-        if (!target.isUpgraded)
-        {
-            // display the amount the upgrade costs on the button
-            upgradeCost.text = "$" + target.turretBlueprint.upgradeCost;
-            upgradeButton.interactable = true;
-        } else
-        {
-            upgradeCost.text = "DONE";
-            upgradeButton.interactable = false;  // prevents players from upgrading more than once
-        }
+        //if (!(target.isUpgraded))
+        //{
+        //    // display the amount the upgrade costs on the button
+        //    upgradeCost.text = "$" + target.turretBlueprint.upgradeCost;
+        //    upgradeButton.interactable = true;
+        //}
+        //else
+        //{
+        //    upgradeCost.text = "DONE";
+        //    upgradeButton.interactable = false;  // prevents players from upgrading more than once
+        //}
 
         ui.SetActive(true);
     }

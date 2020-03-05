@@ -107,7 +107,7 @@ public class Node : MonoBehaviour
         Destroy(effect, 5f);
 
         // TODO: display on screen to user
-        Debug.Log("Turret Built. Money left: " + PlayerStats.Money);
+        Debug.Log("Turret Built!");
 
     }
 
@@ -117,18 +117,18 @@ public class Node : MonoBehaviour
      */
     public void UpgradeTurret()
     {
-        if (PlayerStats.Money < turretBlueprint.upgradeCost)
-        {
-            // TODO: add some text to user
-            Debug.Log("Not Enough Money to Upgrade That");
-            return;
-        }
+        //if (PlayerStats.Money < turretBlueprint.upgradeCost)
+        //{
+        //    // TODO: add some text to user
+        //    Debug.Log("Not Enough Money to Upgrade That");
+        //    return;
+        //}
 
         PlayerStats.Money -= turretBlueprint.upgradeCost;
 
         Destroy(turret);  // destroy the old turret before upgrading
 
-        // build  the new upgraded turret
+        // build the new upgraded turret
         GameObject _turret = (GameObject)Instantiate(turretBlueprint.upgradedPrefab, GetBuildPosition(), Quaternion.identity);
         turret = _turret;
         // instantiate build  effect
@@ -139,7 +139,7 @@ public class Node : MonoBehaviour
 
 
         // TODO: display on screen to user
-        Debug.Log("Turret Upgraded. Money left: " + PlayerStats.Money);
+        Debug.Log("Turret Upgraded!");
     }
 
     /* OnMouseEnter() - when mouse hovers over node
