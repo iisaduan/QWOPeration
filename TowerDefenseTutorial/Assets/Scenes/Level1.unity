@@ -5514,7 +5514,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 484439102}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 890066869}
+        m_MethodName: Sell
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &484439102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8967,75 +8978,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 749774281}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &760805878
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3938958367377509677, guid: 645bc3905f4ff4751bcca5cc88fd0ea3,
-        type: 3}
-      propertyPath: m_Name
-      value: LaserBeamer_Upgraded
-      objectReference: {fileID: 0}
-    - target: {fileID: 4766055401273326482, guid: 645bc3905f4ff4751bcca5cc88fd0ea3,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4766055401273326482, guid: 645bc3905f4ff4751bcca5cc88fd0ea3,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4766055401273326482, guid: 645bc3905f4ff4751bcca5cc88fd0ea3,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4766055401273326482, guid: 645bc3905f4ff4751bcca5cc88fd0ea3,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4766055401273326482, guid: 645bc3905f4ff4751bcca5cc88fd0ea3,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4766055401273326482, guid: 645bc3905f4ff4751bcca5cc88fd0ea3,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4766055401273326482, guid: 645bc3905f4ff4751bcca5cc88fd0ea3,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4766055401273326482, guid: 645bc3905f4ff4751bcca5cc88fd0ea3,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 4766055401273326482, guid: 645bc3905f4ff4751bcca5cc88fd0ea3,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4766055401273326482, guid: 645bc3905f4ff4751bcca5cc88fd0ea3,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4766055401273326482, guid: 645bc3905f4ff4751bcca5cc88fd0ea3,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 645bc3905f4ff4751bcca5cc88fd0ea3, type: 3}
 --- !u!1001 &767800127
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10369,6 +10311,7 @@ MonoBehaviour:
   ui: {fileID: 1567888702}
   upgradeCost: {fileID: 83786568}
   upgradeButton: {fileID: 745067228}
+  sellAmount: {fileID: 1041277389}
 --- !u!4 &890066870
 Transform:
   m_ObjectHideFlags: 0
@@ -14164,6 +14107,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildEffect: {fileID: 8840810791351948884, guid: 4d00a090eda584debadd8d6576c42530,
+    type: 3}
+  sellEffect: {fileID: 8840810791351948884, guid: 79d7259af54ac46ddb46c45213569268,
     type: 3}
   nodeUI: {fileID: 890066869}
 --- !u!114 &1267783134
