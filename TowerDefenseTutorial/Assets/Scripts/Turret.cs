@@ -177,6 +177,7 @@ public class Turret : MonoBehaviour
     {
         GameObject bulletGO = (GameObject) Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Bullet bullet = bulletGO.GetComponent<Bullet>();
+        Destroy(bullet, 5f);
         if (bullet != null)
         {
             bullet.Seek(target);
@@ -184,12 +185,12 @@ public class Turret : MonoBehaviour
         }
 
         // TODO: fix this bug - this  lines doesn't work  for some reason
-        /*
+        
         if (straightShooter)
         {
-            bullet.setDirection(bullet.transform.position, target.transform.position);
+            bullet.SetDirection(bullet.transform.position, target.transform.position);
         }
-        */
+        
     }
 
     /* OnDrawGizmosSelected()
