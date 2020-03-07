@@ -8,6 +8,8 @@ public class NodeUI : MonoBehaviour
     public Text upgradeCost;
     public Button upgradeButton;
 
+    public Text sellAmount;
+
     private Node target;
 
     /*
@@ -32,6 +34,8 @@ public class NodeUI : MonoBehaviour
             upgradeButton.interactable = false;  // prevents players from upgrading more than once
         }
 
+        sellAmount.text = "$" + target.turretBlueprint.GetSellAmount();
+
         ui.SetActive(true);
     }
 
@@ -44,5 +48,11 @@ public class NodeUI : MonoBehaviour
     {
         target.UpgradeTurret();
         BuildManager.instance.DeselectNode(); // close the menu after upgrading
+    }
+
+    public void Sell()
+    {
+        target.SellTurret();
+        BuildManager.instance.DeselectNode();
     }
 }

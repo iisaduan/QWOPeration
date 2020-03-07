@@ -12,5 +12,12 @@ public class TurretBlueprint
     public GameObject upgradedPrefab;
     public int upgradeCost;
 
+
+    // TODO: get a better sell amount (takes upgrades into account)
+    public int GetSellAmount()
+    {
+        return cost / 2;
+    }
+
     // TODO: add info about turrets, etc here
 }
