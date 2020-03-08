@@ -77,7 +77,11 @@ public class Node : MonoBehaviour
         }
 
         // else, build turret
+        
         BuildTurret(buildManager.GetTurretToBuild());
+        // TODO: currently just deselcts turret after building one
+        // if want shift click - change here (make an if statement)
+        buildManager.SelectTurretToBuild(null);
 
     }
 
