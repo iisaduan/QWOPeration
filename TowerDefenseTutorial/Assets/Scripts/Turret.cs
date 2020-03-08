@@ -12,7 +12,7 @@ public class Turret : MonoBehaviour
 
     public float range = 15f;
     // SHOOT TYPE
-    public ShootType shootType = ShootType.last;
+    public ShootType shootType = ShootType.Last;
 
     [Header("Use Bullets")]
 
@@ -54,33 +54,43 @@ public class Turret : MonoBehaviour
 
     /* UpdateTarget()
      *
-     * updates turret's target by finding the closest enemy in range
-     *
-     * TODO: look at this for changing which enemy the turret shoots at
+     * updates turret's target by finding enemy in range according to shootType
      *
      */
     void UpdateTarget()
     {
-        if (shootType == ShootType.closest)
+        // closest
+        if (shootType == ShootType.Closest)
         {
             ShootClose();
         }
 
-        else if (shootType == ShootType.mostHealth)
+        // most heath
+        else if (shootType == ShootType.MostHealth)
         {
             ShootMostHealth();
         }
 
-        else if (shootType == ShootType.first)
+        // first (closest to end)
+        else if (shootType == ShootType.First)
         {
             ShootFirst();
         }
-        else if (shootType == ShootType.last)
+
+        // last (closest to start)
+        else if (shootType == ShootType.Last)
         {
             ShootLast();
         }
     }
 
+    /* ShootLast()
+     *
+     * sets target to be the last enemy in range (closest to beginning)
+     *
+     * TODO: make this work correctly (it currently shoots first enemy)
+     *
+     */
     void ShootLast()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
@@ -114,7 +124,12 @@ public class Turret : MonoBehaviour
             target = null;
         }
     }
-    // shoot front enemy (most distance traveled)
+
+    /* ShootFirst()
+     *
+     * sets target to be the first enemy in range (closest to end)
+     *
+     */
     void ShootFirst()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
@@ -149,6 +164,11 @@ public class Turret : MonoBehaviour
         }
     }
 
+    /* ShootClose()
+     *
+     * sets target to be the closest enemy in range
+     *
+     */
     void ShootClose()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
@@ -180,7 +200,11 @@ public class Turret : MonoBehaviour
         }
     }
 
-
+    /* ShootMostHealth()
+     *
+     * sets target to be the enemy with the most health in range
+     *
+     */
     void ShootMostHealth()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);

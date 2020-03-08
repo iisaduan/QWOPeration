@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
     public float health = 100;
 
     public int moneyGain = 50;
-
+    // used for turret shooting logic (first/last)
     public float distanceTraveled = 0;
 
     [Header("Unity Setup Fields")]

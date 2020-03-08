@@ -64,9 +64,6 @@ public class Bullet : MonoBehaviour
         { 
             dir = target.position - transform.position;
         }
-        
-            
-
 
         // if bullet will hit the target within this frame - hit the target
         if(dir.magnitude <= distanceThisFrame)

@@ -2,9 +2,9 @@
 
 public enum ShootType
 {
-    first,
-    last,
-    mostHealth,
-    closest
+    First,
+    Last,
+    MostHealth,
+    Closest
 
 }
