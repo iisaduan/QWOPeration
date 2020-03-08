@@ -37,9 +37,7 @@ public class EnemyMovement : MonoBehaviour
         {
             GetNextWaypoint();
         }
-        enemy.distanceTraveled = enemy.speed * Time.deltaTime;
         enemy.speed = enemy.startSpeed;
-        
 
     }
 

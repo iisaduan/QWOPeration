@@ -11,9 +11,7 @@ public class Enemy : MonoBehaviour
     // public int startHealth = 100;
     public float health = 100;
 
-    public int moneyGain = 50;
-    // used for turret shooting logic (first/last)
-    public float distanceTraveled = 0;
+    public int moneyGain = 50; 
 
     [Header("Unity Setup Fields")]
     public GameObject deathEffect;
@@ -26,8 +24,6 @@ public class Enemy : MonoBehaviour
     {
         startSpeed = speed;
     }
-
-
 
     /* TakeDamage(float damage)
      *

@@ -3,16 +3,12 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
-
-
     private Transform target;
     private Enemy targetEnemy;
 
     [Header("General")]
 
     public float range = 15f;
-    // SHOOT TYPE
-    public ShootType shootType = ShootType.Last;
 
     [Header("Use Bullets")]
 
@@ -54,122 +50,12 @@ public class Turret : MonoBehaviour
 
     /* UpdateTarget()
      *
-     * updates turret's target by finding enemy in range according to shootType
+     * updates turret's target by finding the closest enemy in range
+     *
+     * TODO: look at this for changing which enemy the turret shoots at
      *
      */
     void UpdateTarget()
-    {
-        // closest
-        if (shootType == ShootType.Closest)
-        {
-            ShootClose();
-        }
-
-        // most heath
-        else if (shootType == ShootType.MostHealth)
-        {
-            ShootMostHealth();
-        }
-
-        // first (closest to end)
-        else if (shootType == ShootType.First)
-        {
-            ShootFirst();
-        }
-
-        // last (closest to start)
-        else if (shootType == ShootType.Last)
-        {
-            ShootLast();
-        }
-    }
-
-    /* ShootLast()
-     *
-     * sets target to be the last enemy in range (closest to beginning)
-     *
-     * TODO: make this work correctly (it currently shoots first enemy)
-     *
-     */
-    void ShootLast()
-    {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
-
-        float shortestDistance = Mathf.Infinity;
-        Enemy lastEnemy = null;
-        float distanceToEnemy = Mathf.Infinity;
-
-        // find closest enemy - MODIFY THIS IF WANT TO CHANGE SHOOTING BEHAVIOR
-        foreach (GameObject enemy in enemies)
-        {
-            Enemy enemyVar = enemy.GetComponent<Enemy>();
-            float distance = Vector3.Distance(transform.position, enemy.transform.position);
-            if (enemyVar.distanceTraveled < shortestDistance && distance <= range)
-            {
-                shortestDistance = enemyVar.distanceTraveled;
-                lastEnemy = enemyVar;
-                distanceToEnemy = distance;
-            }
-
-        }
-
-        // if  there is an enemy in range - set that to target
-        if (lastEnemy != null && distanceToEnemy <= range)
-        {
-            target = lastEnemy.transform;
-            targetEnemy = lastEnemy.GetComponent<Enemy>();
-        }
-        else
-        {
-            target = null;
-        }
-    }
-
-    /* ShootFirst()
-     *
-     * sets target to be the first enemy in range (closest to end)
-     *
-     */
-    void ShootFirst()
-    {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
-
-        float shortestDistance = 0;
-        Enemy firstEnemy = null;
-        float distanceToEnemy = 0;
-
-        // find closest enemy - MODIFY THIS IF WANT TO CHANGE SHOOTING BEHAVIOR
-        foreach (GameObject enemy in enemies)
-        {
-            Enemy enemyVar = enemy.GetComponent<Enemy>();
-            float distance = Vector3.Distance(transform.position, enemy.transform.position);
-            if (enemyVar.distanceTraveled > shortestDistance && distance <= range)
-            {
-                shortestDistance = enemyVar.distanceTraveled;
-                firstEnemy = enemyVar;
-                distanceToEnemy = distance;
-            }
-
-        }
-
-        // if  there is an enemy in range - set that to target
-        if (firstEnemy != null && distanceToEnemy <= range)
-        {
-            target = firstEnemy.transform;
-            targetEnemy = firstEnemy.GetComponent<Enemy>();
-        }
-        else
-        {
-            target = null;
-        }
-    }
-
-    /* ShootClose()
-     *
-     * sets target to be the closest enemy in range
-     *
-     */
-    void ShootClose()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
 
@@ -180,7 +66,7 @@ public class Turret : MonoBehaviour
         foreach (GameObject enemy in enemies)
         {
             float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
-            if (distanceToEnemy < shortestDistance)
+            if(distanceToEnemy < shortestDistance)
             {
                 shortestDistance = distanceToEnemy;
                 nearestEnemy = enemy;
@@ -198,47 +84,6 @@ public class Turret : MonoBehaviour
         {
             target = null;
         }
-    }
-
-    /* ShootMostHealth()
-     *
-     * sets target to be the enemy with the most health in range
-     *
-     */
-    void ShootMostHealth()
-    {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
-
-        float distance = Mathf.Infinity;
-        Enemy mostHealthEnemy = null;
-        float enemyHealth = 0;
-
-        // find closest enemy - MODIFY THIS IF WANT TO CHANGE SHOOTING BEHAVIOR
-        foreach (GameObject enemy in enemies)
-        {
-            Enemy enemyVar = enemy.GetComponent<Enemy>();
-            float distanceToEnemy = Vector3.Distance(transform.position, enemyVar.transform.position);
-            if (enemyHealth < enemyVar.health && distanceToEnemy <= range)
-            {
-                mostHealthEnemy = enemyVar;
-                enemyHealth = enemyVar.health;
-                distance = distanceToEnemy;
-            }
-
-        }
-
-        // if  there is an enemy in range - set that to target
-        if (mostHealthEnemy != null && distance <= range)
-        {
-            target = mostHealthEnemy.transform;
-            targetEnemy = mostHealthEnemy.GetComponent<Enemy>();
-        }
-        else
-        {
-            target = null;
-        }
-
-    
     }
 
     /* Update() -  called once per frame
@@ -332,7 +177,6 @@ public class Turret : MonoBehaviour
     {
         GameObject bulletGO = (GameObject) Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Bullet bullet = bulletGO.GetComponent<Bullet>();
-        Destroy(bullet, 5f);
         if (bullet != null)
         {
             bullet.Seek(target);
@@ -340,12 +184,12 @@ public class Turret : MonoBehaviour
         }
 
         // TODO: fix this bug - this  lines doesn't work  for some reason
-        
+        /*
         if (straightShooter)
         {
-            bullet.SetDirection(bullet.transform.position, target.transform.position);
+            bullet.setDirection(bullet.transform.position, target.transform.position);
         }
-        
+        */
     }
 
     /* OnDrawGizmosSelected()

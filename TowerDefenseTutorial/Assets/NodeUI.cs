@@ -8,10 +8,6 @@ public class NodeUI : MonoBehaviour
     public Text upgradeCost;
     public Button upgradeButton;
 
-    public Text sellAmount;
-
-    public Text shootType;
-
     private Node target;
 
     /*
@@ -36,19 +32,7 @@ public class NodeUI : MonoBehaviour
             upgradeButton.interactable = false;  // prevents players from upgrading more than once
         }
 
-        sellAmount.text = "$" + target.turretBlueprint.GetSellAmount();
-
-        shootType.text = target.turret.GetComponent<Turret>().shootType + "";
-
         ui.SetActive(true);
-    }
-
-    public void Update()
-    {
-        if (ui.active)
-        {
-            shootType.text = target.turret.GetComponent<Turret>().shootType + "";
-        }
     }
 
     public void Hide()
@@ -60,36 +44,5 @@ public class NodeUI : MonoBehaviour
     {
         target.UpgradeTurret();
         BuildManager.instance.DeselectNode(); // close the menu after upgrading
-    }
-
-    public void Sell()
-    {
-        target.SellTurret();
-        BuildManager.instance.DeselectNode();
-    }
-
-    public void ChangeShootType()
-    {
-        ShootType shootType = target.turret.GetComponent<Turret>().shootType;
-
-        if (shootType == ShootType.First)
-        {
-            shootType = ShootType.Last;
-        }
-        else if (shootType == ShootType.Last)
-        {
-            shootType = ShootType.MostHealth;
-        }
-        else if (shootType == ShootType.MostHealth)
-        {
-            shootType = ShootType.Closest;
-        }
-        else if (shootType == ShootType.Closest)
-        {
-            shootType = ShootType.First;
-        }
-
-        target.turret.GetComponent<Turret>().shootType = shootType;
-
     }
 }
