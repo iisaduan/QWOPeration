@@ -45,7 +45,7 @@ public class NodeUI : MonoBehaviour
 
     public void Update()
     {
-        if (ui.active)
+        if (ui.activeSelf)
         {
             shootType.text = target.turret.GetComponent<Turret>().shootType + "";
         }
