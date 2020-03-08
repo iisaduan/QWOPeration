@@ -176,7 +176,7 @@ public class Turret : MonoBehaviour
         float shortestDistance = Mathf.Infinity;
         GameObject nearestEnemy = null;
 
-        // find closest enemy - MODIFY THIS IF WANT TO CHANGE SHOOTING BEHAVIOR
+        // find closest enemy 
         foreach (GameObject enemy in enemies)
         {
             float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
@@ -188,7 +188,7 @@ public class Turret : MonoBehaviour
 
         }
 
-        // if  there is an enemy in range - set that to target
+        // if there is an enemy in range - set that to target
         if (nearestEnemy != null && shortestDistance <= range)
         {
             target = nearestEnemy.transform;
