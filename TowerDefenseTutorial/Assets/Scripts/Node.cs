@@ -142,6 +142,21 @@ public class Node : MonoBehaviour
         Debug.Log("Turret Upgraded!");
     }
 
+
+    public void SellTurret()
+    {
+        PlayerStats.Money += turretBlueprint.GetSellAmount();
+
+        // Spawn cool effect
+
+        GameObject effect = (GameObject)Instantiate(buildManager.sellEffect, GetBuildPosition(), Quaternion.identity);
+        Destroy(effect, 5f);
+
+        Destroy(turret);
+        turretBlueprint = null;
+    }
+
+
     /* OnMouseEnter() - when mouse hovers over node
      *
      * changes color of node if player can build a turret there

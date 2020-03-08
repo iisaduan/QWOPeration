@@ -32,8 +32,6 @@ public class Bullet : MonoBehaviour
      * moves bullet in real time
      *
      * determines if bullet hits something - calls HitTarget() if so
-     *
-     * TODO: add straight shooting functionality - currently  does notwork
      * 
      */
     void Update()
@@ -43,11 +41,22 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+        
+        float distanceThisFrame = speed * Time.deltaTime;
+
         Vector3 dir;
 
         // if bullet is a straight shooter
         if (direction != new Vector3(0f, 0f, 0f))
         {
+            
+            // if the bullet is close to enemy - shoot
+            if (target.position.magnitude - transform.position.magnitude <= .000000000000000000000000000000000000000000000000000000000001f)
+            {
+                HitTarget();
+                return;
+            }
+            
             dir = direction;
         }
         
@@ -55,9 +64,6 @@ public class Bullet : MonoBehaviour
         { 
             dir = target.position - transform.position;
         }
-        float distanceThisFrame = speed * Time.deltaTime;
-            
-
 
         // if bullet will hit the target within this frame - hit the target
         if(dir.magnitude <= distanceThisFrame)
@@ -76,7 +82,7 @@ public class Bullet : MonoBehaviour
      * sets start direction of bullet for straight shooting bullets
      *
      */
-    void setDirection(Vector3 startPos, Vector3 targetPos)
+    public void SetDirection(Vector3 startPos, Vector3 targetPos)
     {
         direction = targetPos - startPos;
     }
@@ -88,7 +94,7 @@ public class Bullet : MonoBehaviour
      */
     void HitTarget()
     {
-        GameObject effectIns =  (GameObject) Instantiate(impactEffect, transform.position, transform.rotation);
+        GameObject effectIns =  (GameObject) Instantiate(impactEffect, target.position, transform.rotation);
         Destroy(effectIns, 5f);
 
         if(explosionRadius > 0f)
