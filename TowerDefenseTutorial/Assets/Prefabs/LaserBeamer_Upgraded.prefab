@@ -9675,7 +9675,7 @@ MonoBehaviour:
   shootType: 3
   bulletPrefab: {fileID: 0}
   fireRate: 1
-  straightShooter: 1
+  straightShooter: 0
   useLaser: 1
   damageOverTime: 40
   slowAmount: 0.8

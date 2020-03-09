@@ -14,6 +14,13 @@ public class NodeUI : MonoBehaviour
 
     private Node target;
 
+
+    public void Start()
+    {
+        ui.SetActive(false);
+    }
+
+
     /*
      * Sets the node above which the upgrade/sell buttons should hover
      * Makes the buttons appear
