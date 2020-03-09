@@ -64,6 +64,8 @@ public class NodeUI : MonoBehaviour
 
     public void ChangeShootType()
     {
+        Debug.Log("changing type");
+
         ShootType shootType = target.turret.GetComponent<Turret>().shootType;
 
         if (shootType == ShootType.First)
@@ -84,6 +86,8 @@ public class NodeUI : MonoBehaviour
         }
 
         target.turret.GetComponent<Turret>().shootType = shootType;
+
+        SetTarget(target);
 
     }
 }
