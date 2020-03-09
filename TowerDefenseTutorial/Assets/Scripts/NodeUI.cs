@@ -24,6 +24,8 @@ public class NodeUI : MonoBehaviour
 
         transform.position = target.GetBuildPosition();
 
+        shootType.text = target.turret.GetComponent<Turret>().shootType + "";
+
         if (!(target.isUpgraded))
         {
             // display the amount the upgrade costs on the button
@@ -41,14 +43,6 @@ public class NodeUI : MonoBehaviour
         shootType.text = target.turret.GetComponent<Turret>().shootType + "";
 
         ui.SetActive(true);
-    }
-
-    public void Update()
-    {
-        if (ui.activeSelf)
-        {
-            shootType.text = target.turret.GetComponent<Turret>().shootType + "";
-        }
     }
 
     public void Hide()

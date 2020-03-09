@@ -9672,9 +9672,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 30
+  shootType: 3
   bulletPrefab: {fileID: 0}
   fireRate: 1
-  straightShooter: 0
+  straightShooter: 1
   useLaser: 1
   damageOverTime: 40
   slowAmount: 0.8

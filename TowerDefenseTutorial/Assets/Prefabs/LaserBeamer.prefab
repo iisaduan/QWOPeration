@@ -9636,7 +9636,7 @@ GameObject:
   - component: {fileID: 1345552977901783348}
   - component: {fileID: 3855002583308883900}
   m_Layer: 0
-  m_Name: LaserBeamer 1
+  m_Name: LaserBeamer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9672,10 +9672,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 20
+  shootType: 3
   bulletPrefab: {fileID: 0}
   fireRate: 1
-  straightShooter: 0
+  straightShooter: 1
   useLaser: 1
+  damageOverTime: 30
+  slowAmount: 0.5
   lineRenderer: {fileID: 3855002583308883900}
   impactEffect: {fileID: 1146275558344068077}
   impactLight: {fileID: 1110343465326886372}
