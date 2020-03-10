@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -14367,10 +14367,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25552460f43a243c89a0f4a0d29c4959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBetweenWaves: 5.5
+  timeBetweenWaves: 1
   WaveCountdownText: {fileID: 1535577075}
-  enemyPrefab: {fileID: 3624781714316447033, guid: 73e5bbef6049a4b339b32aa2f384eca5,
-    type: 3}
+  waves:
+  - enemy: {fileID: 8424689665145142550, guid: 73e5bbef6049a4b339b32aa2f384eca5, type: 3}
+    count: 2
+    rate: 2
+  - enemy: {fileID: 8424689665145142550, guid: 73e5bbef6049a4b339b32aa2f384eca5, type: 3}
+    count: 3
+    rate: 3
+  - enemy: {fileID: 8424689665145142550, guid: 73e5bbef6049a4b339b32aa2f384eca5, type: 3}
+    count: 3
+    rate: 3
+  - enemy: {fileID: 8424689665145142550, guid: 88a55b35f9b784fe696839eb00bc3065, type: 3}
+    count: 2
+    rate: 2
+  - enemy: {fileID: 8424689665145142550, guid: d9cfe5e500bf541a09180936092070c7, type: 3}
+    count: 3
+    rate: 3
   spawnPoint: {fileID: 1924707104}
 --- !u!4 &1267783132
 Transform:
