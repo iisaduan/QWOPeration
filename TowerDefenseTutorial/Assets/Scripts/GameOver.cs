@@ -6,19 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class GameOver : MonoBehaviour
 {
-    public Text roundsText;
 
-    // onEnable is called whenever the GameOver object is enabled
-    void OnEnable()
-    {
-        roundsText.text = PlayerStats.Rounds.ToString();
-    }
+    public SceneFader sceneFader;
 
     // Retry() reload the level
     public void ReTry()
     {
         //loads the currently active scene
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        sceneFader.FadeTo(SceneManager.GetActiveScene().name);
     }
 
     public void Menu()
