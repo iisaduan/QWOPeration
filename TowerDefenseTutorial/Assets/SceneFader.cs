@@ -23,17 +23,22 @@ public class SceneFader : MonoBehaviour
     }
 
     /*
-     * fades to black
+     * FadeIn() fades from a scene to black
      */
     IEnumerator FadeIn()
     {
+        // initiate the transparency level to 1
         float t = 1f;
+
 
         while (t > 0f)
         {
+            // decrease the transparency level as time passes
             t -= Time.deltaTime;
-            float a = curve.Evaluate(t);
-            image.color = new Color(0f, 0f, 0f, a);
+            // convert the transparency level into alpha using the fading curve
+            float alpha = curve.Evaluate(t);
+            // set the image color to black with the alpha calculated from above
+            image.color = new Color(0f, 0f, 0f, alpha);
             yield return 0;
         }
 
