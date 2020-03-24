@@ -36,7 +36,7 @@ public class PauseMenu : MonoBehaviour
         // unfreeze time before loading new scene
         Toggle();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        sceneFader.FadeTo(SceneManager.GetActiveScene().name);
+        WaveSpawner.EnemiesAlive = 0; // set the number of alive enemies to zero to reset the wave spawner
     }
 
     public void Menu()

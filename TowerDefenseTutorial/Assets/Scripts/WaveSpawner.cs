@@ -43,6 +43,7 @@ public class WaveSpawner : MonoBehaviour
             return;
         }
 
+
         // if countdown = 0, spawn a wave and reset countdown
         if(countdown <= 0)
         {
