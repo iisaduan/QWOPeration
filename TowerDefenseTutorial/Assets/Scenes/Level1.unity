@@ -14392,8 +14392,8 @@ MonoBehaviour:
     count: 3
     rate: 3
   - enemy: {fileID: 8424689665145142550, guid: 88a55b35f9b784fe696839eb00bc3065, type: 3}
-    count: 2
-    rate: 2
+    count: 3
+    rate: 3
   - enemy: {fileID: 8424689665145142550, guid: d9cfe5e500bf541a09180936092070c7, type: 3}
     count: 3
     rate: 3
