@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class WaveSpawner : MonoBehaviour
 {
@@ -18,7 +19,9 @@ public class WaveSpawner : MonoBehaviour
 
     public static int randomWaveIndex;
 
-    [Header("Unity Setup Fields")]
+    enum GameMode { Survival, Level };
+
+[Header("Unity Setup Fields")]
 
     //public Transform enemyPrefab;
 
@@ -38,13 +41,14 @@ public class WaveSpawner : MonoBehaviour
     private void Update()
     {
 
-        // if the number of alive enemies is greater than the current round we're on divided by 2,
+        // if the number of alive enemies is greater than half of the round number we're on,
         // don't generate new enemies. This should make the difficulty increase as the game goes
         // on because in later rounds there will be more enemies that are still alive
         // when we generate new enemies
+        // also don't generate new enemies when the game is over
         // Todo: decide on an enemy generating strategy: how much more enemies do we want to generate
         // in later rounds than earlier ones
-        if (EnemiesAlive > PlayerStats.Rounds / 2) 
+        if (EnemiesAlive > PlayerStats.Rounds / 2 || GameManager.gameIsOver) 
         {
             return;
         }
@@ -52,15 +56,6 @@ public class WaveSpawner : MonoBehaviour
         // if countdown = 0, spawn a wave and reset countdown
         if (countdown <= 0)
         {
-            // if we have reached a multiple of the 15th round, we will generate
-            // a random number to be used later as the index of the wave that
-            // we want to increase the enemy count of
-            // Todo: find a better way to add more enemies that will more frequently
-            // add enemies as the number of rounds increases
-            if (PlayerStats.Rounds % 15 == 0)
-            {
-                randomWaveIndex = Random.Range(0, waves.Length);
-            }
             StartCoroutine(SpawnWave());
             countdown = timeBetweenWaves;
             return;
@@ -82,6 +77,13 @@ public class WaveSpawner : MonoBehaviour
      */
     IEnumerator SpawnWave()
     {
+        // first, check what game mode we are in
+        GameMode mode = GameMode.Level;
+        if (SceneManager.GetActiveScene().name == "Survival")
+        {
+            mode = GameMode.Survival;
+        }
+
         // in this wave spawning, there's just one more enemy per wave
         // so here, increase index to  show another wave is happening
         //waveIndex++;
@@ -94,9 +96,16 @@ public class WaveSpawner : MonoBehaviour
         // get the wave that will be generated
         Wave wave = waves[waveIndex];
 
-        // if the round we're on is a multiple of the 15th round
-        if (PlayerStats.Rounds % 15 == 0)
+        // if we are in survival mode, and
+        // the round we're on is a multiple of the 30th round
+        // Todo: find a better way to add more enemies that will more frequently
+        // add enemies as the number of rounds increases
+        if (mode == GameMode.Survival && PlayerStats.Rounds % 30 == 0)
         {
+            // generate a random number to be used as the index of the wave that
+            // we want to increase the enemy count of
+            randomWaveIndex = Random.Range(0, waves.Length);
+            Debug.Log("RANDOM WAVE INDEX" + randomWaveIndex);
             // if the wave we're generating is the one that we want to increase the enemy count of
             if (waveIndex == randomWaveIndex)
             {
@@ -114,14 +123,22 @@ public class WaveSpawner : MonoBehaviour
 
         waveIndex++;
 
-        // Todo: try to generate enemies that get harder and harder for survival mode instead of cycling through the same ones
-        //       may have to change structure from array to list so that we can change the size?
-        // if we have generated the last wave, set waveIndex back to 0 so we can cycle through the waves again 
         if (waveIndex == waves.Length)
         {
-            waveIndex = 0;
+            // Todo: try to generate enemies that get harder and harder for survival mode instead of cycling through the same ones
+            //       may have to change structure from array to list so that we can change the size?
+            // if we have generated the last wave, set waveIndex back to 0 so we can cycle through the waves again 
+            if (mode == GameMode.Survival)
+            {
+                waveIndex = 0;
+            }
+            // if we are in level mode, then we want to transition to the next level
+            else
+            {
+                GameManager.gameIsOver = true;
+                // Todo: add level transition from one level to another
+            }
         }
-
     }
 
     /* SpawnEnemy()

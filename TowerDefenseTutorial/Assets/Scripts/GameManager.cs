@@ -34,9 +34,9 @@ public class GameManager : MonoBehaviour
         {
             EndGame();
         }
+
         if (PlayerStats.Lives <= 0)
         {
-
             EndGame();
         }
     }
