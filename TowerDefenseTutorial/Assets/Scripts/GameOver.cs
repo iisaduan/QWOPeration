@@ -13,7 +13,8 @@ public class GameOver : MonoBehaviour
     public void ReTry()
     {
         //loads the currently active scene
-        sceneFader.FadeTo(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        WaveSpawner.EnemiesAlive = 0; // set the number of alive enemies to zero to reset the wave spawner
     }
 
     public void Menu()
