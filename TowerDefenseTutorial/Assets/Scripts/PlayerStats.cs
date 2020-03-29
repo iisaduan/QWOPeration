@@ -13,6 +13,9 @@ public class PlayerStats : MonoBehaviour
 
     public static int Rounds;
 
+    // a dictionary storing the types and number of each type of enemies the player has killed
+    public static Dictionary<string, int> enemiesKilled = new Dictionary<string, int>();
+
     // TODO: add any other player attributes here
 
     /* Start() - called at beginning of game

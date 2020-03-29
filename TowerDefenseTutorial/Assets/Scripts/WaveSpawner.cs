@@ -41,14 +41,14 @@ public class WaveSpawner : MonoBehaviour
     private void Update()
     {
 
-        // if the number of alive enemies is greater than half of the round number we're on,
+        // if the number of alive enemies is greater than one-thirds of the round number we're on,
         // don't generate new enemies. This should make the difficulty increase as the game goes
         // on because in later rounds there will be more enemies that are still alive
         // when we generate new enemies
         // also don't generate new enemies when the game is over
         // Todo: decide on an enemy generating strategy: how much more enemies do we want to generate
         // in later rounds than earlier ones
-        if (EnemiesAlive > PlayerStats.Rounds / 2 || GameManager.gameIsOver) 
+        if (EnemiesAlive > PlayerStats.Rounds / 3 || GameManager.gameIsOver) 
         {
             return;
         }
@@ -105,7 +105,6 @@ public class WaveSpawner : MonoBehaviour
             // generate a random number to be used as the index of the wave that
             // we want to increase the enemy count of
             randomWaveIndex = Random.Range(0, waves.Length);
-            Debug.Log("RANDOM WAVE INDEX" + randomWaveIndex);
             // if the wave we're generating is the one that we want to increase the enemy count of
             if (waveIndex == randomWaveIndex)
             {

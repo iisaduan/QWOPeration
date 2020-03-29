@@ -63,6 +63,20 @@ public class Enemy : MonoBehaviour
     {
         PlayerStats.Money += moneyGain;
 
+        // if the dictionary storing the enemies defeated does not have the type
+        // of enemy that just died, add this type of enemy to the dictionary
+        // with the number defeated being one
+        if (!PlayerStats.enemiesKilled.ContainsKey(gameObject.transform.name))
+        {
+            PlayerStats.enemiesKilled.Add(gameObject.transform.name, 1);
+        }
+        else
+        {
+            // if the dictionary already contains the type of enemy that just died,
+            // increment the count of defeated this type of enemies by one
+            PlayerStats.enemiesKilled[gameObject.transform.name] += 1;
+        }
+
         GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(effect, 5f);
 
