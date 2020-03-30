@@ -1,5 +1,6 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
+
 public class Enemy : MonoBehaviour
 {
 
@@ -8,8 +9,8 @@ public class Enemy : MonoBehaviour
     public float startSpeed;
     [HideInInspector]
     public float speed = 10f;
-    // public int startHealth = 100;
-    public float health = 100;
+    public int startHealth = 100;
+    public float health;
 
     public int moneyGain = 50;
     // used for turret shooting logic (first/last)
@@ -18,6 +19,8 @@ public class Enemy : MonoBehaviour
     [Header("Unity Setup Fields")]
     public GameObject deathEffect;
 
+    public Image healthBar;
+
     // Note: movement aspeccts of the enemy moved into EnemyMovement Script
 
 
@@ -25,6 +28,7 @@ public class Enemy : MonoBehaviour
     public void Start()
     {
         startSpeed = speed;
+        health = startHealth;
     }
 
 
@@ -39,6 +43,8 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(float damage)
     {
         health -= damage;
+
+        healthBar.fillAmount = health / startHealth;
 
         if (health <= 0)
         {
