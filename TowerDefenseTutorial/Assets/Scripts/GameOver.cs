@@ -1,4 +1,4 @@
-﻿  using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,6 +15,8 @@ public class GameOver : MonoBehaviour
         //loads the currently active scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         WaveSpawner.EnemiesAlive = 0; // set the number of alive enemies to zero to reset the wave spawner
+        PlayerStats.enemiesKilled.Clear(); // reset the stat keeping track of the enemies killed
+        PlayerStats.turretsBuilt.Clear(); // reset the stat keeping track of the towers built
     }
 
     public void Menu()

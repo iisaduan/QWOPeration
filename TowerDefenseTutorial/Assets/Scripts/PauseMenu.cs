@@ -37,6 +37,8 @@ public class PauseMenu : MonoBehaviour
         Toggle();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         WaveSpawner.EnemiesAlive = 0; // set the number of alive enemies to zero to reset the wave spawner
+        PlayerStats.enemiesKilled.Clear(); // reset the stat keeping track of the enemies killed
+        PlayerStats.turretsBuilt.Clear(); // reset the stat keeping track of the towers built
     }
 
     public void Menu()

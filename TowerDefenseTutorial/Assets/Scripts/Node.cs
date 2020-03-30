@@ -113,6 +113,17 @@ public class Node : MonoBehaviour
         // TODO: display on screen to user
         Debug.Log("Turret Built!");
 
+        // each time a new turret is built, we increase the count for the type of
+        // the turret that is built in the dictionary
+        if (!PlayerStats.turretsBuilt.ContainsKey(blueprint.prefab.name))
+        {
+            PlayerStats.turretsBuilt.Add(blueprint.prefab.name, 1);
+        }
+        else
+        {
+            PlayerStats.turretsBuilt[blueprint.prefab.name] += 1;
+        }
+
     }
 
 
