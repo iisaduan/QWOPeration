@@ -15,12 +15,17 @@ public class EnemiesKilled : MonoBehaviour
     public string DictionaryToString(Dictionary<string, int> dictionary)
     {
         string dictionaryString = "";
-        foreach (KeyValuePair<string, int> keyValues in dictionary)
+        if (dictionary.Count != 0)
         {
-            dictionaryString += keyValues.Key.Substring(0, keyValues.Key.Length - 7) + " : " + keyValues.Value.ToString() + ", \n";
+            foreach (KeyValuePair<string, int> keyValues in dictionary)
+            {
+                dictionaryString += keyValues.Key.Substring(0, keyValues.Key.Length - 7) + " : " + keyValues.Value.ToString() + ", \n";
+            }
+            dictionaryString = dictionaryString.TrimEnd('\n');
+            return dictionaryString.Substring(0, dictionaryString.Length - 2);
         }
-        dictionaryString = dictionaryString.TrimEnd('\n');
-        return dictionaryString.Substring(0, dictionaryString.Length - 2);
+        // if the dictionary is empty, just return an empty string
+        return dictionaryString;
     }
 
     void OnEnable()

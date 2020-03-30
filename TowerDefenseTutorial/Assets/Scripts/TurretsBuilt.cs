@@ -15,12 +15,16 @@ public class TurretsBuilt : MonoBehaviour
     public string DictionaryToString(Dictionary<string, int> dictionary)
     {
         string dictionaryString = "";
-        foreach (KeyValuePair<string, int> keyValues in dictionary)
+        if (dictionary.Count != 0)
         {
-            dictionaryString += keyValues.Key.Substring(0, keyValues.Key.Length) + " : " + keyValues.Value.ToString() + ", \n";
+            foreach (KeyValuePair<string, int> keyValues in dictionary)
+            {
+                dictionaryString += keyValues.Key.Substring(0, keyValues.Key.Length) + " : " + keyValues.Value.ToString() + ", \n";
+            }
+            dictionaryString = dictionaryString.TrimEnd('\n');
+            return dictionaryString.Substring(0, dictionaryString.Length - 2);
         }
-        dictionaryString = dictionaryString.TrimEnd('\n');
-        return dictionaryString.Substring(0, dictionaryString.Length - 2);
+        return dictionaryString;
     }
 
     void OnEnable()
