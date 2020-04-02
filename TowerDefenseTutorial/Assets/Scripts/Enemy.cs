@@ -61,8 +61,8 @@ public class Enemy : MonoBehaviour
      *
      * Player gets more money
      *
-     * enemy is destroyed, death effect happens
-     *
+     * enemy is destroyed, death effect happens, enemy gets counted in player statistics
+     * of what types of enemies the player has defeated
      *
      */
     void Die()
