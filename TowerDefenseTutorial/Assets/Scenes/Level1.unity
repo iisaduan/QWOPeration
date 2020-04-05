@@ -15739,7 +15739,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25552460f43a243c89a0f4a0d29c4959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBetweenWaves: 1
+  timeBetweenWaves: 3
   WaveCountdownText: {fileID: 1535577075}
   waves:
   - enemy: {fileID: 8424689665145142550, guid: 73e5bbef6049a4b339b32aa2f384eca5, type: 3}
