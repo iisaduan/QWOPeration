@@ -48,7 +48,7 @@ public class WaveSpawner : MonoBehaviour
         // also don't generate new enemies when the game is over
         // Todo: decide on an enemy generating strategy: how much more enemies do we want to generate
         // in later rounds than earlier ones
-        if (EnemiesAlive > PlayerStats.Rounds / 3 || GameManager.gameIsOver) 
+        if (EnemiesAlive > PlayerStats.Rounds / 3 || GameManager.gameIsOver || GameManager.gameFinished) 
         {
             return;
         }
@@ -96,6 +96,8 @@ public class WaveSpawner : MonoBehaviour
         // get the wave that will be generated
         Wave wave = waves[waveIndex];
 
+        EnemiesAlive = wave.count;
+
         // if we are in survival mode, and
         // the round we're on is a multiple of the 30th round
         // Todo: find a better way to add more enemies that will more frequently
@@ -134,8 +136,7 @@ public class WaveSpawner : MonoBehaviour
             // if we are in level mode, then we want to transition to the next level
             else
             {
-                GameManager.gameIsOver = true;
-                // Todo: add level transition from one level to another
+                GameManager.gameFinished = true;
             }
         }
     }
@@ -150,6 +151,5 @@ public class WaveSpawner : MonoBehaviour
     void SpawnEnemy(GameObject enemyPrefab)
     {
         Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
-        EnemiesAlive++;
     }
 }

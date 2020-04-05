@@ -9,13 +9,17 @@ public class GameManager : MonoBehaviour
 
     public static bool gameIsOver;
 
+    public static bool gameFinished;
+
     public GameObject gameOverUI;
 
+    public GameObject winScreenUI;
 
     // Start method is called everytime we load a new scene, sets gameIsOver to false every time we start a new scene
     void Start()
     {
         gameIsOver = false;
+        gameFinished = false;
     }
 
     /* Update() - called once per frame
@@ -39,6 +43,15 @@ public class GameManager : MonoBehaviour
         {
             EndGame();
         }
+
+        if (gameFinished)
+        {
+            if (WaveSpawner.EnemiesAlive == 0)
+            {
+                winScreenUI.SetActive(true);
+            }
+        }
+
     }
 
     /* EndGame()
