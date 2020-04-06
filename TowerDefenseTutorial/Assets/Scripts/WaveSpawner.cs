@@ -115,7 +115,7 @@ public class WaveSpawner : MonoBehaviour
         {
             // generate a random number to be used as the index of the type of enemy we want to spawn
             randomEnemyIndex = UnityEngine.Random.Range(0, enemies.Length);
-            EnemiesAlive += (int) Math.Pow(PlayerStats.Rounds, 0.25);
+            EnemiesAlive += (int) Math.Pow(PlayerStats.Rounds, 0.5);
             Debug.Log(EnemiesAlive);
             // generate number of enemies in proportion to the square root of the rounds the player has survived
             for (int i = 0; i < (int) Math.Pow(PlayerStats.Rounds, 0.5); i++)
