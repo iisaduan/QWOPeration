@@ -15,9 +15,14 @@ public class WaveSpawner : MonoBehaviour
 
     private float countdown = 3f;
 
+    public static float timeBetweenEnemies = 1f / 2;
+
     public Text WaveCountdownText;
 
     private static int randomEnemyIndex;
+
+    private static int numberOfEnemiesGenerated = 1;
+
 
     enum GameMode { Survival, Level };
 
@@ -55,7 +60,8 @@ public class WaveSpawner : MonoBehaviour
         if (countdown <= 0)
         {
             StartCoroutine(SpawnWave());
-            countdown = timeBetweenWaves;
+            // add the time between waves and the time it takes to generate a wave of enemies to the countdown
+            countdown = timeBetweenWaves + numberOfEnemiesGenerated*timeBetweenEnemies;
             return;
         }
 
@@ -115,15 +121,15 @@ public class WaveSpawner : MonoBehaviour
         {
             // generate a random number to be used as the index of the type of enemy we want to spawn
             randomEnemyIndex = UnityEngine.Random.Range(0, enemies.Length);
+            numberOfEnemiesGenerated = (int)Math.Pow(PlayerStats.Rounds, 0.5);
             EnemiesAlive += (int) Math.Pow(PlayerStats.Rounds, 0.5);
-            Debug.Log(EnemiesAlive);
             // generate number of enemies in proportion to the square root of the rounds the player has survived
-            for (int i = 0; i < (int) Math.Pow(PlayerStats.Rounds, 0.5); i++)
+            for (int i = 0; i < numberOfEnemiesGenerated; i++)
             {
                 // randomly choose an enemy out of the existing types to generate
                 SpawnEnemy(enemies[randomEnemyIndex]);
-                // wait for half a second in between generating enemies in the same wave
-                yield return new WaitForSeconds(1f / 2);
+                // wait for the set timeBetweenEnemies in between generating enemies in the same wave
+                yield return new WaitForSeconds(timeBetweenEnemies);
             }
         }
     }
