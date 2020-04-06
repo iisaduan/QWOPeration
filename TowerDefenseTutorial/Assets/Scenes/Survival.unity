@@ -14696,39 +14696,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25552460f43a243c89a0f4a0d29c4959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBetweenWaves: 2
+  timeBetweenWaves: 3
   WaveCountdownText: {fileID: 1535577075}
-  waves:
-  - enemy: {fileID: 8424689665145142550, guid: 73e5bbef6049a4b339b32aa2f384eca5, type: 3}
-    count: 2
-    rate: 1
-  - enemy: {fileID: 8424689665145142550, guid: 73e5bbef6049a4b339b32aa2f384eca5, type: 3}
-    count: 3
-    rate: 3
-  - enemy: {fileID: 8424689665145142550, guid: d9cfe5e500bf541a09180936092070c7, type: 3}
-    count: 3
-    rate: 3
-  - enemy: {fileID: 8424689665145142550, guid: 88a55b35f9b784fe696839eb00bc3065, type: 3}
-    count: 3
-    rate: 3
-  - enemy: {fileID: 8424689665145142550, guid: d9cfe5e500bf541a09180936092070c7, type: 3}
-    count: 4
-    rate: 2
-  - enemy: {fileID: 8424689665145142550, guid: 73e5bbef6049a4b339b32aa2f384eca5, type: 3}
-    count: 4
-    rate: 2
-  - enemy: {fileID: 8424689665145142550, guid: d9cfe5e500bf541a09180936092070c7, type: 3}
-    count: 4
-    rate: 2
-  - enemy: {fileID: 8424689665145142550, guid: 88a55b35f9b784fe696839eb00bc3065, type: 3}
-    count: 4
-    rate: 2
-  - enemy: {fileID: 8424689665145142550, guid: 73e5bbef6049a4b339b32aa2f384eca5, type: 3}
-    count: 5
-    rate: 3
-  - enemy: {fileID: 8424689665145142550, guid: 88a55b35f9b784fe696839eb00bc3065, type: 3}
-    count: 4
-    rate: 3
+  waves: []
+  enemies:
+  - {fileID: 8424689665145142550, guid: 88a55b35f9b784fe696839eb00bc3065, type: 3}
+  - {fileID: 8424689665145142550, guid: 73e5bbef6049a4b339b32aa2f384eca5, type: 3}
+  - {fileID: 8424689665145142550, guid: d9cfe5e500bf541a09180936092070c7, type: 3}
   spawnPoint: {fileID: 1924707104}
 --- !u!4 &1267783132
 Transform:
@@ -14788,6 +14762,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverUI: {fileID: 1240097007}
+  winScreenUI: {fileID: 0}
 --- !u!114 &1267783136
 MonoBehaviour:
   m_ObjectHideFlags: 0
