@@ -34,7 +34,7 @@ public class WaveSpawner : MonoBehaviour
 
     public GameObject[] enemies;  // for survival mode
 
-    public Transform spawnPoint;
+    public Transform[] spawnPoints;
 
     private int waveIndex = 0;
 
@@ -136,13 +136,17 @@ public class WaveSpawner : MonoBehaviour
 
     /* SpawnEnemy()
      *
-     * Instantiates enemy prefab that is passed in at spawn point
+     * Instantiates enemy prefab that is passed in at each spawn point
      *
-     * TODO: if want to add more enemy spawning locations, edit this and spawn position stuff
+     * TODO: if we want to spawn different enemies at different spawnpoints, edit this
      * 
      */
     void SpawnEnemy(GameObject enemyPrefab)
     {
-        Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+        // spawn the same enemy at all of the spawn points
+        for (int i = 0; i<spawnPoints.Length; i++)
+        {
+            Instantiate(enemyPrefab, spawnPoints[i].position, spawnPoints[i].rotation);
+        }
     }
 }
