@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class Enemy : MonoBehaviour
+public abstract class Enemy : MonoBehaviour
 {
 
     [Header("Attributes")]
 
     public float startSpeed;
     [HideInInspector]
+    // these are just default values
     public float speed = 10f;
     public int startHealth = 100;
     public float health;
