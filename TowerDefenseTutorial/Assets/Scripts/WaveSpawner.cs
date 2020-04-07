@@ -146,6 +146,14 @@ public class WaveSpawner : MonoBehaviour
         // spawn the same enemy at all of the spawn points
         for (int i = 0; i<spawnPoints.Length; i++)
         {
+            if (i == 0)
+            {
+                enemyPrefab.GetComponent<Enemy>().path = Enemy.EnemyPath.Land;
+            }
+            else
+            {
+                enemyPrefab.GetComponent<Enemy>().path = Enemy.EnemyPath.Air;
+            }
             Instantiate(enemyPrefab, spawnPoints[i].position, spawnPoints[i].rotation);
         }
     }

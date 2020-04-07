@@ -19,7 +19,14 @@ public class EnemyMovement : MonoBehaviour
     private void Start()
     {
         enemy = GetComponent<Enemy>();
-        target = Waypoints.points[0];
+        if (enemy.path == Enemy.EnemyPath.Land)
+        {
+            target = Waypoints.groundPoints[0];
+        }
+        else
+        {
+            target = Waypoints.airPoints[0];
+        }
     }
 
     /* Update() - every frame
@@ -52,14 +59,15 @@ public class EnemyMovement : MonoBehaviour
      */
     void GetNextWaypoint()
     {
-        if (waypointIndex >= Waypoints.points.Length - 1)
+        // need to do this for both airPoints and groundPoints
+        if (waypointIndex >= Waypoints.airPoints.Length - 1)
         {
             EndPath();
             return;
         }
 
         waypointIndex++;
-        target = Waypoints.points[waypointIndex];
+        target = Waypoints.airPoints[waypointIndex];
     }
 
     /* EndPath()

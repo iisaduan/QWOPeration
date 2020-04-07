@@ -15,6 +15,8 @@ public class Enemy : MonoBehaviour
     public int moneyGain = 50;
     // used for turret shooting logic (first/last)
     public float distanceTraveled = 0;
+    public enum EnemyPath {Land, Air};
+    public EnemyPath path;
 
     [Header("Unity Setup Fields")]
     public GameObject deathEffect;
