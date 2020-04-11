@@ -19,5 +19,10 @@ public class TurretBlueprint
         return cost / 2;
     }
 
+    public int GetUpgradedSellAmount()
+    {
+        return (cost + upgradeCost) / 2;
+    }
+
     // TODO: add info about turrets, etc here
 }

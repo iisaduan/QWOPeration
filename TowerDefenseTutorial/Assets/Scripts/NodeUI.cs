@@ -38,14 +38,16 @@ public class NodeUI : MonoBehaviour
             // display the amount the upgrade costs on the button
             upgradeCost.text = "$" + target.turretBlueprint.upgradeCost;
             upgradeButton.interactable = true;
+            sellAmount.text = "$" + target.turretBlueprint.GetSellAmount();
         }
         else
         {
+            sellAmount.text = "$" + target.turretBlueprint.GetUpgradedSellAmount();
             upgradeCost.text = "DONE";
             upgradeButton.interactable = false;  // prevents players from upgrading more than once
         }
 
-        sellAmount.text = "$" + target.turretBlueprint.GetSellAmount();
+        
 
         shootType.text = target.turret.GetComponent<Turret>().shootType + "";
 

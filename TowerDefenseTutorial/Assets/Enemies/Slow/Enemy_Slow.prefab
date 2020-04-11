@@ -352,7 +352,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startSpeed: 2
   speed: 10
-  startHealth: 100
+  startHealth: 200
   health: 200
   moneyGain: 80
   distanceTraveled: 0
