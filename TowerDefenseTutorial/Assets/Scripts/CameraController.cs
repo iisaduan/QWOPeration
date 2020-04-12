@@ -7,6 +7,9 @@ public class CameraController : MonoBehaviour
     public float panSpeed = 30f;
     public float panBoarderThickness = 10f;
     public float scrollSpeed = 5f;
+
+    public Vector3 newPosition;
+
     public float rotationAmount = 1;
     public Quaternion newRotation = Quaternion.identity;
 
@@ -21,6 +24,7 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
+        newPosition = transform.position;
         newRotation = transform.rotation;
     }
 
@@ -51,7 +55,7 @@ public class CameraController : MonoBehaviour
      *
      * controls asdw movement with asdw keys
      *
-     * also will pan if near edge of screen
+     * also will pan if near edge of screewn
      * 
      */
     void ASDWControls()
@@ -59,25 +63,25 @@ public class CameraController : MonoBehaviour
         // move up
         if (Input.GetKey("w") || Input.GetKey(KeyCode.UpArrow) || Input.mousePosition.y >= Screen.height - panBoarderThickness)
         {
-            transform.Translate(Vector3.forward * panSpeed * Time.deltaTime, Space.World);
+            transform.Translate(new Vector3(0, 1, 1) * panSpeed * Time.deltaTime, Space.Self);
         }
 
         // move down
         if (Input.GetKey("s") || Input.GetKey(KeyCode.DownArrow) || Input.mousePosition.y <= panBoarderThickness)
         {
-            transform.Translate(Vector3.back * panSpeed * Time.deltaTime, Space.World);
+            transform.Translate(new Vector3(0, -1, -1) * panSpeed * Time.deltaTime, Space.Self);
         }
 
         // move right
         if (Input.GetKey("d") || Input.GetKey(KeyCode.RightArrow) || Input.mousePosition.x >= Screen.width - panBoarderThickness)
         {
-            transform.Translate(Vector3.right * panSpeed * Time.deltaTime, Space.World);
+            transform.Translate(Vector3.right * panSpeed * Time.deltaTime, Space.Self);
         }
 
         // move left
         if (Input.GetKey("a") || Input.GetKey(KeyCode.LeftArrow) || Input.mousePosition.x <= panBoarderThickness)
         {
-            transform.Translate(Vector3.left * panSpeed * Time.deltaTime, Space.World);
+            transform.Translate(Vector3.left * panSpeed * Time.deltaTime, Space.Self);
         }
 
         
@@ -101,11 +105,18 @@ public class CameraController : MonoBehaviour
 
     }
 
+    // TODO: figure out how to make camera rotate better - I'm not super into it
+    
     void RotationControls()
     {
+        if (Input.GetKey(KeyCode.R))
+        {
+            newRotation *= Quaternion.Euler(new Vector3 (0, -1, 1) * rotationAmount);
+        }
+
         if (Input.GetKey(KeyCode.Q))
         {
-            newRotation *= Quaternion.Euler(Vector3.forward * rotationAmount);
+            newRotation *= Quaternion.Euler(new Vector3(0, 1, -1) * rotationAmount);
         }
 
         transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, Time.deltaTime * panSpeed);
