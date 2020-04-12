@@ -1,9 +1,9 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
-
 
     private Transform target;
     private Enemy targetEnemy;
@@ -31,7 +31,7 @@ public class Turret : MonoBehaviour
     public ParticleSystem impactEffect;
     public Light impactLight;
 
-    
+
 
     [Header("Unity Setup Fields")]
 
@@ -40,7 +40,7 @@ public class Turret : MonoBehaviour
     public float turnSpeed = 10f;
 
     public Transform firePoint;
-    
+
 
     /* Start()
      *
@@ -50,6 +50,7 @@ public class Turret : MonoBehaviour
     void Start()
     {
         InvokeRepeating("UpdateTarget", 0f, .5f);
+
     }
 
     /* UpdateTarget()
@@ -84,6 +85,23 @@ public class Turret : MonoBehaviour
         }
     }
 
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == enemyTag)
+        {
+            inRangeQ.Enqueue(other.GetComponent<Enemy>());
+            inRangeStack.Push(other.GetComponent<Enemy>());
+            other.tag = inRangeTag;
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        other.tag = enemyTag;
+    }
+
+
     /* ShootLast()
      *
      * sets target to be the last enemy in range (closest to beginning)
@@ -95,26 +113,25 @@ public class Turret : MonoBehaviour
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
 
-        float shortestDistance = Mathf.Infinity;
-        Enemy lastEnemy = null;
-        float distanceToEnemy = Mathf.Infinity;
+        float shortestTraveled = Mathf.Infinity;
+        Enemy lastEnemy = enemies[0].GetComponent<Enemy>();
 
         // find closest enemy - MODIFY THIS IF WANT TO CHANGE SHOOTING BEHAVIOR
         foreach (GameObject enemy in enemies)
         {
             Enemy enemyVar = enemy.GetComponent<Enemy>();
             float distance = Vector3.Distance(transform.position, enemy.transform.position);
-            if (enemyVar.distanceTraveled < shortestDistance && distance <= range)
+            if (enemyVar.distanceTraveled < lastEnemy.distanceTraveled && distance <= range)
             {
-                shortestDistance = enemyVar.distanceTraveled;
+                Debug.Log("in");
+                shortestTraveled = enemyVar.distanceTraveled;
                 lastEnemy = enemyVar;
-                distanceToEnemy = distance;
             }
 
         }
 
         // if  there is an enemy in range - set that to target
-        if (lastEnemy != null && distanceToEnemy <= range)
+        if (lastEnemy != null && inRange(lastEnemy))
         {
             target = lastEnemy.transform;
             targetEnemy = lastEnemy.GetComponent<Enemy>();
@@ -123,6 +140,11 @@ public class Turret : MonoBehaviour
         {
             target = null;
         }
+    }
+
+    bool inRange(Enemy enemy)
+    {
+        return (Vector3.Distance(transform.position, enemy.transform.position) <= range);
     }
 
     /* ShootFirst()
@@ -136,7 +158,7 @@ public class Turret : MonoBehaviour
 
         float shortestDistance = 0;
         Enemy firstEnemy = null;
-        float distanceToEnemy = 0;
+        float distanceToEnemy = range + 1;
 
         // find closest enemy - MODIFY THIS IF WANT TO CHANGE SHOOTING BEHAVIOR
         foreach (GameObject enemy in enemies)
@@ -238,7 +260,7 @@ public class Turret : MonoBehaviour
             target = null;
         }
 
-    
+
     }
 
     /* Update() -  called once per frame
@@ -270,7 +292,8 @@ public class Turret : MonoBehaviour
         if (useLaser)
         {
             Laser();
-        } else
+        }
+        else
         {
             // determines if/ when to shoot
             if (fireCountdown <= 0f)
@@ -285,7 +308,7 @@ public class Turret : MonoBehaviour
         }
     }
 
-        void LockOnTarget()
+    void LockOnTarget()
     {
         // weird vector math to make the turret rotate towards the enemy
         Vector3 dir = target.position - transform.position;
@@ -318,7 +341,7 @@ public class Turret : MonoBehaviour
         // sets the laser in the proper rotation and position
         impactEffect.transform.position = target.position + dir.normalized;
         impactEffect.transform.rotation = Quaternion.LookRotation(dir);
-        
+
 
 
 
@@ -330,22 +353,22 @@ public class Turret : MonoBehaviour
      */
     void Shoot()
     {
-        GameObject bulletGO = (GameObject) Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Bullet bullet = bulletGO.GetComponent<Bullet>();
         Destroy(bullet, 5f);
         if (bullet != null)
         {
             bullet.Seek(target);
-            
+
         }
 
         // TODO: fix this bug - this  lines doesn't work  for some reason
-        
+
         if (straightShooter)
         {
             bullet.SetDirection(bullet.transform.position, target.transform.position);
         }
-        
+
     }
 
     /* OnDrawGizmosSelected()
@@ -360,5 +383,10 @@ public class Turret : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, range);
+    }
+
+    void OnSelect();
+    {
+
     }
 }
