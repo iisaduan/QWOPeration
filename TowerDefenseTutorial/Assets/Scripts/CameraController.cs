@@ -21,7 +21,7 @@ public class CameraController : MonoBehaviour
     public float minZ = -32f;
     public float maxZ = 64f;
 
-
+    
     void Start()
     {
         newPosition = transform.position;
