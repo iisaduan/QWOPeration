@@ -16,8 +16,12 @@ public class Enemy : MonoBehaviour
     // used for turret shooting logic (first/last)
     public float distanceTraveled = 0;
 
+    public int spawnNumber = 0;
+
     [Header("Unity Setup Fields")]
     public GameObject deathEffect;
+
+    public GameObject spawnPrefab;
 
     public Image healthBar;
 
@@ -83,6 +87,13 @@ public class Enemy : MonoBehaviour
             PlayerStats.enemiesKilled[gameObject.transform.name] += 1;
         }
 
+        if(spawnNumber > 0)
+        {
+            SpawnMoreEnemies(this);
+        }
+        
+
+
         GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(effect, 5f);
 
@@ -90,6 +101,21 @@ public class Enemy : MonoBehaviour
         
         Destroy(gameObject);
 
+    }
+
+    /* SpawnMoreEnemies()
+     *
+     * Spawns spawnNumber of enemies
+     * 
+     */
+    void SpawnMoreEnemies(Enemy e)
+    {
+        for (int i = 0; i < spawnNumber; i++)
+        {
+            GameObject spawned = Instantiate(spawnPrefab, e.transform.position, e.transform.rotation);
+            spawned.GetComponent<EnemyMovement>().SetWaypointIndex(e.GetComponent<EnemyMovement>().GetWaypointIndex());
+
+        }
     }
 
 }

@@ -43,6 +43,16 @@ public class EnemyMovement : MonoBehaviour
 
     }
 
+    public void SetWaypointIndex(int waypoint)
+    {
+        waypointIndex = waypoint;
+    }
+
+    public int GetWaypointIndex()
+    {
+        return waypointIndex;
+    }
+
     /* GetNextWaypoint()
      *
      * sets target to next waypoint
