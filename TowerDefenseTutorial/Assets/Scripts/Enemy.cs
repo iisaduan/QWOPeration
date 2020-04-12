@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System;
+using System.Collections;
 
 public class Enemy : MonoBehaviour
 {
@@ -31,7 +33,7 @@ public class Enemy : MonoBehaviour
 
     public void Start()
     {
-        startSpeed = speed;
+        speed = startSpeed;
         health = startHealth;
     }
 
@@ -89,7 +91,8 @@ public class Enemy : MonoBehaviour
 
         if(spawnNumber > 0)
         {
-            SpawnMoreEnemies(this);
+            StartCoroutine(SpawnMoreEnemies(this));
+            
         }
         
 
@@ -107,15 +110,28 @@ public class Enemy : MonoBehaviour
      *
      * Spawns spawnNumber of enemies
      * 
+     * TODO: distance enemies when spawned?
+     *
+     * TODO: make sure all stats and level complete stuff are good?
+     *
+     * TODO: make coroutine work somehow idk
+     * 
      */
-    void SpawnMoreEnemies(Enemy e)
+    IEnumerator SpawnMoreEnemies(Enemy e)
     {
         for (int i = 0; i < spawnNumber; i++)
         {
             GameObject spawned = Instantiate(spawnPrefab, e.transform.position, e.transform.rotation);
+            
             spawned.GetComponent<EnemyMovement>().SetWaypointIndex(e.GetComponent<EnemyMovement>().GetWaypointIndex());
+            spawned.GetComponent<Enemy>().distanceTraveled = e.distanceTraveled;
+            WaveSpawner.EnemiesAlive++;
+            Debug.Log(i);
+            yield return new WaitForSeconds(1f);
+            Debug.Log(i);
 
         }
+        // yield return null;
     }
 
 }

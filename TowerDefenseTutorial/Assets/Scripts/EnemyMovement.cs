@@ -19,7 +19,7 @@ public class EnemyMovement : MonoBehaviour
     private void Start()
     {
         enemy = GetComponent<Enemy>();
-        target = Waypoints.points[0];
+        target = Waypoints.points[waypointIndex];
     }
 
     /* Update() - every frame
