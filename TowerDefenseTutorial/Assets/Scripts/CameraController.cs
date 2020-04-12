@@ -7,6 +7,8 @@ public class CameraController : MonoBehaviour
     public float panSpeed = 30f;
     public float panBoarderThickness = 10f;
     public float scrollSpeed = 5f;
+    public float rotationAmount = 1;
+    public Quaternion newRotation = Quaternion.identity;
 
     [Header("Clamp features")]
     public float minY = 10f;
@@ -16,6 +18,11 @@ public class CameraController : MonoBehaviour
     public float minZ = -32f;
     public float maxZ = 64f;
 
+
+    void Start()
+    {
+        newRotation = transform.rotation;
+    }
 
     /* Update() - executes every frame
      *
@@ -35,6 +42,8 @@ public class CameraController : MonoBehaviour
 
         ZoomControls();
 
+        RotationControls();
+
         ClampControl();
     }
 
@@ -48,25 +57,25 @@ public class CameraController : MonoBehaviour
     void ASDWControls()
     {
         // move up
-        if (Input.GetKey("w") || Input.mousePosition.y >= Screen.height - panBoarderThickness)
+        if (Input.GetKey("w") || Input.GetKey(KeyCode.UpArrow) || Input.mousePosition.y >= Screen.height - panBoarderThickness)
         {
             transform.Translate(Vector3.forward * panSpeed * Time.deltaTime, Space.World);
         }
 
         // move down
-        if (Input.GetKey("s") || Input.mousePosition.y <= panBoarderThickness)
+        if (Input.GetKey("s") || Input.GetKey(KeyCode.DownArrow) || Input.mousePosition.y <= panBoarderThickness)
         {
             transform.Translate(Vector3.back * panSpeed * Time.deltaTime, Space.World);
         }
 
         // move right
-        if (Input.GetKey("d") || Input.mousePosition.x >= Screen.width - panBoarderThickness)
+        if (Input.GetKey("d") || Input.GetKey(KeyCode.RightArrow) || Input.mousePosition.x >= Screen.width - panBoarderThickness)
         {
             transform.Translate(Vector3.right * panSpeed * Time.deltaTime, Space.World);
         }
 
         // move left
-        if (Input.GetKey("a") || Input.mousePosition.x <= panBoarderThickness)
+        if (Input.GetKey("a") || Input.GetKey(KeyCode.LeftArrow) || Input.mousePosition.x <= panBoarderThickness)
         {
             transform.Translate(Vector3.left * panSpeed * Time.deltaTime, Space.World);
         }
@@ -89,6 +98,17 @@ public class CameraController : MonoBehaviour
 
         transform.position = pos;
 
+
+    }
+
+    void RotationControls()
+    {
+        if (Input.GetKey(KeyCode.Q))
+        {
+            newRotation *= Quaternion.Euler(Vector3.forward * rotationAmount);
+        }
+
+        transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, Time.deltaTime * panSpeed);
 
     }
 
