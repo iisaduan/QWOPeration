@@ -21,6 +21,8 @@ public class Enemy : MonoBehaviour
 
     public int spawnNumber = 0;
 
+    public float slowHealthAmt = 0;
+
     public bool missileLauncher = false;
 
     [Header("Unity Setup Fields")]
@@ -29,6 +31,7 @@ public class Enemy : MonoBehaviour
     public GameObject spawnPrefab;
 
     public Image healthBar;
+
 
     // Note: movement aspeccts of the enemy moved into EnemyMovement Script
 
@@ -50,6 +53,11 @@ public class Enemy : MonoBehaviour
      */
     public void TakeDamage(float damage)
     {
+        if (slowHealthAmt > 0f)
+        {
+            speed += damage * slowHealthAmt;
+            startSpeed = speed;
+        }
         health -= damage;
 
         healthBar.fillAmount = health / startHealth;
