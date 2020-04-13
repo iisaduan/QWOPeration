@@ -103,7 +103,16 @@ public class Bullet : MonoBehaviour
         }
         else
         {
-            Damage(target);
+            if (!target.GetComponent<Enemy>().missileLauncher)
+            {
+                Damage(target);
+            } else
+            {
+                if (explosionRadius > 0f)
+                {
+                    Damage(target);
+                }
+            }
         }
 
         Destroy(gameObject);

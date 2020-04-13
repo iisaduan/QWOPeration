@@ -21,6 +21,8 @@ public class Enemy : MonoBehaviour
 
     public int spawnNumber = 0;
 
+    public bool missileLauncher = false;
+
     [Header("Unity Setup Fields")]
     public GameObject deathEffect;
 
@@ -30,12 +32,11 @@ public class Enemy : MonoBehaviour
 
     // Note: movement aspeccts of the enemy moved into EnemyMovement Script
 
-
-
     public void Start()
     {
         speed = startSpeed;
         health = startHealth;
+        
     }
 
 
@@ -92,8 +93,10 @@ public class Enemy : MonoBehaviour
 
         if(spawnNumber > 0)
         {
-            StartCoroutine(SpawnMoreEnemies(this));
-            
+            // TODO: pick between coroutine or regular (make coroutine work??)
+            // StartCoroutine(SpawnMoreEnemies(this));
+            SpawnEnemies(this);
+
         }
         
 
@@ -127,12 +130,37 @@ public class Enemy : MonoBehaviour
             spawned.GetComponent<EnemyMovement>().SetWaypointIndex(e.GetComponent<EnemyMovement>().GetWaypointIndex());
             spawned.GetComponent<Enemy>().distanceTraveled = e.distanceTraveled;
             WaveSpawner.EnemiesAlive++;
-            Debug.Log(i);
-            yield return new WaitForSeconds(1f);
-            Debug.Log(i);
+            //Debug.Log(i);
+            yield return new WaitForSeconds(.02f);
+            //Debug.Log(i);
 
         }
-        // yield return null;
+        yield return null;
+    }
+
+    /* SpawnEnemies()
+     *
+     * Non-coroutine version of spawning enemies
+     *
+     * enemies overlap
+     *
+     * TODO: make enemies not overlap
+     *
+     */
+    public void SpawnEnemies(Enemy e)
+    {
+        for (int i = 0; i < spawnNumber; i++)
+        {
+            // spawn enemy
+            GameObject spawned = Instantiate(spawnPrefab, e.transform.position, e.transform.rotation);
+            // make sure spawned enemy heads to correct waypoint
+            spawned.GetComponent<EnemyMovement>().SetWaypointIndex(e.GetComponent<EnemyMovement>().GetWaypointIndex());
+            // update spawned enemies' distance
+            spawned.GetComponent<Enemy>().distanceTraveled = e.distanceTraveled;
+            // increase amount of enemies alive
+            WaveSpawner.EnemiesAlive++;
+
+        }
     }
 
 }
