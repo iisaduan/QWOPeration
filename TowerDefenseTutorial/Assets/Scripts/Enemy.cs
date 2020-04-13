@@ -102,8 +102,8 @@ public class Enemy : MonoBehaviour
         if(spawnNumber > 0)
         {
             // TODO: pick between coroutine or regular (make coroutine work??)
-            // StartCoroutine(SpawnMoreEnemies(this));
-            SpawnEnemies(this);
+            StartCoroutine(SpawnMoreEnemies(this));
+            // SpawnEnemies(this);
 
         }
         
@@ -131,6 +131,7 @@ public class Enemy : MonoBehaviour
      */
     IEnumerator SpawnMoreEnemies(Enemy e)
     {
+        /*
         for (int i = 0; i < spawnNumber; i++)
         {
             GameObject spawned = Instantiate(spawnPrefab, e.transform.position, e.transform.rotation);
@@ -142,8 +143,23 @@ public class Enemy : MonoBehaviour
             yield return new WaitForSeconds(.02f);
             //Debug.Log(i);
 
+        }*/
+        int i = 0;
+        while (i < spawnNumber)
+        {
+            GameObject spawned = Instantiate(spawnPrefab, e.transform.position, e.transform.rotation);
+
+            spawned.GetComponent<EnemyMovement>().SetWaypointIndex(e.GetComponent<EnemyMovement>().GetWaypointIndex());
+            spawned.GetComponent<Enemy>().distanceTraveled = e.distanceTraveled;
+            WaveSpawner.EnemiesAlive++;
+
+            Debug.Log(i);
+            i++;
+            yield return new WaitForSeconds(.02f);
+            Debug.Log(i);
+            
         }
-        yield return null;
+
     }
 
     /* SpawnEnemies()
@@ -157,6 +173,7 @@ public class Enemy : MonoBehaviour
      */
     public void SpawnEnemies(Enemy e)
     {
+        
         for (int i = 0; i < spawnNumber; i++)
         {
             // spawn enemy
