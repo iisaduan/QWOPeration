@@ -211,7 +211,10 @@ MonoBehaviour:
   health: 75
   moneyGain: 40
   distanceTraveled: 0
+  spawnNumber: 3
   deathEffect: {fileID: 3986665927942994397, guid: 5a09c2fa7382641dda001a6565c0189c,
+    type: 3}
+  spawnPrefab: {fileID: 8424689665145142550, guid: 73e5bbef6049a4b339b32aa2f384eca5,
     type: 3}
   healthBar: {fileID: 4309158901452093739}
 --- !u!114 &114519809486726900

@@ -339,7 +339,7 @@ GameObject:
   - component: {fileID: 242520279}
   - component: {fileID: 114519809486726900}
   m_Layer: 0
-  m_Name: Enemy_Simple
+  m_Name: Enemy_Red
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -430,14 +430,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c24121a3e6ea448ca940e9abbb438e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startSpeed: 5
+  startSpeed: 7
   speed: 10
   startHealth: 100
   health: 100
-  moneyGain: 50
+  moneyGain: 10
   distanceTraveled: 0
+  spawnNumber: 0
   deathEffect: {fileID: 3986665927942994397, guid: 3c4f859b16b7044b29b2ff4ad4e95905,
     type: 3}
+  spawnPrefab: {fileID: 0}
   healthBar: {fileID: 663678208}
 --- !u!114 &114519809486726900
 MonoBehaviour:

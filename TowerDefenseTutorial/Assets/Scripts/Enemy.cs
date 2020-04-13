@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System;
+using System.Collections;
 
 public class Enemy : MonoBehaviour
 {
@@ -10,25 +12,34 @@ public class Enemy : MonoBehaviour
     [HideInInspector]
     public float speed = 10f;
     public int startHealth = 100;
+    [HideInInspector]
     public float health;
 
     public int moneyGain = 50;
     // used for turret shooting logic (first/last)
     public float distanceTraveled = 0;
 
+    public int spawnNumber = 0;
+
+    public float slowHealthAmt = 0;
+
+    public bool missileLauncher = false;
+
     [Header("Unity Setup Fields")]
     public GameObject deathEffect;
 
+    public GameObject spawnPrefab;
+
     public Image healthBar;
+
 
     // Note: movement aspeccts of the enemy moved into EnemyMovement Script
 
-
-
     public void Start()
     {
-        startSpeed = speed;
+        speed = startSpeed;
         health = startHealth;
+        
     }
 
 
@@ -42,6 +53,11 @@ public class Enemy : MonoBehaviour
      */
     public void TakeDamage(float damage)
     {
+        if (slowHealthAmt > 0f)
+        {
+            speed += damage * slowHealthAmt;
+            startSpeed = speed;
+        }
         health -= damage;
 
         healthBar.fillAmount = health / startHealth;
@@ -83,6 +99,16 @@ public class Enemy : MonoBehaviour
             PlayerStats.enemiesKilled[gameObject.transform.name] += 1;
         }
 
+        if(spawnNumber > 0)
+        {
+            // TODO: pick between coroutine or regular (make coroutine work??)
+            // StartCoroutine(SpawnMoreEnemies(this));
+            SpawnEnemies(this);
+
+        }
+        
+
+
         GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(effect, 5f);
 
@@ -90,6 +116,59 @@ public class Enemy : MonoBehaviour
         
         Destroy(gameObject);
 
+    }
+
+    /* SpawnMoreEnemies()
+     *
+     * Spawns spawnNumber of enemies
+     * 
+     * TODO: distance enemies when spawned?
+     *
+     * TODO: make sure all stats and level complete stuff are good?
+     *
+     * TODO: make coroutine work somehow idk
+     * 
+     */
+    IEnumerator SpawnMoreEnemies(Enemy e)
+    {
+        for (int i = 0; i < spawnNumber; i++)
+        {
+            GameObject spawned = Instantiate(spawnPrefab, e.transform.position, e.transform.rotation);
+            
+            spawned.GetComponent<EnemyMovement>().SetWaypointIndex(e.GetComponent<EnemyMovement>().GetWaypointIndex());
+            spawned.GetComponent<Enemy>().distanceTraveled = e.distanceTraveled;
+            WaveSpawner.EnemiesAlive++;
+            //Debug.Log(i);
+            yield return new WaitForSeconds(.02f);
+            //Debug.Log(i);
+
+        }
+        yield return null;
+    }
+
+    /* SpawnEnemies()
+     *
+     * Non-coroutine version of spawning enemies
+     *
+     * enemies overlap
+     *
+     * TODO: make enemies not overlap
+     *
+     */
+    public void SpawnEnemies(Enemy e)
+    {
+        for (int i = 0; i < spawnNumber; i++)
+        {
+            // spawn enemy
+            GameObject spawned = Instantiate(spawnPrefab, e.transform.position, e.transform.rotation);
+            // make sure spawned enemy heads to correct waypoint
+            spawned.GetComponent<EnemyMovement>().SetWaypointIndex(e.GetComponent<EnemyMovement>().GetWaypointIndex());
+            // update spawned enemies' distance
+            spawned.GetComponent<Enemy>().distanceTraveled = e.distanceTraveled;
+            // increase amount of enemies alive
+            WaveSpawner.EnemiesAlive++;
+
+        }
     }
 
 }

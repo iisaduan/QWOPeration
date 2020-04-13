@@ -160,7 +160,15 @@ public class Node : MonoBehaviour
 
     public void SellTurret()
     {
-        PlayerStats.Money += turretBlueprint.GetSellAmount();
+
+        if (isUpgraded)
+        {
+            PlayerStats.Money += turretBlueprint.GetSellAmount();
+        }
+        else
+        {
+            PlayerStats.Money += turretBlueprint.GetSellAmount();
+        }
 
         // Spawn cool effect
 
