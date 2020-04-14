@@ -49,7 +49,7 @@ public class Turret : MonoBehaviour
      */
     void Start()
     {
-        InvokeRepeating("UpdateTarget", 0f, .5f);
+        InvokeRepeating("UpdateTarget", 0f, .1f);
 
     }
 
@@ -85,23 +85,6 @@ public class Turret : MonoBehaviour
         }
     }
 
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == enemyTag)
-        {
-            inRangeQ.Enqueue(other.GetComponent<Enemy>());
-            inRangeStack.Push(other.GetComponent<Enemy>());
-            other.tag = inRangeTag;
-        }
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        other.tag = enemyTag;
-    }
-
-
     /* ShootLast()
      *
      * sets target to be the last enemy in range (closest to beginning)
@@ -112,29 +95,39 @@ public class Turret : MonoBehaviour
     void ShootLast()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
+        Enemy lastEnemyInRange = targetEnemy;
 
-        float shortestTraveled = Mathf.Infinity;
-        Enemy lastEnemy = enemies[0].GetComponent<Enemy>();
-
-        // find closest enemy - MODIFY THIS IF WANT TO CHANGE SHOOTING BEHAVIOR
-        foreach (GameObject enemy in enemies)
+        if (lastEnemyInRange != null)
         {
-            Enemy enemyVar = enemy.GetComponent<Enemy>();
-            float distance = Vector3.Distance(transform.position, enemy.transform.position);
-            if (enemyVar.distanceTraveled < lastEnemy.distanceTraveled && distance <= range)
+            // find farthest enemy in range
+            foreach (GameObject enemy in enemies)
             {
-                Debug.Log("in");
-                shortestTraveled = enemyVar.distanceTraveled;
-                lastEnemy = enemyVar;
+                Enemy enemyVar = enemy.GetComponent<Enemy>();
+                float distance = Vector3.Distance(transform.position, enemy.transform.position);
+
+                // reject enemy if enemy is out of range
+                if (distance > range)
+                {
+                    continue;
+                }
+
+                if (enemyVar.distanceTraveled < lastEnemyInRange.distanceTraveled)
+                {
+                    lastEnemyInRange = enemyVar;
+                }
+
             }
 
         }
 
+
+
+
         // if  there is an enemy in range - set that to target
-        if (lastEnemy != null && inRange(lastEnemy))
+        if (lastEnemyInRange != null && inRange(lastEnemyInRange))
         {
-            target = lastEnemy.transform;
-            targetEnemy = lastEnemy.GetComponent<Enemy>();
+            target = lastEnemyInRange.transform;
+            targetEnemy = lastEnemyInRange.GetComponent<Enemy>();
         }
         else
         {
@@ -385,8 +378,5 @@ public class Turret : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, range);
     }
 
-    void OnSelect();
-    {
 
-    }
 }
