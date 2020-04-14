@@ -7,6 +7,7 @@ public class Node : MonoBehaviour
     public Color hoverColor;
     public Color notEnoughMoneyColor;
     public Vector3 positionOffset;
+    public Material Range;
 
     [HideInInspector] //make non-editable in inspector
     public GameObject turret;
@@ -20,6 +21,9 @@ public class Node : MonoBehaviour
     private Color startColor;
 
     BuildManager buildManager;
+
+    GameObject range;
+
 
     /* Start() - called at beginning of game
      *
@@ -66,6 +70,20 @@ public class Node : MonoBehaviour
         // if there is already a turret there, return error message
         if (turret != null)
         {
+            if (Input.GetMouseButtonDown(0))
+            {
+                range = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                range.transform.position = transform.position;
+                range.transform.localScale = new Vector3(40, 40, 40);
+                range.GetComponent<Renderer>().material = Range;
+                range.GetComponent<Renderer>().enabled = true;
+            }
+            else if (Input.GetMouseButtonUp(0))
+            {
+                Destroy(range);
+            }
+
+
             buildManager.SelectNode(this);
             return;
         }
@@ -189,6 +207,7 @@ public class Node : MonoBehaviour
         }
         if (turret != null)
         {
+            //range.GetComponent<Renderer>().enabled = true;
             return;
         }
         if (buildManager.HasMoney)
@@ -210,6 +229,8 @@ public class Node : MonoBehaviour
      */
     private void OnMouseExit()
     {
+        //range.GetComponent<Renderer>().enabled = false;
         rend.material.color = startColor;
+        Destroy(range, 1);
     }
 }
