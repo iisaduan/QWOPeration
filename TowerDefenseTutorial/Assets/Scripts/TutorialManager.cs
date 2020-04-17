@@ -27,19 +27,27 @@ public class TutorialManager : MonoBehaviour
 
     }
 
-
+    /* NextClick()
+     *
+     * Makes tutorial move to next game object
+     *
+     */
     public void NextClick()
     {
-
+        // if there is another  element in the list
         if (popUpIndex < popUps.Length - 1)
         {
+            // set old popUp to not active
             popUps[popUpIndex].SetActive(false);
             
             popUpIndex += 1;
-            popUps[popUpIndex].SetActive(true);
+            // set new popUp to active
             Debug.Log(popUpIndex);
-        } if (popUpIndex == popUps.Length - 1)
+        }
+        // if this is the last element
+        if (popUpIndex == popUps.Length - 1)
         {
+            // display main menu button instead of next button
             next.gameObject.SetActive(false);
             mainMenu.gameObject.SetActive(true);
             endTutorial = true;

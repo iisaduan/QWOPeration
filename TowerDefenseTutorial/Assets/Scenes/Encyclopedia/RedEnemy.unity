@@ -629,7 +629,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Missile Launcher
+  m_Text: Red Enemy
 --- !u!222 &547724335
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -807,6 +807,8 @@ MonoBehaviour:
   damage: {fileID: 1517841629}
   fireRate: {fileID: 1736417456}
   explosionRadius: {fileID: 1895293343}
+  damageOverTime: {fileID: 0}
+  slowRate: {fileID: 0}
 --- !u!1 &956386825
 GameObject:
   m_ObjectHideFlags: 0
@@ -864,11 +866,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ab4ccea41d684678ad21dc8ec71ff13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  g: {fileID: 0}
-  range: {fileID: 0}
-  damage: {fileID: 0}
-  fireRate: {fileID: 0}
-  explosionRadius: {fileID: 0}
+  g: {fileID: 6023657317434627651, guid: 49a4f74a140634528bfa409aaaf42610, type: 3}
+  range: {fileID: 290117378}
+  damage: {fileID: 1517841629}
+  fireRate: {fileID: 1736417456}
+  explosionRadius: {fileID: 1895293343}
+  damageOverTime: {fileID: 0}
+  slowRate: {fileID: 0}
 --- !u!1 &1170423629
 GameObject:
   m_ObjectHideFlags: 0
@@ -1333,7 +1337,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 5691588a82ccc434fac77d6b668eb343,
+      objectReference: {fileID: 21300000, guid: 741d675202aa149159406c2f49eed1b3,
         type: 3}
     - target: {fileID: 1163984615030585205, guid: 64b46bf2631f843209f846267967c81f,
         type: 3}
@@ -1807,7 +1811,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &7663982519662977537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1856,7 +1860,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Tutorial
+          m_StringArgument: TowerEncyclodepia
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!222 &7663982519662977540
@@ -1911,8 +1915,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 637, y: -90.4}
-  m_SizeDelta: {x: 109.9, y: 57.7}
+  m_AnchoredPosition: {x: 627, y: -442}
+  m_SizeDelta: {x: 109.9, y: 39}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7663982519895218200
 MonoBehaviour:
@@ -1945,7 +1949,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Tutorial
+  m_Text: Back
 --- !u!224 &7663982519895218201
 RectTransform:
   m_ObjectHideFlags: 0

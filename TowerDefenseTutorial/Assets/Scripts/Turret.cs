@@ -24,7 +24,7 @@ public class Turret : MonoBehaviour
     [Header("Use Laser")]
     public bool useLaser = false;
 
-    public int damageOverTime = 30;
+    public int damageOverTime = 50;
     public float slowAmount = 0.5f;
 
     public LineRenderer lineRenderer;
@@ -250,6 +250,7 @@ public class Turret : MonoBehaviour
      */
     void Update()
     {
+        UpdateTarget();
         // if  there is no target - do nothing
         if (target == null)
         {
