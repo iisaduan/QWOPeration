@@ -39,6 +39,21 @@ EditorBuildSettings:
     path: Assets/Scenes/Encyclopedia/EnemyEncyclodepia.unity
     guid: d653a6233203a42d4ad560efad74e9e5
   - enabled: 1
+    path: Assets/Scenes/Encyclopedia/EnemyRed.unity
+    guid: da9a6bae0210a44018474ee50e2258f2
+  - enabled: 1
+    path: Assets/Scenes/Encyclopedia/EnemyOrange.unity
+    guid: 70a85febbf2f64bfebf74f202aa357f7
+  - enabled: 1
+    path: Assets/Scenes/Encyclopedia/EnemyYellow.unity
+    guid: a69f5b07eab0742c2a139fd1adf11c30
+  - enabled: 1
+    path: Assets/Scenes/Encyclopedia/EnemyGreen.unity
+    guid: 2d44ade39be8f488d82a09dd69fa572a
+  - enabled: 1
+    path: Assets/Scenes/Encyclopedia/EnemyBlue.unity
+    guid: 59e43b8d5844641a1ab2dd723ed0d75f
+  - enabled: 1
     path: Assets/Scenes/Encyclopedia/EncyclodepiaMenu.unity
     guid: e8f139182b34b4ea2bb6c62d8777aed6
   m_configObjects: {}
