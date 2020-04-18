@@ -24,6 +24,7 @@ public class EncyclopediaSelector : MonoBehaviour
         {
             damageOverTime.text = "Damage Over Time: " + t.damageOverTime;
             slowRate.text = "Slow Rate: " + t.slowAmount;
+            range.text = "Range: " + t.range;
         }
         else
         {

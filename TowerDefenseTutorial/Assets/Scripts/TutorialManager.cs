@@ -42,7 +42,10 @@ public class TutorialManager : MonoBehaviour
             
             popUpIndex += 1;
             // set new popUp to active
+            popUps[popUpIndex].SetActive(true);
             Debug.Log(popUpIndex);
+
+
         }
         // if this is the last element
         if (popUpIndex == popUps.Length - 1)
@@ -58,6 +61,6 @@ public class TutorialManager : MonoBehaviour
 
     public void MainClick()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("LevelSelect");
     }
 }
