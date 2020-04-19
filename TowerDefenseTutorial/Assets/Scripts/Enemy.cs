@@ -39,9 +39,16 @@ public class Enemy : MonoBehaviour
     {
         speed = startSpeed;
         health = startHealth;
+        //StartCoroutine(SpawnMoreEnemies(this));
         
     }
 
+    IEnumerator Help()
+    {
+        Debug.Log("0 seconds");
+        yield return new WaitForSeconds(3f);
+        Debug.Log("3 seconds");
+    }
 
 
     /* TakeDamage(float damage)
@@ -101,9 +108,7 @@ public class Enemy : MonoBehaviour
 
         if(spawnNumber > 0)
         {
-            // TODO: pick between coroutine or regular (make coroutine work??)
             StartCoroutine(SpawnMoreEnemies(this));
-            // SpawnEnemies(this);
 
         }
         
@@ -113,8 +118,11 @@ public class Enemy : MonoBehaviour
         Destroy(effect, 5f);
 
         WaveSpawner.EnemiesAlive--;
-        
-        Destroy(gameObject);
+
+        // helps with coroutine spawner
+        Destroy(gameObject, (spawnNumber + 1) * .1f);
+        this.GetComponent<MeshRenderer>().enabled = false;
+        gameObject.GetComponent<EnemyMovement>().stop = true;
 
     }
 
@@ -129,55 +137,13 @@ public class Enemy : MonoBehaviour
      * TODO: make coroutine work somehow idk
      * 
      */
-    IEnumerator SpawnMoreEnemies(Enemy e)
+    static IEnumerator SpawnMoreEnemies(Enemy e)
     {
-        /*
-        for (int i = 0; i < spawnNumber; i++)
-        {
-            GameObject spawned = Instantiate(spawnPrefab, e.transform.position, e.transform.rotation);
-            
-            spawned.GetComponent<EnemyMovement>().SetWaypointIndex(e.GetComponent<EnemyMovement>().GetWaypointIndex());
-            spawned.GetComponent<Enemy>().distanceTraveled = e.distanceTraveled;
-            WaveSpawner.EnemiesAlive++;
-            //Debug.Log(i);
-            yield return new WaitForSeconds(.02f);
-            //Debug.Log(i);
 
-        }*/
-        int i = 0;
-        while (i < spawnNumber)
-        {
-            GameObject spawned = Instantiate(spawnPrefab, e.transform.position, e.transform.rotation);
-
-            spawned.GetComponent<EnemyMovement>().SetWaypointIndex(e.GetComponent<EnemyMovement>().GetWaypointIndex());
-            spawned.GetComponent<Enemy>().distanceTraveled = e.distanceTraveled;
-            WaveSpawner.EnemiesAlive++;
-
-            Debug.Log(i);
-            i++;
-            yield return new WaitForSeconds(.02f);
-            Debug.Log(i);
-            
-        }
-
-    }
-
-    /* SpawnEnemies()
-     *
-     * Non-coroutine version of spawning enemies
-     *
-     * enemies overlap
-     *
-     * TODO: make enemies not overlap
-     *
-     */
-    public void SpawnEnemies(Enemy e)
-    {
-        
-        for (int i = 0; i < spawnNumber; i++)
+        for (int i = 0; i < e.spawnNumber; i++)
         {
             // spawn enemy
-            GameObject spawned = Instantiate(spawnPrefab, e.transform.position, e.transform.rotation);
+            GameObject spawned = Instantiate(e.spawnPrefab, e.transform.position, e.transform.rotation);
             // make sure spawned enemy heads to correct waypoint
             spawned.GetComponent<EnemyMovement>().SetWaypointIndex(e.GetComponent<EnemyMovement>().GetWaypointIndex());
             // update spawned enemies' distance
@@ -185,6 +151,7 @@ public class Enemy : MonoBehaviour
             // increase amount of enemies alive
             WaveSpawner.EnemiesAlive++;
 
+            yield return new WaitForSeconds(.1f);
         }
     }
 

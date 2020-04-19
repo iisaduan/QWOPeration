@@ -10,6 +10,8 @@ public class EnemyMovement : MonoBehaviour
 
     private Enemy enemy;
 
+    public bool stop;
+
 
     /* Start() - when game begins
      *
@@ -29,6 +31,10 @@ public class EnemyMovement : MonoBehaviour
      */
     private void Update()
     {
+        if (stop)
+        {
+            return;
+        }
         Vector3 dir = target.position - transform.position;
         transform.Translate(dir.normalized * enemy.speed * Time.deltaTime, Space.World);
 
