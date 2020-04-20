@@ -7,6 +7,7 @@ public class Shop : MonoBehaviour
     public TurretBlueprint missileLauncher;
     public TurretBlueprint laserBeamer;
     public TurretBlueprint poisonTurret;
+    public TurretBlueprint goldTower;
 
     BuildManager buildManager;
 
@@ -50,7 +51,9 @@ public class Shop : MonoBehaviour
 
     public void SelectPoisonTurret()
     {
-        Debug.Log("Posion Turret Selected");
-        buildManager.SelectTurretToBuild(poisonTurret);
+        Debug.Log("Gold Tower Selected");
+        buildManager.SelectTurretToBuild(goldTower);
     }
+
+    
 }

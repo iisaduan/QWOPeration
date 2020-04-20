@@ -1176,7 +1176,7 @@ Transform:
   - {fileID: 1156711003}
   - {fileID: 2046593156}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &74013699
 PrefabInstance:
@@ -4353,7 +4353,7 @@ RectTransform:
   m_Children:
   - {fileID: 1766987776}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5676,7 +5676,7 @@ Transform:
   - {fileID: 2105641303}
   - {fileID: 1620675490}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &461835496
 PrefabInstance:
@@ -9091,7 +9091,7 @@ Transform:
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &711100257
 PrefabInstance:
@@ -11364,7 +11364,7 @@ Transform:
   m_Children:
   - {fileID: 1567888703}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 35, y: 0, z: 0}
 --- !u!1 &892288460
 GameObject:
@@ -12081,7 +12081,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &955258545
 PrefabInstance:
@@ -12941,7 +12941,7 @@ Transform:
   - {fileID: 454843465}
   - {fileID: 92697210}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &985448447
 MonoBehaviour:
@@ -15746,10 +15746,7 @@ MonoBehaviour:
   timeBetweenWaves: 3
   WaveCountdownText: {fileID: 1535577075}
   waves:
-  - enemy: {fileID: 935120199254814037, guid: 190a93e76ecc4487080d7d08fd63eb80, type: 3}
-    count: 1
-    rate: 1
-  - enemy: {fileID: 935120199254814037, guid: 190a93e76ecc4487080d7d08fd63eb80, type: 3}
+  - enemy: {fileID: 4157986411822915540, guid: f94121d1592c74ffa9f84f2e8b9d888c, type: 3}
     count: 1
     rate: 1
   enemies: []
@@ -15766,7 +15763,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1267783133
 MonoBehaviour:
@@ -18486,7 +18483,7 @@ Transform:
   m_Children:
   - {fileID: 534669905}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
 --- !u!114 &1484880791
 MonoBehaviour:
@@ -18848,7 +18845,7 @@ RectTransform:
   - {fileID: 579961295}
   - {fileID: 55489833}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -19732,13 +19729,27 @@ MonoBehaviour:
     upgradedPrefab: {fileID: 6023657317434627651, guid: 22a7496c5f741419c88369bd80493fd9,
       type: 3}
     upgradeCost: 150
-  LaserBeamer:
+  laserBeamer:
     prefab: {fileID: 3938958367377509677, guid: a76df4145861342fe9be8f978ca0690d,
       type: 3}
     cost: 350
     upgradedPrefab: {fileID: 3938958367377509677, guid: 645bc3905f4ff4751bcca5cc88fd0ea3,
       type: 3}
-    upgradeCost: 200
+    upgradeCost: 0
+  poisonTurret:
+    prefab: {fileID: 1210502274820510621, guid: 8516c079b3f964d10ae1576e5315ba83,
+      type: 3}
+    cost: 200
+    upgradedPrefab: {fileID: 1210502274820510621, guid: 8516c079b3f964d10ae1576e5315ba83,
+      type: 3}
+    upgradeCost: 0
+  goldTower:
+    prefab: {fileID: 3554581249071542795, guid: 37530539e45784ac899b4a713c40ffd9,
+      type: 3}
+    cost: 50
+    upgradedPrefab: {fileID: 3554581249071542795, guid: 37530539e45784ac899b4a713c40ffd9,
+      type: 3}
+    upgradeCost: 0
 --- !u!1 &1582378242
 GameObject:
   m_ObjectHideFlags: 0
@@ -22231,7 +22242,7 @@ RectTransform:
   - {fileID: 1144670841}
   - {fileID: 1519810669}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -23415,13 +23426,21 @@ MonoBehaviour:
     upgradedPrefab: {fileID: 6023657317434627651, guid: 22a7496c5f741419c88369bd80493fd9,
       type: 3}
     upgradeCost: 150
-  LaserBeamer:
-    prefab: {fileID: 3938958367377509677, guid: a76df4145861342fe9be8f978ca0690d,
-      type: 3}
-    cost: 350
-    upgradedPrefab: {fileID: 3938958367377509677, guid: 645bc3905f4ff4751bcca5cc88fd0ea3,
-      type: 3}
-    upgradeCost: 200
+  laserBeamer:
+    prefab: {fileID: 0}
+    cost: 0
+    upgradedPrefab: {fileID: 0}
+    upgradeCost: 0
+  poisonTurret:
+    prefab: {fileID: 0}
+    cost: 0
+    upgradedPrefab: {fileID: 0}
+    upgradeCost: 0
+  goldTower:
+    prefab: {fileID: 0}
+    cost: 0
+    upgradedPrefab: {fileID: 0}
+    upgradeCost: 0
 --- !u!114 &1847970254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24210,7 +24229,7 @@ Transform:
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1927458080
 PrefabInstance:
@@ -26669,6 +26688,43 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2145823548}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &4801453339040405374
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7863387104572142602}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a8ce0656e29d24c23962ffd94d10fb7c, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1001 &5343357723011518651
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26818,6 +26874,60 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b522e1d19897b42fab5969343b03f9c6, type: 3}
+--- !u!65 &6290918794021150636
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7863387104572142602}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6764831232163826023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7863387104572142602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3d207035050b41869b6695278061a5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goldPerSecond: 2
+--- !u!114 &6765254279346153185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7863387104572142602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 663bd30d779714d3ebbdca281a3f7646, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 15
+  shootType: 1
+  gold: 1
+  bulletPrefab: {fileID: 0}
+  fireRate: 1
+  straightShooter: 0
+  useLaser: 0
+  damageOverTime: 50
+  slowAmount: 0.5
+  lineRenderer: {fileID: 0}
+  impactEffect: {fileID: 0}
+  impactLight: {fileID: 0}
+  enemyTag: Enemy
+  partToRotate: {fileID: 0}
+  turnSpeed: 10
+  firePoint: {fileID: 0}
 --- !u!1001 &6924519728650595702
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26898,6 +27008,14 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 6924519727665115095, guid: 96bf31b96e82849f8af57c33f4619157, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 96bf31b96e82849f8af57c33f4619157, type: 3}
+--- !u!33 &7296250220101914581
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7863387104572142602}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &7689066578687441673
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26973,6 +27091,41 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7689066578687441673}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7863387104572142602
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7916798699281396124}
+  - component: {fileID: 7296250220101914581}
+  - component: {fileID: 4801453339040405374}
+  - component: {fileID: 6290918794021150636}
+  - component: {fileID: 6764831232163826023}
+  - component: {fileID: 6765254279346153185}
+  m_Layer: 0
+  m_Name: GoldTower
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7916798699281396124
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7863387104572142602}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &8893358566899146684
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -112,7 +112,7 @@ MonoBehaviour:
   health: 100
   moneyGain: 50
   distanceTraveled: 0
-  spawnNumber: 1
+  spawnNumber: 5
   slowHealthAmt: 0
   missileLauncher: 1
   deathEffect: {fileID: 2672428783498903459, guid: b32d91e5c2433427599f0ac1d660f408,
@@ -132,6 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a6a14ad9e3a44b07bb12dd7ff7ebf6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stop: 0
 --- !u!1 &5575069317604420818
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,6 +13,7 @@ public class Turret : MonoBehaviour
     public float range = 15f;
     // SHOOT TYPE
     public ShootType shootType = ShootType.Last;
+    public bool gold = false;
 
     [Header("Use Bullets")]
 
@@ -49,7 +50,10 @@ public class Turret : MonoBehaviour
      */
     void Start()
     {
-        InvokeRepeating("UpdateTarget", 0f, .5f);
+        if (!gold)
+        {
+            InvokeRepeating("UpdateTarget", 0f, .5f);
+        }
     }
 
     /* UpdateTarget()
@@ -59,6 +63,10 @@ public class Turret : MonoBehaviour
      */
     void UpdateTarget()
     {
+        if (gold)
+        {
+            return;
+        }
         // closest
         if (shootType == ShootType.Closest)
         {
@@ -251,6 +259,10 @@ public class Turret : MonoBehaviour
      */
     void Update()
     {
+        if (gold)
+        {
+            return;
+        }
         UpdateTarget();
         // if  there is no target - do nothing
         if (target == null)
