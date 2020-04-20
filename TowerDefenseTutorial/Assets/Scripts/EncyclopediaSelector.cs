@@ -16,6 +16,7 @@ public class EncyclopediaSelector : MonoBehaviour
     public Text explosionRadius;
     public Text damageOverTime;
     public Text slowRate;
+    public Text poison;
 
     void Start()
     {
@@ -45,6 +46,10 @@ public class EncyclopediaSelector : MonoBehaviour
             if (explosionRadius != null)
             {
                 explosionRadius.text = "Explosion Radius: " + t.bulletPrefab.GetComponent<Bullet>().explosionRadius;
+            }
+            if (poison != null)
+            {
+                poison.text = "Poison rate: " + t.bulletPrefab.GetComponent<Bullet>().poison;
             }
         }
     }
