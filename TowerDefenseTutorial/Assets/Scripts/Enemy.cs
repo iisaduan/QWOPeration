@@ -27,6 +27,8 @@ public class Enemy : MonoBehaviour
 
     private bool poisoned = false;
 
+    private bool dead = false;
+
     [Header("Unity Setup Fields")]
     public GameObject deathEffect;
 
@@ -41,7 +43,6 @@ public class Enemy : MonoBehaviour
     {
         speed = startSpeed;
         health = startHealth;
-        //StartCoroutine(SpawnMoreEnemies(this));
         
     }
 
@@ -63,8 +64,9 @@ public class Enemy : MonoBehaviour
 
         healthBar.fillAmount = health / startHealth;
 
-        if (health <= 0)
+        if (health <= 0 && !dead)
         {
+            dead = true;
             Die();
         }
 
