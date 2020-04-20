@@ -11,6 +11,8 @@ public class Bullet : MonoBehaviour
 
     public float explosionRadius = 0f;
 
+    public float poison = 0f;
+
     public Vector3 direction = new Vector3(0f, 0f, 0f);
 
     [Header("Unity Setup Fields")]
@@ -112,8 +114,15 @@ public class Bullet : MonoBehaviour
                 {
                     Damage(target);
                 }
+                
             }
         }
+        /*
+        if (poison > 0f)
+        {
+            //Enemy.PosionCoroutine(target.GetComponent<Enemy>(), poison);
+            StartCoroutine(Enemy.Poison(target.GetComponent<Enemy>(), poison));
+        }*/
 
         Destroy(gameObject);
 
@@ -148,7 +157,7 @@ public class Bullet : MonoBehaviour
 
         if (e != null)
         {
-            e.TakeDamage(damage);
+            e.TakeDamage(damage, poison);
         }
     }
 

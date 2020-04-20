@@ -19585,13 +19585,14 @@ RectTransform:
   - {fileID: 1865770149}
   - {fileID: 968287638}
   - {fileID: 1708658788}
+  - {fileID: 1654043524}
   m_Father: {fileID: 1144670841}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0.010009766, y: 178.1}
-  m_SizeDelta: {x: 0.020019531, y: 356.2}
+  m_AnchoredPosition: {x: 0.010009766, y: 209.8}
+  m_SizeDelta: {x: 0, y: 419.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1579756233
 MonoBehaviour:
@@ -19677,13 +19678,18 @@ MonoBehaviour:
     upgradedPrefab: {fileID: 6023657317434627651, guid: 22a7496c5f741419c88369bd80493fd9,
       type: 3}
     upgradeCost: 150
-  LaserBeamer:
-    prefab: {fileID: 3938958367377509677, guid: a76df4145861342fe9be8f978ca0690d,
+  laserBeamer:
+    prefab: {fileID: 0}
+    cost: 0
+    upgradedPrefab: {fileID: 0}
+    upgradeCost: 0
+  poisonTurret:
+    prefab: {fileID: 1210502274820510621, guid: 8516c079b3f964d10ae1576e5315ba83,
       type: 3}
-    cost: 350
-    upgradedPrefab: {fileID: 3938958367377509677, guid: 645bc3905f4ff4751bcca5cc88fd0ea3,
+    cost: 200
+    upgradedPrefab: {fileID: 1210502274820510621, guid: 8516c079b3f964d10ae1576e5315ba83,
       type: 3}
-    upgradeCost: 200
+    upgradeCost: 0
 --- !u!1001 &1598103683
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20780,6 +20786,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5846127194049893617, guid: 34eb9d4d9634248e99fa47fd67f262d7,
     type: 3}
   m_PrefabInstance: {fileID: 1649247447}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1654043524 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2786470378013008462, guid: 6d1edf80f20034c5bbee82e9af2f12b5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1806520771}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1659133548
 GameObject:
@@ -23244,6 +23256,135 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1798279596}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1806520771
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1579756232}
+    m_Modifications:
+    - target: {fileID: 2786470378013008460, guid: 6d1edf80f20034c5bbee82e9af2f12b5,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1579756236}
+    - target: {fileID: 2786470378013008460, guid: 6d1edf80f20034c5bbee82e9af2f12b5,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SelectPoisonTurret
+      objectReference: {fileID: 0}
+    - target: {fileID: 2786470378013008462, guid: 6d1edf80f20034c5bbee82e9af2f12b5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2786470378013008462, guid: 6d1edf80f20034c5bbee82e9af2f12b5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2786470378013008462, guid: 6d1edf80f20034c5bbee82e9af2f12b5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2786470378013008462, guid: 6d1edf80f20034c5bbee82e9af2f12b5,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2786470378013008462, guid: 6d1edf80f20034c5bbee82e9af2f12b5,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2786470378013008462, guid: 6d1edf80f20034c5bbee82e9af2f12b5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2786470378013008462, guid: 6d1edf80f20034c5bbee82e9af2f12b5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2786470378013008462, guid: 6d1edf80f20034c5bbee82e9af2f12b5,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2786470378013008462, guid: 6d1edf80f20034c5bbee82e9af2f12b5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2786470378013008462, guid: 6d1edf80f20034c5bbee82e9af2f12b5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2786470378013008462, guid: 6d1edf80f20034c5bbee82e9af2f12b5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2786470378013008462, guid: 6d1edf80f20034c5bbee82e9af2f12b5,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2786470378013008462, guid: 6d1edf80f20034c5bbee82e9af2f12b5,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2786470378013008462, guid: 6d1edf80f20034c5bbee82e9af2f12b5,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2786470378013008462, guid: 6d1edf80f20034c5bbee82e9af2f12b5,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2786470378013008462, guid: 6d1edf80f20034c5bbee82e9af2f12b5,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2786470378013008462, guid: 6d1edf80f20034c5bbee82e9af2f12b5,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2786470378013008462, guid: 6d1edf80f20034c5bbee82e9af2f12b5,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2786470378013008462, guid: 6d1edf80f20034c5bbee82e9af2f12b5,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2786470378013008462, guid: 6d1edf80f20034c5bbee82e9af2f12b5,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2786470378013008462, guid: 6d1edf80f20034c5bbee82e9af2f12b5,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2786470378013008463, guid: 6d1edf80f20034c5bbee82e9af2f12b5,
+        type: 3}
+      propertyPath: m_Name
+      value: PoisonTurretItem
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6d1edf80f20034c5bbee82e9af2f12b5, type: 3}
 --- !u!1001 &1817616543
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23655,13 +23796,16 @@ MonoBehaviour:
     upgradedPrefab: {fileID: 6023657317434627651, guid: 22a7496c5f741419c88369bd80493fd9,
       type: 3}
     upgradeCost: 150
-  LaserBeamer:
-    prefab: {fileID: 3938958367377509677, guid: a76df4145861342fe9be8f978ca0690d,
-      type: 3}
-    cost: 350
-    upgradedPrefab: {fileID: 3938958367377509677, guid: 645bc3905f4ff4751bcca5cc88fd0ea3,
-      type: 3}
-    upgradeCost: 200
+  laserBeamer:
+    prefab: {fileID: 0}
+    cost: 0
+    upgradedPrefab: {fileID: 0}
+    upgradeCost: 0
+  poisonTurret:
+    prefab: {fileID: 0}
+    cost: 0
+    upgradedPrefab: {fileID: 0}
+    upgradeCost: 0
 --- !u!114 &1847970254
 MonoBehaviour:
   m_ObjectHideFlags: 0

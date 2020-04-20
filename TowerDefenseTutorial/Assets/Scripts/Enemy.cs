@@ -25,6 +25,8 @@ public class Enemy : MonoBehaviour
 
     public bool missileLauncher = false;
 
+    private bool poisoned = false;
+
     [Header("Unity Setup Fields")]
     public GameObject deathEffect;
 
@@ -43,14 +45,6 @@ public class Enemy : MonoBehaviour
         
     }
 
-    IEnumerator Help()
-    {
-        Debug.Log("0 seconds");
-        yield return new WaitForSeconds(3f);
-        Debug.Log("3 seconds");
-    }
-
-
     /* TakeDamage(float damage)
      *
      * removes damage amount from health,
@@ -58,7 +52,7 @@ public class Enemy : MonoBehaviour
      * if enemy has 0 health, it  dies
      *
      */
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, float poison)
     {
         if (slowHealthAmt > 0f)
         {
@@ -72,6 +66,11 @@ public class Enemy : MonoBehaviour
         if (health <= 0)
         {
             Die();
+        }
+
+        if(!poisoned && poison > 0f)
+        {
+            StartCoroutine(Poison(this, poison));
         }
     }
 
@@ -152,6 +151,26 @@ public class Enemy : MonoBehaviour
             WaveSpawner.EnemiesAlive++;
 
             yield return new WaitForSeconds(.1f);
+        }
+    }
+
+    
+
+    public IEnumerator Poison(Enemy e, float poison)
+    {
+        // while enemy is alive
+        while (e.health > 0f)
+        {
+            // decrease health and update UI
+            health -= poison;
+            healthBar.fillAmount = health / startHealth;
+            // wait one second (slowly decreases health)
+            yield return new WaitForSeconds(1f);
+        }
+        // one health is 0, die
+        if (health <= 0)
+        {
+            Die();
         }
     }
 
