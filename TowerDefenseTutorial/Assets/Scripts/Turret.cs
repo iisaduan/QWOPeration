@@ -317,12 +317,6 @@ public class Turret : MonoBehaviour
     void Laser()
     {
         myaudio.Play();
-        /*
-        if (!play)
-        {
-            myaudio.Play();
-            play = true;
-        }*/
 
         targetEnemy.TakeDamage(damageOverTime * Time.deltaTime, 0f);
         targetEnemy.Slow(slowAmount);
