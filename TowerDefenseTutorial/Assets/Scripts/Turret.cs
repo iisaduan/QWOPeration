@@ -7,6 +7,7 @@ public class Turret : MonoBehaviour
 
     private Transform target;
     private Enemy targetEnemy;
+    private AudioSource myaudio;
 
     [Header("General")]
 
@@ -32,6 +33,8 @@ public class Turret : MonoBehaviour
     public ParticleSystem impactEffect;
     public Light impactLight;
 
+    private bool play = false;
+
     
 
     [Header("Unity Setup Fields")]
@@ -54,6 +57,7 @@ public class Turret : MonoBehaviour
         {
             InvokeRepeating("UpdateTarget", 0f, .5f);
         }
+        myaudio = GetComponent<AudioSource>();
     }
 
     /* UpdateTarget()
@@ -301,6 +305,7 @@ public class Turret : MonoBehaviour
 
         void LockOnTarget()
     {
+
         // weird vector math to make the turret rotate towards the enemy
         Vector3 dir = target.position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(dir);
@@ -311,6 +316,14 @@ public class Turret : MonoBehaviour
 
     void Laser()
     {
+        myaudio.Play();
+        /*
+        if (!play)
+        {
+            myaudio.Play();
+            play = true;
+        }*/
+
         targetEnemy.TakeDamage(damageOverTime * Time.deltaTime, 0f);
         targetEnemy.Slow(slowAmount);
         if (!lineRenderer.enabled)
@@ -344,6 +357,10 @@ public class Turret : MonoBehaviour
      */
     void Shoot()
     {
+        if (myaudio != null)
+        {
+            myaudio.Play();
+        }
         GameObject bulletGO = (GameObject) Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Bullet bullet = bulletGO.GetComponent<Bullet>();
         Destroy(bullet, 5f);

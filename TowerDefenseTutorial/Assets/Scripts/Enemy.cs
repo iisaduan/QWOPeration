@@ -131,12 +131,6 @@ public class Enemy : MonoBehaviour
      *
      * Spawns spawnNumber of enemies
      * 
-     * TODO: distance enemies when spawned?
-     *
-     * TODO: make sure all stats and level complete stuff are good?
-     *
-     * TODO: make coroutine work somehow idk
-     * 
      */
     static IEnumerator SpawnMoreEnemies(Enemy e)
     {
@@ -144,9 +138,11 @@ public class Enemy : MonoBehaviour
         for (int i = 0; i < e.spawnNumber; i++)
         {
             // spawn enemy
-            GameObject spawned = Instantiate(e.spawnPrefab, e.transform.position, e.transform.rotation);
+            GameObject spawned = Instantiate(e.spawnPrefab, e.transform.position,
+                e.transform.rotation);
             // make sure spawned enemy heads to correct waypoint
-            spawned.GetComponent<EnemyMovement>().SetWaypointIndex(e.GetComponent<EnemyMovement>().GetWaypointIndex());
+            spawned.GetComponent<EnemyMovement>().SetWaypointIndex(
+                e.GetComponent<EnemyMovement>().GetWaypointIndex());
             // update spawned enemies' distance
             spawned.GetComponent<Enemy>().distanceTraveled = e.distanceTraveled;
             // increase amount of enemies alive
