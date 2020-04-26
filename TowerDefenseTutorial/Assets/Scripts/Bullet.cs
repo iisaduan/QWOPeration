@@ -105,7 +105,7 @@ public class Bullet : MonoBehaviour
         }
         else
         {
-            if (!target.GetComponent<Enemy>().missileLauncher)
+            if (target.GetComponent<EnemyBlack>() == null)
             {
                 Damage(target);
             } else
@@ -157,7 +157,14 @@ public class Bullet : MonoBehaviour
 
         if (e != null)
         {
-            e.TakeDamage(damage, poison);
+            if (e.GetComponent<EnemyPink>() != null)
+            {
+                e.GetComponent<EnemyPink>().TakeDamage(damage, poison);
+            }
+            else
+            {
+                e.TakeDamage(damage, poison);
+            }
         }
     }
 

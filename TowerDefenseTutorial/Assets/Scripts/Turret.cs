@@ -121,7 +121,6 @@ public class Turret : MonoBehaviour
                 shortestDistance = enemyVar.distanceTraveled;
                 lastEnemy = enemyVar;
                 distanceToEnemy = distance;
-                Debug.Log("last");
             }
 
         }

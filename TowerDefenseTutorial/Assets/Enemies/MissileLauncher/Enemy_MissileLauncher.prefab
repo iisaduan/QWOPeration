@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1846076417086740868}
   - component: {fileID: 5575069318343750165}
   - component: {fileID: 5532807559125779510}
+  - component: {fileID: 114499362798281298}
   m_Layer: 0
   m_Name: Enemy_MissileLauncher
   m_TagString: Enemy
@@ -101,7 +102,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4157986411822915540}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c24121a3e6ea448ca940e9abbb438e8, type: 3}
   m_Name: 
@@ -113,8 +114,6 @@ MonoBehaviour:
   moneyGain: 50
   distanceTraveled: 0
   spawnNumber: 5
-  slowHealthAmt: 0
-  missileLauncher: 1
   deathEffect: {fileID: 2672428783498903459, guid: b32d91e5c2433427599f0ac1d660f408,
     type: 3}
   spawnPrefab: {fileID: 250325535878887741, guid: 141d767526c4b4107b37fe86ab44c054,
@@ -133,6 +132,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stop: 0
+--- !u!114 &114499362798281298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4157986411822915540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaae45c9870bf4feba0c0ce506ac5287, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startSpeed: 3
+  speed: 10
+  startHealth: 100
+  health: 0
+  moneyGain: 50
+  distanceTraveled: 0
+  spawnNumber: 5
+  deathEffect: {fileID: 709008278656985631, guid: 27fb631e489774476b8ae40ed6ffa091,
+    type: 3}
+  spawnPrefab: {fileID: 250325535878887741, guid: 141d767526c4b4107b37fe86ab44c054,
+    type: 3}
+  healthBar: {fileID: 5575069318778228674}
 --- !u!1 &5575069317604420818
 GameObject:
   m_ObjectHideFlags: 0

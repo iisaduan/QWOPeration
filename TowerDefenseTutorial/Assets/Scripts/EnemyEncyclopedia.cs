@@ -19,10 +19,10 @@ public class EnemyEncyclopedia : MonoBehaviour
         health.text = "Health: " + e.startHealth;
         money.text = "Money Gained: " + e.moneyGain;
 
-        if(e.slowHealthAmt > 0)
+        if(e.GetComponent<EnemyPink>() != null)
         {
             speed.text = "Start Speed: " + e.startSpeed;
-            spawnType.text = "Speed increase amount: " + e.slowHealthAmt;
+            spawnType.text = "Speed increase amount: " + e.GetComponent<EnemyPink>().slowHealthAmt;
         } else
         {
             speed.text = "Speed: " + e.startSpeed;

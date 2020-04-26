@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System;
 using System.Collections;
 
 public class Enemy : MonoBehaviour
@@ -16,14 +15,12 @@ public class Enemy : MonoBehaviour
     public float health;
 
     public int moneyGain = 50;
+
     // used for turret shooting logic (first/last)
+    [HideInInspector]
     public float distanceTraveled = 0;
 
     public int spawnNumber = 0;
-
-    public float slowHealthAmt = 0;
-
-    public bool missileLauncher = false;
 
     private bool poisoned = false;
 
@@ -46,6 +43,11 @@ public class Enemy : MonoBehaviour
         
     }
 
+    public void Update()
+    {
+        Debug.Log(speed);
+    }
+
     /* TakeDamage(float damage)
      *
      * removes damage amount from health,
@@ -53,13 +55,14 @@ public class Enemy : MonoBehaviour
      * if enemy has 0 health, it  dies
      *
      */
-    public void TakeDamage(float damage, float poison)
+    virtual public void TakeDamage(float damage, float poison)
     {
+        /*
         if (slowHealthAmt > 0f)
         {
             speed += damage * slowHealthAmt;
             startSpeed = speed;
-        }
+        }*/
         health -= damage;
 
         healthBar.fillAmount = health / startHealth;
