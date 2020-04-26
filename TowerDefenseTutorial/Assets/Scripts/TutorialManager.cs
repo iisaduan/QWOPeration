@@ -24,7 +24,6 @@ public class TutorialManager : MonoBehaviour
         endTutorial = false;
         popUps[0].SetActive(true);
         popUpIndex = 0;
-
     }
 
     /* NextClick()
@@ -34,6 +33,7 @@ public class TutorialManager : MonoBehaviour
      */
     public void NextClick()
     {
+        Debug.Log("pls");
         // if there is another  element in the list
         if (popUpIndex < popUps.Length - 1)
         {
@@ -43,7 +43,6 @@ public class TutorialManager : MonoBehaviour
             popUpIndex += 1;
             // set new popUp to active
             popUps[popUpIndex].SetActive(true);
-            Debug.Log(popUpIndex);
 
 
         }
