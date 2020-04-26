@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,8 +11,10 @@ public class RoundsSurvived : MonoBehaviour
         StartCoroutine(AnimateText());
     }
 
-    /*
+    /* AnimateTest
+     * 
      * a coroutine that counts up from 0 to the number of rounds the user has survived
+     * 
      */
     IEnumerator AnimateText()
     {

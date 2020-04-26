@@ -10,6 +10,7 @@ public class EnemyMovement : MonoBehaviour
 
     private Enemy enemy;
 
+    // stop is used for spawning coroutine
     public bool stop;
 
 
@@ -81,7 +82,6 @@ public class EnemyMovement : MonoBehaviour
     /* EndPath()
      *
      * decreaes player lives and destroys enemy game object
-     *
      *
      */
     void EndPath()

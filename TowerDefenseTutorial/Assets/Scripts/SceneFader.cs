@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -14,16 +13,20 @@ public class SceneFader : MonoBehaviour
         StartCoroutine(FadeIn());
     }
 
-    /*
+    /* FadeTo
+     * 
      * transition to new scene
+     * 
      */
     public void FadeTo(string scene)
     {
         StartCoroutine(FadeOut(scene));
     }
 
-    /*
-     * FadeIn() fades from a scene to black
+    /* FadeIn()
+     *
+     * fades from a scene to black
+     * 
      */
     IEnumerator FadeIn()
     {
@@ -45,7 +48,8 @@ public class SceneFader : MonoBehaviour
     }
 
 
-    /*
+    /* FadeOut
+     * 
      * Fade out from black
      */
     IEnumerator FadeOut(string scene)

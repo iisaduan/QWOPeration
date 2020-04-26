@@ -1,17 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿
 public class EnemyPink : Enemy
 {
     public float slowHealthAmt = 0;
 
-    // Start is called before the first frame update
+    /* TakeDamage
+     *
+     * increases enemy speed when damage is taken
+     *
+     */
     override public void TakeDamage(float damage, float poison)
     {
+        // increase enemy speed
         base.speed += damage * slowHealthAmt;
         base.startSpeed = speed;
-        //Debug.Log(base.speed);
+        // call base's (enemy's) TakeDamage method
         base.TakeDamage(damage, poison);
     }
 }

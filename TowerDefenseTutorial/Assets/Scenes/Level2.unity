@@ -2716,7 +2716,7 @@ GameObject:
   - component: {fileID: 235685011}
   - component: {fileID: 235685010}
   m_Layer: 0
-  m_Name: Menu
+  m_Name: LevelSelect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5434,7 +5434,6 @@ MonoBehaviour:
   panSpeed: 50
   panBoarderThickness: 10
   scrollSpeed: 5
-  newPosition: {x: 0, y: 0, z: 0}
   rotationAmount: 1
   newRotation: {x: 0, y: 0, z: 0, w: 1}
   minY: 10
@@ -7168,7 +7167,6 @@ MonoBehaviour:
   panSpeed: 50
   panBoarderThickness: 10
   scrollSpeed: 5
-  newPosition: {x: 0, y: 0, z: 0}
   rotationAmount: 1
   newRotation: {x: 0, y: 0, z: 0, w: 1}
   minY: 10
@@ -11763,7 +11761,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: a0cddf5d1b98943fba61089f6fc9ad58, type: 3}
     m_FontSize: 35
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 0
     m_MaxSize: 50
     m_Alignment: 4
@@ -11772,7 +11770,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: MENU
+  m_Text: LEVEL SELECT
 --- !u!222 &896334180
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -17754,7 +17752,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: MENU
+  m_Text: LEVEL SELECT
 --- !u!222 &1455265747
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -23890,7 +23888,6 @@ MonoBehaviour:
   panSpeed: 30
   panBoarderThickness: 10
   scrollSpeed: 5
-  newPosition: {x: 0, y: 0, z: 0}
   rotationAmount: 1
   newRotation: {x: 0, y: 0, z: 0, w: 1}
   minY: -55

@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,8 +6,9 @@ public class EnemiesKilled : MonoBehaviour
 {
     public Text enemiesKilled;
 
-    /*
-     * DictionaryToString is a helper method that converts a dictionary storing
+    /* DictionaryToString
+     * 
+     * helper method that converts a dictionary string
      * strings as keys and ints as values to an output string that will be
      * displayed on the GameOver screen
      */

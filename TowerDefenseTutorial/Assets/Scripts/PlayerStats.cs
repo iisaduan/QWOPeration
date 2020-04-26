@@ -1,5 +1,4 @@
-﻿ using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
@@ -18,8 +17,6 @@ public class PlayerStats : MonoBehaviour
 
     // a dictionary storing the types of towers and number of each tower the player has built
     public static Dictionary<string, int> turretsBuilt = new Dictionary<string, int>();
-
-    // TODO: add any other player attributes here
 
     /* Start() - called at beginning of game
      *

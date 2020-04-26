@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿
 
 public class EnemyBlack : Enemy
 {
-
+    // no info needed here - used in other classes
 }

@@ -1,5 +1,4 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
@@ -7,8 +6,6 @@ public class CameraController : MonoBehaviour
     public float panSpeed = 30f;
     public float panBoarderThickness = 10f;
     public float scrollSpeed = 5f;
-
-    public Vector3 newPosition;
 
     public float rotationAmount = 1;
     public Quaternion newRotation = Quaternion.identity;
@@ -21,16 +18,19 @@ public class CameraController : MonoBehaviour
     public float minZ = -32f;
     public float maxZ = 64f;
 
-    
+    /* Start
+     *
+     * sets default values
+     *
+     */
     void Start()
     {
-        newPosition = transform.position;
         newRotation = transform.rotation;
     }
 
     /* Update() - executes every frame
      *
-     * controls left/right/up/down movement and scrolling
+     * calls WASD, zoom, rotation, and clamping
      *
      */
     void Update()
@@ -42,7 +42,7 @@ public class CameraController : MonoBehaviour
             return;
         }
 
-        ASDWControls();
+        WASDControls();
 
         ZoomControls();
 
@@ -51,14 +51,14 @@ public class CameraController : MonoBehaviour
         ClampControl();
     }
 
-    /* ASDWControls() 
+    /* WASDControls() 
      *
-     * controls asdw movement with asdw keys
+     * controls wasd movement with asdw keys and arrowkeys
      *
-     * also will pan if near edge of screewn
+     * also will pan if near edge of screen
      * 
      */
-    void ASDWControls()
+    void WASDControls()
     {
         // move up
         if (Input.GetKey("w") || Input.GetKey(KeyCode.UpArrow) || Input.mousePosition.y >= Screen.height - panBoarderThickness)
@@ -84,8 +84,6 @@ public class CameraController : MonoBehaviour
             transform.Translate(Vector3.left * panSpeed * Time.deltaTime, Space.Self);
         }
 
-        
-
     }
 
     /* ZoomControls()
@@ -105,8 +103,14 @@ public class CameraController : MonoBehaviour
 
     }
 
-    // TODO: figure out how to make camera rotate better - I'm not super into it
-    
+
+    /* RotationControls
+     *
+     * Rotates using Q and R keys
+     *
+     * controls are not the best - could be improved with this method maybe
+     *
+     */
     void RotationControls()
     {
         if (Input.GetKey(KeyCode.R))
@@ -118,7 +122,7 @@ public class CameraController : MonoBehaviour
         {
             newRotation *= Quaternion.Euler(new Vector3(0, 1, -1) * rotationAmount);
         }
-
+        // allows for smoother transition
         transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, Time.deltaTime * panSpeed);
 
     }
@@ -126,7 +130,6 @@ public class CameraController : MonoBehaviour
     /* ClampControl()
      *
      * sets edge bounds for how user can move camera
-     *
      *
      */
     void ClampControl()

@@ -1,6 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
+
+// probably could be derived from EnemyMovement
 
 [RequireComponent(typeof(EnemyPink))]
 public class EnemyMovementPink : MonoBehaviour

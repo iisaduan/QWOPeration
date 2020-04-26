@@ -9,17 +9,27 @@ public class GameOver : MonoBehaviour
 
     public SceneFader sceneFader;
 
-    /*
-     * Reset() resets the statistics once the game is over
+
+    /* Reset()
+     *
+     * resets the statistics once the game is over
+     * 
      */
     public void Reset()
     {
-        WaveSpawner.EnemiesAlive = 0; // set the number of alive enemies to zero to reset the wave spawner
-        PlayerStats.enemiesKilled.Clear(); // reset the stat keeping track of the enemies killed
-        PlayerStats.turretsBuilt.Clear(); // reset the stat keeping track of the towers built
+        // set the number of alive enemies to zero to reset the wave spawner
+        WaveSpawner.EnemiesAlive = 0;
+        // reset the stat keeping track of the enemies killed
+        PlayerStats.enemiesKilled.Clear();
+        // reset the stat keeping track of the towers built
+        PlayerStats.turretsBuilt.Clear(); 
     }
 
-    // Retry() reloads the level
+    /* Retry()
+     * 
+     * reloads the level
+     * 
+     */
     public void ReTry()
     {
         Reset();
@@ -27,9 +37,14 @@ public class GameOver : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    /* Menu
+     *
+     * loads level select
+     *
+     */
     public void Menu()
     {
         Reset();
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("LevelSelect");
     }
 }

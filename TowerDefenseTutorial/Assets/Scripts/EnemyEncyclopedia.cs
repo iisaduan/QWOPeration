@@ -19,6 +19,7 @@ public class EnemyEncyclopedia : MonoBehaviour
         health.text = "Health: " + e.startHealth;
         money.text = "Money Gained: " + e.moneyGain;
 
+        // if pink enemy display other speed info
         if(e.GetComponent<EnemyPink>() != null)
         {
             speed.text = "Start Speed: " + e.startSpeed;

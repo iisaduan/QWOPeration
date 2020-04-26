@@ -1,12 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 
-public class EncyclopediaSelector : MonoBehaviour
+public class TurretEncyclopedia : MonoBehaviour
 {
-    // Start is called before the first frame update
 
     public GameObject g;
     Turret t;
@@ -18,9 +15,16 @@ public class EncyclopediaSelector : MonoBehaviour
     public Text slowRate;
     public Text poison;
 
+
+    /* Start
+     *
+     * sets a bunch of text
+     *
+     */
     void Start()
     {
         t = g.GetComponent<Turret>();
+        // if laser turret - set text accordingly 
         if (t.useLaser)
         {
             damageOverTime.text = "Damage Over Time: " + t.damageOverTime;
@@ -31,6 +35,7 @@ public class EncyclopediaSelector : MonoBehaviour
         {
             range.text = "Range: " + t.range;
             damage.text = "Damage: " + t.bulletPrefab.GetComponent<Bullet>().damage;
+            // sets fire rate
             if (fireRate != null)
             {
                 if (t.fireRate == 1)
@@ -43,20 +48,16 @@ public class EncyclopediaSelector : MonoBehaviour
                     fireRate.text = "Fire Rate: " + t.fireRate + " bullets per second";
                 }
             }
+            // if missile launcher
             if (explosionRadius != null)
             {
                 explosionRadius.text = "Explosion Radius: " + t.bulletPrefab.GetComponent<Bullet>().explosionRadius;
             }
+            // if poison turret
             if (poison != null)
             {
                 poison.text = "Poison rate: " + t.bulletPrefab.GetComponent<Bullet>().poison;
             }
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

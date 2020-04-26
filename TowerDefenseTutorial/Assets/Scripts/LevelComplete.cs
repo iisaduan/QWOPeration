@@ -1,15 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
 public class LevelComplete : MonoBehaviour
 {
 
-
-    /*
-    * Reset() resets the statistics once the game is over
+   /* Reset()
+    *
+    * resets the statistics once the game is over
+    * 
     */
     public void Reset()
     {
@@ -18,13 +17,18 @@ public class LevelComplete : MonoBehaviour
         PlayerStats.turretsBuilt.Clear(); // reset the stat keeping track of the towers built
     }
 
-    // Retry() reloads the level
+    /* Retry
+     *
+     * reloads the level
+     *
+     */
     public void Retry()
     {
         Reset();
         //loads the currently active scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
 
     public void Menu()
     {
@@ -41,6 +45,17 @@ public class LevelComplete : MonoBehaviour
         // build index should be configured so that the next level will be at an
         // index above the current level
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+
+        /*
+        Scene scene = SceneManager.GetSceneByBuildIndex(SceneManager.GetActiveScene().buildIndex + 1);
+        if (scene.name.Contains("Level") && !scene.name.Equals("LevelSelector"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }*/
+
+
+
     }
 
 

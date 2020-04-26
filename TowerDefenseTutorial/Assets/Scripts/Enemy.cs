@@ -36,6 +36,11 @@ public class Enemy : MonoBehaviour
 
     // Note: movement aspeccts of the enemy moved into EnemyMovement Script
 
+    /* Start()
+     *
+     * sets speed and health to start values
+     *
+     */
     public void Start()
     {
         speed = startSpeed;
@@ -43,26 +48,17 @@ public class Enemy : MonoBehaviour
         
     }
 
-    public void Update()
-    {
-        Debug.Log(speed);
-    }
-
-    /* TakeDamage(float damage)
+    /* TakeDamage(float damage, float poison)
      *
      * removes damage amount from health,
+     *
+     * if enemy hasn't been poisoned, poison > 0, enemy is poisoned
      *
      * if enemy has 0 health, it  dies
      *
      */
     virtual public void TakeDamage(float damage, float poison)
     {
-        /*
-        if (slowHealthAmt > 0f)
-        {
-            speed += damage * slowHealthAmt;
-            startSpeed = speed;
-        }*/
         health -= damage;
 
         healthBar.fillAmount = health / startHealth;
@@ -110,6 +106,7 @@ public class Enemy : MonoBehaviour
             PlayerStats.enemiesKilled[gameObject.transform.name] += 1;
         }
 
+        // starts coroutine for spawning enemies
         if(spawnNumber > 0)
         {
             StartCoroutine(SpawnMoreEnemies(this));
@@ -117,7 +114,7 @@ public class Enemy : MonoBehaviour
         }
         
 
-
+        // death effect spawns
         GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(effect, 5f);
 
@@ -156,7 +153,11 @@ public class Enemy : MonoBehaviour
     }
 
     
-
+    /* Poison(Enemy e, float poison
+     *
+     * coroutine that poisons e a poison amount every second
+     *
+     */
     public IEnumerator Poison(Enemy e, float poison)
     {
         // while enemy is alive

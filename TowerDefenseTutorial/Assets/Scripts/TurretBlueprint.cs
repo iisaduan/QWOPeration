@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 // this line needs to be here
 [System.Serializable]
@@ -13,7 +11,6 @@ public class TurretBlueprint
     public int upgradeCost;
 
 
-    // TODO: get a better sell amount (takes upgrades into account)
     public int GetSellAmount()
     {
         return cost / 2;
@@ -24,5 +21,4 @@ public class TurretBlueprint
         return (cost + upgradeCost) / 2;
     }
 
-    // TODO: add info about turrets, etc here
 }

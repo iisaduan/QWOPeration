@@ -6,16 +6,24 @@ public class PauseMenu : MonoBehaviour
     public GameObject ui;
     public SceneFader sceneFader;
 
-
+    /* Update
+     *
+     * toggles pause menu when user presses escape or P
+     *
+     */
     void Update()
     {
-        // shows pause menu when user presses escape or P
         if(Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
         {
             Toggle();
         }
     }
 
+    /* Toggle()
+     *
+     * toggles pause menu (if paused, unpauses, and vice versa)
+     *
+     */
     public void Toggle()
     {
         ui.SetActive(!ui.activeSelf);
@@ -31,8 +39,10 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
-    /*
-    * Reset() resets the statistics if the player wishes to end the game
+   /* Reset()
+    *
+    * resets the statistics if the player wishes to end the game
+    * 
     */
     public void Reset()
     {
@@ -42,6 +52,11 @@ public class PauseMenu : MonoBehaviour
         PlayerStats.turretsBuilt.Clear(); // reset the stat keeping track of the towers built
     }
 
+    /* Retry()
+     *
+     * level restarts
+     *
+     */
     public void Retry()
     {
         Reset();
@@ -51,9 +66,14 @@ public class PauseMenu : MonoBehaviour
         PlayerStats.turretsBuilt.Clear(); // reset the stat keeping track of the towers built
     }
 
+    /* Menu
+     *
+     * loads level select
+     *
+     */
     public void Menu()
     {
         Reset();
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("LevelSelect");
     }
 }

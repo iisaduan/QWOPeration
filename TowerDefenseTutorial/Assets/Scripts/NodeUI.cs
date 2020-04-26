@@ -21,9 +21,11 @@ public class NodeUI : MonoBehaviour
     }
 
 
-    /*
+    /* SetTarget
+     * 
      * Sets the node above which the upgrade/sell buttons should hover
      * Makes the buttons appear
+     * 
      */
     public void SetTarget(Node _target)
     {
@@ -59,18 +61,35 @@ public class NodeUI : MonoBehaviour
         ui.SetActive(false);
     }
 
+    /* Upgrade
+     *
+     * upgrades turret and deselects node
+     *
+     */
     public void Upgrade()
     {
         target.UpgradeTurret();
         BuildManager.instance.DeselectNode(); // close the menu after upgrading
     }
 
+    /* Sell
+     *
+     * sells turret and deselects node
+     *
+     */
     public void Sell()
     {
         target.SellTurret();
         BuildManager.instance.DeselectNode();
     }
 
+    /* ChangeShootType
+     *
+     * changes turret's shoot type
+     *
+     * first -> last -> mostHealth -> closest
+     *
+     */
     public void ChangeShootType()
     {
         Debug.Log("changing type");
