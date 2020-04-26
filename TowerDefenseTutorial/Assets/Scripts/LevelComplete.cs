@@ -29,7 +29,7 @@ public class LevelComplete : MonoBehaviour
     public void Menu()
     {
         Reset();
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("LevelSelect");
     }
 
     /*

@@ -6539,7 +6539,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: MENU
+  m_Text: LEVEL SELECT
 --- !u!222 &504921324
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -19849,10 +19849,10 @@ MonoBehaviour:
   goldTower:
     prefab: {fileID: 3554581249071542795, guid: 37530539e45784ac899b4a713c40ffd9,
       type: 3}
-    cost: 0
+    cost: 50
     upgradedPrefab: {fileID: 268826906006739900, guid: c8fd4a4012d2142e0ac006abce48f45c,
       type: 3}
-    upgradeCost: 0
+    upgradeCost: 50
 --- !u!1 &1582378242
 GameObject:
   m_ObjectHideFlags: 0

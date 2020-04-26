@@ -51,9 +51,15 @@ public class Shop : MonoBehaviour
 
     public void SelectPoisonTurret()
     {
+        Debug.Log("Poison Tower Selected");
+        buildManager.SelectTurretToBuild(poisonTurret);
+    }
+
+    public void SelectGoldTower()
+    {
         Debug.Log("Gold Tower Selected");
         buildManager.SelectTurretToBuild(goldTower);
     }
 
-    
+
 }
