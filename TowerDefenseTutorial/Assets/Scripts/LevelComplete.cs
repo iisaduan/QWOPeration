@@ -46,16 +46,6 @@ public class LevelComplete : MonoBehaviour
         // index above the current level
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
-
-        /*
-        Scene scene = SceneManager.GetSceneByBuildIndex(SceneManager.GetActiveScene().buildIndex + 1);
-        if (scene.name.Contains("Level") && !scene.name.Equals("LevelSelector"))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        }*/
-
-
-
     }
 
 

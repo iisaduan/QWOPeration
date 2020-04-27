@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4630789604601779793}
   - component: {fileID: 2788479296569495214}
+  - component: {fileID: 114486810049295434}
   m_Layer: 0
   m_Name: Missile
   m_TagString: Untagged
@@ -39,16 +40,34 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 485393640925158601}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 14853a3cae20744af9c42b23898b17ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 30
   damage: 100
-  explosionRadius: 8
+  poison: 0
   impactEffect: {fileID: 368811607489970115, guid: 9cbf74ba69057441080967f047ac29f3,
     type: 3}
+--- !u!114 &114486810049295434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 485393640925158601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc72fdc5b04274b33907d9e6f16dcb2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 30
+  damage: 100
+  poison: 0
+  impactEffect: {fileID: 368811607489970115, guid: 9cbf74ba69057441080967f047ac29f3,
+    type: 3}
+  explosionRadius: 8
 --- !u!1 &9086249581804739005
 GameObject:
   m_ObjectHideFlags: 0

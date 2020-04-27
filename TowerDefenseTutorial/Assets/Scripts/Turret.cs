@@ -20,7 +20,6 @@ public class Turret : MonoBehaviour
     public GameObject bulletPrefab;
     public float fireRate = 1f;
     private float fireCountdown = 0f;
-    public bool straightShooter = false;
 
     [Header("Use Laser")]
     public bool useLaser = false;
@@ -241,8 +240,6 @@ public class Turret : MonoBehaviour
         {
             target = null;
         }
-
-    
     }
 
     /* Update() -  called once per frame
@@ -292,7 +289,6 @@ public class Turret : MonoBehaviour
 
         void LockOnTarget()
     {
-
         // weird vector math to make the turret rotate towards the enemy
         Vector3 dir = target.position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(dir);
@@ -344,20 +340,19 @@ public class Turret : MonoBehaviour
         }
         GameObject bulletGO = (GameObject) Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Bullet bullet = bulletGO.GetComponent<Bullet>();
+        Missile missile = bulletGO.GetComponent<Missile>();
         Destroy(bullet, 5f);
+        Destroy(missile, 5f);
         if (bullet != null)
         {
             bullet.Seek(target);
             
         }
-
-        // TODO: fix this bug - this  lines doesn't work  for some reason
-        
-        if (straightShooter)
+        if (missile != null)
         {
-            bullet.SetDirection(bullet.transform.position, target.transform.position);
+            missile.Seek(target);
+
         }
-        
     }
 
     /* OnDrawGizmosSelected()

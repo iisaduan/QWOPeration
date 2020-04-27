@@ -51,7 +51,7 @@ public class TurretEncyclopedia : MonoBehaviour
             // if missile launcher
             if (explosionRadius != null)
             {
-                explosionRadius.text = "Explosion Radius: " + t.bulletPrefab.GetComponent<Bullet>().explosionRadius;
+                explosionRadius.text = "Explosion Radius: " + t.bulletPrefab.GetComponent<Missile>().explosionRadius;
             }
             // if poison turret
             if (poison != null)
