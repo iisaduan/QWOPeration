@@ -24,12 +24,14 @@ public class TurretEncyclopedia : MonoBehaviour
     void Start()
     {
         t = g.GetComponent<Turret>();
-        // if laser turret - set text accordingly 
-        if (t.useLaser)
+        // if laser turret - set text accordingly
+        LaserBeamer l = g.GetComponent<LaserBeamer>();
+        if (l != null)
         {
-            damageOverTime.text = "Damage Over Time: " + t.damageOverTime;
-            slowRate.text = "Slow Rate: " + t.slowAmount;
-            range.text = "Range: " + t.range;
+
+            damageOverTime.text = "Damage Over Time: " + l.damageOverTime;
+            slowRate.text = "Slow Rate: " + l.slowAmount;
+            range.text = "Range: " + l.range;
         }
         else
         {

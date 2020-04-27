@@ -4,9 +4,9 @@ public class Turret : MonoBehaviour
 {
 
 
-    private Transform target;
-    private Enemy targetEnemy;
-    private AudioSource myaudio;
+    protected Transform target;
+    protected Enemy targetEnemy;
+    
 
     [Header("General")]
 
@@ -20,6 +20,7 @@ public class Turret : MonoBehaviour
     public float fireRate = 1f;
     private float fireCountdown = 0f;
 
+    /*
     [Header("Use Laser")]
     public bool useLaser = false;
 
@@ -28,7 +29,7 @@ public class Turret : MonoBehaviour
 
     public LineRenderer lineRenderer;
     public ParticleSystem impactEffect;
-    public Light impactLight;
+    public Light impactLight;*/
 
     // private bool play = false;
 
@@ -48,10 +49,10 @@ public class Turret : MonoBehaviour
      * makes  target update twice every second
      *
      */
-    void Start()
+    virtual public void Start()
     {
         InvokeRepeating("UpdateTarget", 0f, .5f);
-        myaudio = GetComponent<AudioSource>();
+        
     }
 
     /* UpdateTarget()
@@ -248,10 +249,11 @@ public class Turret : MonoBehaviour
      * determines when to shoot
      *
      */
-    void Update()
+    virtual public void Update()
     {
         UpdateTarget();
         // if  there is no target - do nothing
+        /*
         if (target == null)
         {
             if (useLaser)
@@ -265,14 +267,14 @@ public class Turret : MonoBehaviour
                 }
             }
             return;
-        }
+        }*/
         LockOnTarget();
-
+        /*
         if (useLaser)
         {
             Laser();
         } else
-        {
+        {*/
             // determines if/ when to shoot
             if (fireCountdown <= 0f)
             {
@@ -281,12 +283,10 @@ public class Turret : MonoBehaviour
             }
 
             fireCountdown -= Time.deltaTime;
-
-            //
-        }
+        //}
     }
 
-        void LockOnTarget()
+    public void LockOnTarget()
     {
         // weird vector math to make the turret rotate towards the enemy
         Vector3 dir = target.position - transform.position;
@@ -296,36 +296,7 @@ public class Turret : MonoBehaviour
 
     }
 
-    void Laser()
-    {
-        myaudio.Play();
 
-        targetEnemy.TakeDamage(damageOverTime * Time.deltaTime, 0f);
-        targetEnemy.Slow(slowAmount);
-        if (!lineRenderer.enabled)
-        {
-            lineRenderer.enabled = true;
-            impactEffect.Play();
-            impactLight.enabled = true;
-
-        }
-        // sets the first point on the line rendered as the firepoint
-        lineRenderer.SetPosition(0, firePoint.position);
-
-        // sets the second point on the line rendered as the enemy
-        lineRenderer.SetPosition(1, target.position);
-
-
-        Vector3 dir = firePoint.position - target.position;
-
-        // sets the laser in the proper rotation and position
-        impactEffect.transform.position = target.position + dir.normalized;
-        impactEffect.transform.rotation = Quaternion.LookRotation(dir);
-        
-
-
-
-    }
     /* Shoot()
      *
      * shoots a bullet towards target
@@ -333,10 +304,11 @@ public class Turret : MonoBehaviour
      */
     void Shoot()
     {
+        /*
         if (myaudio != null)
         {
             myaudio.Play();
-        }
+        }*/
         GameObject bulletGO = (GameObject) Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         // kind of annoying - havce to do this for every GO soooo
         Bullet bullet = bulletGO.GetComponent<Bullet>();

@@ -9636,6 +9636,7 @@ GameObject:
   - component: {fileID: 1345552977901783348}
   - component: {fileID: 3855002583308883900}
   - component: {fileID: 82482748868357474}
+  - component: {fileID: 1165360190}
   m_Layer: 0
   m_Name: LaserBeamer_Upgraded
   m_TagString: Untagged
@@ -9667,23 +9668,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3938958367377509677}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 663bd30d779714d3ebbdca281a3f7646, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   range: 30
   shootType: 3
-  gold: 0
   bulletPrefab: {fileID: 0}
   fireRate: 1
-  straightShooter: 0
-  useLaser: 1
-  damageOverTime: 40
-  slowAmount: 0.8
-  lineRenderer: {fileID: 3855002583308883900}
-  impactEffect: {fileID: 1146275558344068077}
-  impactLight: {fileID: 1110343465326886372}
   enemyTag: Enemy
   partToRotate: {fileID: 8145894722693214378}
   turnSpeed: 10
@@ -9879,6 +9872,31 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1165360190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3938958367377509677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4de1fd4c8aa8b40d7b33ce65cc5adc77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 30
+  shootType: 3
+  bulletPrefab: {fileID: 0}
+  fireRate: 1
+  enemyTag: Enemy
+  partToRotate: {fileID: 8145894722693214378}
+  turnSpeed: 10
+  firePoint: {fileID: 9090669499163366235}
+  damageOverTime: 40
+  slowAmount: 0.7
+  lineRenderer: {fileID: 3855002583308883900}
+  impactEffect: {fileID: 1146275558344068077}
+  impactLight: {fileID: 1110343465326886372}
 --- !u!1 &6233577331872022029
 GameObject:
   m_ObjectHideFlags: 0
