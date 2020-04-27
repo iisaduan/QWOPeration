@@ -3,37 +3,14 @@
 public class Turret : MonoBehaviour
 {
 
-
     protected Transform target;
     protected Enemy targetEnemy;
-    
 
     [Header("General")]
 
     public float range = 15f;
 
     public ShootType shootType = ShootType.Closest;
-
-    [Header("Use Bullets")]
-
-    public GameObject bulletPrefab;
-    public float fireRate = 1f;
-    private float fireCountdown = 0f;
-
-    /*
-    [Header("Use Laser")]
-    public bool useLaser = false;
-
-    public int damageOverTime = 50;
-    public float slowAmount = 0.5f;
-
-    public LineRenderer lineRenderer;
-    public ParticleSystem impactEffect;
-    public Light impactLight;*/
-
-    // private bool play = false;
-
-    
 
     [Header("Unity Setup Fields")]
 
@@ -42,18 +19,19 @@ public class Turret : MonoBehaviour
     public float turnSpeed = 10f;
 
     public Transform firePoint;
-    
+
 
     /* Start()
      *
-     * makes  target update twice every second
+     * makes target update twice every second
      *
      */
     virtual public void Start()
     {
         InvokeRepeating("UpdateTarget", 0f, .5f);
-        
+
     }
+
 
     /* UpdateTarget()
      *
@@ -86,6 +64,7 @@ public class Turret : MonoBehaviour
             ShootLast();
         }
     }
+
 
     /* ShootLast()
      *
@@ -128,6 +107,7 @@ public class Turret : MonoBehaviour
         }
     }
 
+
     /* ShootFirst()
      *
      * sets target to be the first enemy in range (closest to end)
@@ -167,6 +147,7 @@ public class Turret : MonoBehaviour
         }
     }
 
+
     /* ShootClose()
      *
      * sets target to be the closest enemy in range
@@ -202,6 +183,7 @@ public class Turret : MonoBehaviour
             target = null;
         }
     }
+
 
     /* ShootMostHealth()
      *
@@ -242,6 +224,7 @@ public class Turret : MonoBehaviour
         }
     }
 
+
     /* Update() -  called once per frame
      *
      * makes turret rotate towards target
@@ -252,40 +235,16 @@ public class Turret : MonoBehaviour
     virtual public void Update()
     {
         UpdateTarget();
-        // if  there is no target - do nothing
-        /*
-        if (target == null)
-        {
-            if (useLaser)
-            {
-                if (lineRenderer.enabled)
-                {
-                    // turns off the laser once out of range
-                    impactLight.enabled = false;
-                    lineRenderer.enabled = false;
-                    impactEffect.Stop();
-                }
-            }
-            return;
-        }*/
-        LockOnTarget();
-        /*
-        if (useLaser)
-        {
-            Laser();
-        } else
-        {*/
-            // determines if/ when to shoot
-            if (fireCountdown <= 0f)
-            {
-                Shoot();
-                fireCountdown = 1f / fireRate;
-            }
 
-            fireCountdown -= Time.deltaTime;
-        //}
+        LockOnTarget();
     }
 
+
+    /* LockOnTarget()
+     *
+     * positions turret so it is facing target
+     *
+     */
     public void LockOnTarget()
     {
         // weird vector math to make the turret rotate towards the enemy
@@ -296,42 +255,6 @@ public class Turret : MonoBehaviour
 
     }
 
-
-    /* Shoot()
-     *
-     * shoots a bullet towards target
-     *
-     */
-    void Shoot()
-    {
-        /*
-        if (myaudio != null)
-        {
-            myaudio.Play();
-        }*/
-        GameObject bulletGO = (GameObject) Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        // kind of annoying - havce to do this for every GO soooo
-        Bullet bullet = bulletGO.GetComponent<Bullet>();
-        Missile missile = bulletGO.GetComponent<Missile>();
-        PoisonBullet poisBullet = bulletGO.GetComponent<PoisonBullet>();
-        Destroy(bullet, 5f);
-        Destroy(missile, 5f);
-        Destroy(poisBullet, 5f);
-        if (bullet != null)
-        {
-            bullet.Seek(target);
-            
-        }
-        if (missile != null)
-        {
-            missile.Seek(target);
-
-        }
-        if (poisBullet != null)
-        {
-            poisBullet.Seek(target);
-        }
-    }
 
     /* OnDrawGizmosSelected()
      *

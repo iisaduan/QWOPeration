@@ -12,12 +12,24 @@ public class LaserBeamer : Turret
 
     private AudioSource myaudio;
 
+
+    /* Start()
+     *
+     * calls base Start and sets myaudio to audio component
+     *
+     */
     public override void Start()
     {
         base.Start();
         myaudio = GetComponent<AudioSource>();
     }
 
+
+    /* Update()
+     *
+     * Updates and lock on target, determines (and controls) when laser is on/off
+     *
+     */
     override public void Update()
     {
         base.UpdateTarget();
@@ -33,12 +45,17 @@ public class LaserBeamer : Turret
             }
             return;
         }
+        // if there is a target - lock on and laser
         base.LockOnTarget();
-
         Laser();
-
     }
 
+
+    /* Laser()
+     *
+     * turns on and updates the laser and all its elements
+     *
+     */
     void Laser()
     {
         myaudio.Play();
@@ -58,15 +75,10 @@ public class LaserBeamer : Turret
         // sets the second point on the line rendered as the enemy
         lineRenderer.SetPosition(1, target.position);
 
-
         Vector3 dir = firePoint.position - target.position;
 
         // sets the laser in the proper rotation and position
         impactEffect.transform.position = target.position + dir.normalized;
         impactEffect.transform.rotation = Quaternion.LookRotation(dir);
-
-
-
-
     }
 }

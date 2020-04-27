@@ -35,30 +35,31 @@ public class TurretEncyclopedia : MonoBehaviour
         }
         else
         {
-            range.text = "Range: " + t.range;
-            damage.text = "Damage: " + t.bulletPrefab.GetComponent<Bullet>().damage;
+            StandardTurret s = g.GetComponent<StandardTurret>();
+            range.text = "Range: " + s.range;
+            damage.text = "Damage: " + s.bulletPrefab.GetComponent<Bullet>().damage;
             // sets fire rate
             if (fireRate != null)
             {
-                if (t.fireRate == 1)
+                if (s.fireRate == 1)
                 {
-                    fireRate.text = "Fire Rate: " + t.fireRate + " bullet per second";
+                    fireRate.text = "Fire Rate: " + s.fireRate + " bullet per second";
 
                 }
                 else
                 {
-                    fireRate.text = "Fire Rate: " + t.fireRate + " bullets per second";
+                    fireRate.text = "Fire Rate: " + s.fireRate + " bullets per second";
                 }
             }
             // if missile launcher
             if (explosionRadius != null)
             {
-                explosionRadius.text = "Explosion Radius: " + t.bulletPrefab.GetComponent<Missile>().explosionRadius;
+                explosionRadius.text = "Explosion Radius: " + s.bulletPrefab.GetComponent<Missile>().explosionRadius;
             }
             // if poison turret
             if (poison != null)
             {
-                poison.text = "Poison rate: " + t.bulletPrefab.GetComponent<PoisonBullet>().poison;
+                poison.text = "Poison rate: " + s.bulletPrefab.GetComponent<PoisonBullet>().poison;
             }
         }
     }

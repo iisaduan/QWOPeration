@@ -5,21 +5,28 @@ public class GoldTower : Turret
 {
     public int goldPerSecond = 1;
 
+
     /* Start
      *
      * starts gold coroutine
      *
      */
-    public void Start()
+    override public void Start()
     {
         StartCoroutine(Gold());
     }
 
 
-    public void Update()
+    /* Update
+     *
+     * nothing to do here - simply overriding the base method by returning
+     * 
+     */
+    override public void Update()
     {
         return;
     }
+
 
     /* Gold
      *
