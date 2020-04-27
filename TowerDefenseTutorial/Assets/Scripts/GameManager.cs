@@ -1,11 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-
-    // TODO: add pausing and fastforwarding feature here probably?
 
     public static bool gameIsOver;
 
@@ -15,7 +11,13 @@ public class GameManager : MonoBehaviour
 
     public GameObject winScreenUI;
 
-    // Start method is called everytime we load a new scene, sets gameIsOver to false every time we start a new scene
+
+    /* Start
+     *
+     * called ebery time a new scene is loaded
+     * sets gameIsOver to false every time we start a new scene
+     * 
+     */
     void Start()
     {
         gameIsOver = false;
@@ -24,7 +26,7 @@ public class GameManager : MonoBehaviour
 
     /* Update() - called once per frame
      *
-     * if player is out of lives, ends game
+     * if player is out of lives or player presses "e", ends game
      *
      */
     void Update()

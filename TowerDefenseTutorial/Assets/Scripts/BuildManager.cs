@@ -14,6 +14,7 @@ public class BuildManager : MonoBehaviour
      */
     private void Awake()
     {
+        // should never happen - but just in case!
         if(instance != null)
         {
             Debug.LogError("More than one BuildManager in scene");
@@ -35,7 +36,11 @@ public class BuildManager : MonoBehaviour
     public bool CanBuild { get { return turretToBuild != null;  } }
     public bool HasMoney { get { return PlayerStats.Money >= turretToBuild.cost; } }
 
-    // selects a node (so that the upgrade/sell menu can appear on top)
+    /* SelectNode
+     *
+     * selects a node (so that the upgrade/sell menu can appear on top)
+     * 
+     */
     public void SelectNode(Node node)
     {
         if (selectedNode == node)
@@ -51,7 +56,8 @@ public class BuildManager : MonoBehaviour
     }
 
 
-    /*
+    /* DeselectNode
+     * 
      * If node is clicked again after being selected, it will be deselected
      * and the upgrade/sell menu will disappear
      */

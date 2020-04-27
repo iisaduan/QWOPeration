@@ -6838,7 +6838,6 @@ MonoBehaviour:
   panSpeed: 50
   panBoarderThickness: 10
   scrollSpeed: 5
-  newPosition: {x: 0, y: 0, z: 0}
   rotationAmount: 1
   newRotation: {x: 0, y: 0, z: 0, w: 1}
   minY: 10
@@ -14501,8 +14500,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 461.91003, y: 0}
-  m_SizeDelta: {x: -923.82, y: 0}
+  m_AnchoredPosition: {x: 354.1, y: 0}
+  m_SizeDelta: {x: -708.2, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1144670842
 MonoBehaviour:
@@ -15745,7 +15744,34 @@ MonoBehaviour:
   timeBetweenWaves: 3
   WaveCountdownText: {fileID: 1535577075}
   waves:
-  - enemy: {fileID: 1211375540444614428, guid: 491d95eaba2aa48908ed15e5da5814a5, type: 3}
+  - enemy: {fileID: 8424689665145142550, guid: 73e5bbef6049a4b339b32aa2f384eca5, type: 3}
+    count: 1
+    rate: 1
+  - enemy: {fileID: 8424689665145142550, guid: 73e5bbef6049a4b339b32aa2f384eca5, type: 3}
+    count: 1
+    rate: 1
+  - enemy: {fileID: 8424689665145142550, guid: 73e5bbef6049a4b339b32aa2f384eca5, type: 3}
+    count: 1
+    rate: 1
+  - enemy: {fileID: 8424689665145142550, guid: 73e5bbef6049a4b339b32aa2f384eca5, type: 3}
+    count: 1
+    rate: 1
+  - enemy: {fileID: 8424689665145142550, guid: 73e5bbef6049a4b339b32aa2f384eca5, type: 3}
+    count: 1
+    rate: 1
+  - enemy: {fileID: 8424689665145142550, guid: 73e5bbef6049a4b339b32aa2f384eca5, type: 3}
+    count: 1
+    rate: 1
+  - enemy: {fileID: 8424689665145142550, guid: 73e5bbef6049a4b339b32aa2f384eca5, type: 3}
+    count: 1
+    rate: 1
+  - enemy: {fileID: 8424689665145142550, guid: 73e5bbef6049a4b339b32aa2f384eca5, type: 3}
+    count: 1
+    rate: 1
+  - enemy: {fileID: 8424689665145142550, guid: 73e5bbef6049a4b339b32aa2f384eca5, type: 3}
+    count: 1
+    rate: 1
+  - enemy: {fileID: 8424689665145142550, guid: 73e5bbef6049a4b339b32aa2f384eca5, type: 3}
     count: 1
     rate: 1
   enemies: []
@@ -15793,7 +15819,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74f8398427266428f859e4955a4f6158, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startMoney: 400
+  startMoney: 1000
   startLives: 2
 --- !u!114 &1267783135
 MonoBehaviour:
@@ -18487,7 +18513,6 @@ MonoBehaviour:
   panSpeed: 30
   panBoarderThickness: 10
   scrollSpeed: 5
-  newPosition: {x: 0, y: 0, z: 0}
   rotationAmount: 1
   newRotation: {x: 0, y: 0, z: 0, w: 1}
   minY: -55
@@ -19716,13 +19741,27 @@ MonoBehaviour:
     upgradedPrefab: {fileID: 6023657317434627651, guid: 22a7496c5f741419c88369bd80493fd9,
       type: 3}
     upgradeCost: 150
-  LaserBeamer:
+  laserBeamer:
     prefab: {fileID: 3938958367377509677, guid: a76df4145861342fe9be8f978ca0690d,
       type: 3}
     cost: 350
     upgradedPrefab: {fileID: 3938958367377509677, guid: 645bc3905f4ff4751bcca5cc88fd0ea3,
       type: 3}
-    upgradeCost: 200
+    upgradeCost: 100
+  poisonTurret:
+    prefab: {fileID: 1210502274820510621, guid: 8516c079b3f964d10ae1576e5315ba83,
+      type: 3}
+    cost: 200
+    upgradedPrefab: {fileID: 1210502274820510621, guid: 8516c079b3f964d10ae1576e5315ba83,
+      type: 3}
+    upgradeCost: 0
+  goldTower:
+    prefab: {fileID: 3554581249071542795, guid: 37530539e45784ac899b4a713c40ffd9,
+      type: 3}
+    cost: 50
+    upgradedPrefab: {fileID: 3554581249071542795, guid: 37530539e45784ac899b4a713c40ffd9,
+      type: 3}
+    upgradeCost: 50
 --- !u!1 &1582378242
 GameObject:
   m_ObjectHideFlags: 0
@@ -23399,13 +23438,21 @@ MonoBehaviour:
     upgradedPrefab: {fileID: 6023657317434627651, guid: 22a7496c5f741419c88369bd80493fd9,
       type: 3}
     upgradeCost: 150
-  LaserBeamer:
-    prefab: {fileID: 3938958367377509677, guid: a76df4145861342fe9be8f978ca0690d,
-      type: 3}
-    cost: 350
-    upgradedPrefab: {fileID: 3938958367377509677, guid: 645bc3905f4ff4751bcca5cc88fd0ea3,
-      type: 3}
-    upgradeCost: 200
+  laserBeamer:
+    prefab: {fileID: 0}
+    cost: 0
+    upgradedPrefab: {fileID: 0}
+    upgradeCost: 0
+  poisonTurret:
+    prefab: {fileID: 0}
+    cost: 0
+    upgradedPrefab: {fileID: 0}
+    upgradeCost: 0
+  goldTower:
+    prefab: {fileID: 0}
+    cost: 0
+    upgradedPrefab: {fileID: 0}
+    upgradeCost: 0
 --- !u!114 &1847970254
 MonoBehaviour:
   m_ObjectHideFlags: 0

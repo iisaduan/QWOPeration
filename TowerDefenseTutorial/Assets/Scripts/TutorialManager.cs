@@ -14,42 +14,60 @@ public class TutorialManager : MonoBehaviour
 
     public Button mainMenu;
 
-    private bool endTutorial = false;
 
-    // Start is called before the first frame update
+    /* Start()
+     *
+     * sets all beginning values
+     * next button appears, mainMenu one not active
+     * popUp 0 is active and popUpIndex is set to 0
+     *
+     */
     void Start()
     {
         next.gameObject.SetActive(true);
         mainMenu.gameObject.SetActive(false);
-        endTutorial = false;
         popUps[0].SetActive(true);
         popUpIndex = 0;
-
     }
 
-
+    /* NextClick()
+     *
+     * Makes tutorial move to next game object
+     *
+     */
     public void NextClick()
     {
-
+        // if there is another  element in the list
+        // don't think this if is needed, but no need to remove
         if (popUpIndex < popUps.Length - 1)
         {
+            // set old popUp to not active
             popUps[popUpIndex].SetActive(false);
             
             popUpIndex += 1;
+            // set new popUp to active
             popUps[popUpIndex].SetActive(true);
-            Debug.Log(popUpIndex);
-        } if (popUpIndex == popUps.Length - 1)
+
+
+        }
+        // if this is the last element
+        if (popUpIndex == popUps.Length - 1)
         {
+            // display main menu button instead of next button
             next.gameObject.SetActive(false);
             mainMenu.gameObject.SetActive(true);
-            endTutorial = true;
 
         }
 
     }
 
+    /* MainClick()
+     *
+     * loads LevelSelect scene
+     *
+     */
     public void MainClick()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("LevelSelect");
     }
 }

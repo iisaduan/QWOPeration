@@ -113,6 +113,8 @@ MonoBehaviour:
   moneyGain: 10
   distanceTraveled: 0
   spawnNumber: 1
+  slowHealthAmt: 0
+  missileLauncher: 0
   deathEffect: {fileID: 5409309668501680169, guid: 2640f5102d3ee464699394f3063e1b61,
     type: 3}
   spawnPrefab: {fileID: 539272585926433107, guid: ee2fd42752e0e4aff91be9fce3894eda,
@@ -130,6 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a6a14ad9e3a44b07bb12dd7ff7ebf6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stop: 0
 --- !u!1 &7471504857901403806
 GameObject:
   m_ObjectHideFlags: 0

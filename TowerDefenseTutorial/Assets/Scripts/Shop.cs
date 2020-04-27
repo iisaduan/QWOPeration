@@ -1,11 +1,12 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Shop : MonoBehaviour
 {
     public TurretBlueprint standardTurret;
     public TurretBlueprint missileLauncher;
-    public TurretBlueprint LaserBeamer;
+    public TurretBlueprint laserBeamer;
+    public TurretBlueprint poisonTurret;
+    public TurretBlueprint goldTower;
 
     BuildManager buildManager;
 
@@ -41,9 +42,38 @@ public class Shop : MonoBehaviour
         buildManager.SelectTurretToBuild(missileLauncher);
     }
 
+    /* SelectLaserBeamer
+     *
+     * makes laser beamer the turretToBuild
+     * 
+     */
     public void SelectLaserBeamer()
     {
         Debug.Log("Laser Beamer Selected");
-        buildManager.SelectTurretToBuild(LaserBeamer);
+        buildManager.SelectTurretToBuild(laserBeamer);
     }
+
+    /* SelectPoisonTurret
+     *
+     * makes poison turret the turretToBuild
+     * 
+     */
+    public void SelectPoisonTurret()
+    {
+        Debug.Log("Poison Tower Selected");
+        buildManager.SelectTurretToBuild(poisonTurret);
+    }
+
+    /* SelectGoldTower
+     *
+     * makes gold tower the turretToBuild
+     * 
+     */
+    public void SelectGoldTower()
+    {
+        Debug.Log("Gold Tower Selected");
+        buildManager.SelectTurretToBuild(goldTower);
+    }
+
+
 }

@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 3523254745738840396}
   - component: {fileID: 7216219331013223133}
   - component: {fileID: 7328467201074042110}
+  - component: {fileID: 114964719544902782}
+  - component: {fileID: 114141364031589830}
   m_Layer: 0
   m_Name: Enemy_SlowHealth
   m_TagString: Enemy
@@ -101,7 +103,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1211375540444614428}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c24121a3e6ea448ca940e9abbb438e8, type: 3}
   m_Name: 
@@ -112,8 +114,7 @@ MonoBehaviour:
   health: 100
   moneyGain: 300
   distanceTraveled: 0
-  spawnNumber: 1
-  slowHealthAmt: 0.15
+  spawnNumber: 0
   missileLauncher: 0
   deathEffect: {fileID: 6548157642783490179, guid: 27b86009287494e74aa08bb86da07d7a,
     type: 3}
@@ -126,9 +127,47 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1211375540444614428}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a6a14ad9e3a44b07bb12dd7ff7ebf6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stop: 0
+--- !u!114 &114964719544902782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1211375540444614428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c1c53ceee9864343b1b083ac2124600, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startSpeed: 3
+  speed: 10
+  startHealth: 250
+  health: 0
+  moneyGain: 300
+  distanceTraveled: 0
+  spawnNumber: 0
+  missileLauncher: 0
+  deathEffect: {fileID: 6548157642783490179, guid: 27b86009287494e74aa08bb86da07d7a,
+    type: 3}
+  spawnPrefab: {fileID: 0}
+  healthBar: {fileID: 7216219331705954058}
+  slowHealthAmt: 0.15
+--- !u!114 &114141364031589830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1211375540444614428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65d196122b80d4d82af5e9153c7a27d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7216219331430549134

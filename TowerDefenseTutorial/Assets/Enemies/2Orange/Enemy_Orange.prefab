@@ -112,7 +112,9 @@ MonoBehaviour:
   health: 100
   moneyGain: 10
   distanceTraveled: 0
-  spawnNumber: 2
+  spawnNumber: 1
+  slowHealthAmt: 0
+  missileLauncher: 0
   deathEffect: {fileID: 1430554377496806227, guid: c1c5a0f0bc0ad4ea9bc9e7d8db39ea1a,
     type: 3}
   spawnPrefab: {fileID: 8424689665145142550, guid: 73e5bbef6049a4b339b32aa2f384eca5,

@@ -8,7 +8,7 @@ public class Node : MonoBehaviour
     public Color notEnoughMoneyColor;
     public Vector3 positionOffset;
 
-    [HideInInspector] //make non-editable in inspector
+    [HideInInspector] 
     public GameObject turret;
     [HideInInspector]
     public TurretBlueprint turretBlueprint;
@@ -79,16 +79,15 @@ public class Node : MonoBehaviour
         // else, build turret
         
         BuildTurret(buildManager.GetTurretToBuild());
-        // TODO: currently just deselcts turret after building one
-        // if want shift click - change here (make an if statement)
+
         buildManager.SelectTurretToBuild(null);
 
     }
 
+
     /*
      * BuildTurret takes in a turret blueprint and builds the turret without having to reference a node
      */
-
     void BuildTurret(TurretBlueprint blueprint)
     {
         if (PlayerStats.Money <  blueprint.cost)
@@ -110,9 +109,6 @@ public class Node : MonoBehaviour
         GameObject effect = (GameObject)Instantiate(buildManager.buildEffect, GetBuildPosition(), Quaternion.identity);
         Destroy(effect, 5f);
 
-        // TODO: display on screen to user
-        Debug.Log("Turret Built!");
-
         // each time a new turret is built, we increase the count for the type of
         // the turret that is built in the dictionary
         if (!PlayerStats.turretsBuilt.ContainsKey(blueprint.prefab.name))
@@ -127,17 +123,19 @@ public class Node : MonoBehaviour
     }
 
 
-    /*
-     * Method to upgrade an existing turret
+    /* UpgradeTurret()
+     *
+     * upgrades existing turret (on this node)
+     * 
      */
     public void UpgradeTurret()
     {
-        //if (PlayerStats.Money < turretBlueprint.upgradeCost)
-        //{
-        //    // TODO: add some text to user
-        //    Debug.Log("Not Enough Money to Upgrade That");
-        //    return;
-        //}
+        if (PlayerStats.Money < turretBlueprint.upgradeCost)
+        {
+            // TODO: add some text to user
+            Debug.Log("Not Enough Money to Upgrade That");
+            return;
+        }
 
         PlayerStats.Money -= turretBlueprint.upgradeCost;
 
@@ -158,6 +156,11 @@ public class Node : MonoBehaviour
     }
 
 
+    /* SellTurret()
+     *
+     * sells existing turret (on this node)
+     * 
+     */
     public void SellTurret()
     {
 
@@ -205,11 +208,11 @@ public class Node : MonoBehaviour
         }
         else
         {
-            // TODO: design choice - square can just not highlight when not enough money
             rend.material.color = notEnoughMoneyColor;
         }
         
     }
+
 
     /* OnMouseExit() - when mouse leaves node
      *
