@@ -19742,7 +19742,7 @@ MonoBehaviour:
       type: 3}
     upgradeCost: 150
   laserBeamer:
-    prefab: {fileID: 3938958367377509677, guid: a76df4145861342fe9be8f978ca0690d,
+    prefab: {fileID: 1210502274820510621, guid: 8516c079b3f964d10ae1576e5315ba83,
       type: 3}
     cost: 350
     upgradedPrefab: {fileID: 3938958367377509677, guid: 645bc3905f4ff4751bcca5cc88fd0ea3,

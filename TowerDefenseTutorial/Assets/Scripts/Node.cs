@@ -84,10 +84,10 @@ public class Node : MonoBehaviour
 
     }
 
+
     /*
      * BuildTurret takes in a turret blueprint and builds the turret without having to reference a node
      */
-
     void BuildTurret(TurretBlueprint blueprint)
     {
         if (PlayerStats.Money <  blueprint.cost)
@@ -155,6 +155,7 @@ public class Node : MonoBehaviour
         Debug.Log("Turret Upgraded!");
     }
 
+
     /* SellTurret()
      *
      * sells existing turret (on this node)
@@ -211,6 +212,7 @@ public class Node : MonoBehaviour
         }
         
     }
+
 
     /* OnMouseExit() - when mouse leaves node
      *

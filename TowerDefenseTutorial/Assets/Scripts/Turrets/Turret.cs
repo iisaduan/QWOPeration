@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
@@ -12,7 +11,7 @@ public class Turret : MonoBehaviour
     [Header("General")]
 
     public float range = 15f;
-    // SHOOT TYPE
+
     public ShootType shootType = ShootType.Closest;
 
     [Header("Use Bullets")]
@@ -339,6 +338,7 @@ public class Turret : MonoBehaviour
             myaudio.Play();
         }
         GameObject bulletGO = (GameObject) Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        // kind of annoying - havce to do this for every GO soooo
         Bullet bullet = bulletGO.GetComponent<Bullet>();
         Missile missile = bulletGO.GetComponent<Missile>();
         PoisonBullet poisBullet = bulletGO.GetComponent<PoisonBullet>();
@@ -365,8 +365,6 @@ public class Turret : MonoBehaviour
      *
      * shows range of turret using a red sphere
      * Only works in "create" mode 
-     *
-     * TODO: make this work in play mode
      *
      */
     private void OnDrawGizmosSelected()
