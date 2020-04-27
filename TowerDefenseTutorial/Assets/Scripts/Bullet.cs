@@ -13,6 +13,7 @@ public class Bullet : MonoBehaviour
 
     public float poison = 0f;
 
+    [HideInInspector]
     public Vector3 direction = new Vector3(0f, 0f, 0f);
 
     [Header("Unity Setup Fields")]
@@ -117,15 +118,7 @@ public class Bullet : MonoBehaviour
                 
             }
         }
-        /*
-        if (poison > 0f)
-        {
-            //Enemy.PosionCoroutine(target.GetComponent<Enemy>(), poison);
-            StartCoroutine(Enemy.Poison(target.GetComponent<Enemy>(), poison));
-        }*/
-
         Destroy(gameObject);
-
     }
 
     /* Explode()

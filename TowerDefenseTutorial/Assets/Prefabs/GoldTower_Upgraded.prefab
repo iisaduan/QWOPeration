@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 3186714628946950344}
   - component: {fileID: 4167686741890969626}
   - component: {fileID: 3709504174860691153}
-  - component: {fileID: 3708800746577185111}
   m_Layer: 0
   m_Name: GoldTower_Upgraded
   m_TagString: Untagged
@@ -105,22 +104,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3d207035050b41869b6695278061a5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldPerSecond: 2
---- !u!114 &3708800746577185111
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 268826906006739900}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 663bd30d779714d3ebbdca281a3f7646, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   range: 15
-  shootType: 1
-  gold: 1
+  shootType: 3
   bulletPrefab: {fileID: 0}
   fireRate: 1
   straightShooter: 0
@@ -134,3 +119,4 @@ MonoBehaviour:
   partToRotate: {fileID: 0}
   turnSpeed: 10
   firePoint: {fileID: 0}
+  goldPerSecond: 2

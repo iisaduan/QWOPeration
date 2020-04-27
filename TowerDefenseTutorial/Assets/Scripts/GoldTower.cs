@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class GoldTower : MonoBehaviour
+public class GoldTower : Turret
 {
     public int goldPerSecond = 1;
 
@@ -13,6 +13,12 @@ public class GoldTower : MonoBehaviour
     public void Start()
     {
         StartCoroutine(Gold());
+    }
+
+
+    public void Update()
+    {
+        return;
     }
 
     /* Gold
