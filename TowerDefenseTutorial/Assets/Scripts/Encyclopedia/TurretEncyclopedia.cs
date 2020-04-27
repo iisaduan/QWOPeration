@@ -23,6 +23,7 @@ public class TurretEncyclopedia : MonoBehaviour
      */
     void Start()
     {
+        Debug.Log("here");
         t = g.GetComponent<Turret>();
         // if laser turret - set text accordingly
         LaserBeamer l = g.GetComponent<LaserBeamer>();

@@ -16020,7 +16020,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverUI: {fileID: 1563021190}
-  winScreenUI: {fileID: 0}
+  winScreenUI: {fileID: 1543538465}
 --- !u!114 &1267783136
 MonoBehaviour:
   m_ObjectHideFlags: 0

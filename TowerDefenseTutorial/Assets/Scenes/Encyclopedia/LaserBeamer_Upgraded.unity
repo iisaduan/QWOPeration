@@ -436,7 +436,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 78.225, y: 2}
+  m_AnchoredPosition: {x: 78.225, y: -5}
   m_SizeDelta: {x: 387.5, y: 39.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &290117378
@@ -798,18 +798,19 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 670516109}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ab4ccea41d684678ad21dc8ec71ff13, type: 3}
+  m_Script: {fileID: 11500000, guid: 895d16eddac43419b8a8cefb880d67f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  g: {fileID: 6023657317434627651, guid: 49a4f74a140634528bfa409aaaf42610, type: 3}
-  range: {fileID: 290117378}
-  damage: {fileID: 1517841629}
-  fireRate: {fileID: 1736417456}
-  explosionRadius: {fileID: 1895293343}
-  damageOverTime: {fileID: 0}
-  slowRate: {fileID: 0}
+  g: {fileID: 3938958367377509677, guid: 645bc3905f4ff4751bcca5cc88fd0ea3, type: 3}
+  range: {fileID: 1895293343}
+  damage: {fileID: 0}
+  fireRate: {fileID: 0}
+  explosionRadius: {fileID: 0}
+  damageOverTime: {fileID: 290117378}
+  slowRate: {fileID: 1517841629}
+  poison: {fileID: 0}
 --- !u!1 &956386825
 GameObject:
   m_ObjectHideFlags: 0
@@ -867,13 +868,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ab4ccea41d684678ad21dc8ec71ff13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  g: {fileID: 3938958367377509677, guid: 645bc3905f4ff4751bcca5cc88fd0ea3, type: 3}
-  range: {fileID: 1895293343}
-  damage: {fileID: 0}
-  fireRate: {fileID: 0}
-  explosionRadius: {fileID: 0}
-  damageOverTime: {fileID: 290117378}
-  slowRate: {fileID: 1517841629}
 --- !u!1 &1170423629
 GameObject:
   m_ObjectHideFlags: 0

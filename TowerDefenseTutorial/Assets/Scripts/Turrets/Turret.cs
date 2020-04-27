@@ -236,7 +236,10 @@ public class Turret : MonoBehaviour
     {
         UpdateTarget();
 
-        LockOnTarget();
+        if (target != null)
+        {
+            LockOnTarget();
+        }
     }
 
 

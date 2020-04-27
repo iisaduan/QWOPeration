@@ -217,7 +217,7 @@ MonoBehaviour:
   m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
-  m_FillCenter: 1
+  m_FillCenter: 0
   m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
@@ -799,7 +799,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 670516109}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ab4ccea41d684678ad21dc8ec71ff13, type: 3}
+  m_Script: {fileID: 11500000, guid: 895d16eddac43419b8a8cefb880d67f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   g: {fileID: 6023657317434627651, guid: 49a4f74a140634528bfa409aaaf42610, type: 3}
@@ -807,6 +807,9 @@ MonoBehaviour:
   damage: {fileID: 1517841629}
   fireRate: {fileID: 1736417456}
   explosionRadius: {fileID: 1895293343}
+  damageOverTime: {fileID: 0}
+  slowRate: {fileID: 0}
+  poison: {fileID: 0}
 --- !u!1 &956386825
 GameObject:
   m_ObjectHideFlags: 0
@@ -864,11 +867,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ab4ccea41d684678ad21dc8ec71ff13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  g: {fileID: 6023657317434627651, guid: 49a4f74a140634528bfa409aaaf42610, type: 3}
-  range: {fileID: 290117378}
-  damage: {fileID: 1517841629}
-  fireRate: {fileID: 1736417456}
-  explosionRadius: {fileID: 1895293343}
 --- !u!1 &1170423629
 GameObject:
   m_ObjectHideFlags: 0
