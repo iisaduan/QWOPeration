@@ -9,10 +9,6 @@ public class Bullet : MonoBehaviour
 
     public int damage = 50;
 
-    // public float explosionRadius = 0f;
-
-    public float poison = 0f;
-
     [Header("Unity Setup Fields")]
     public GameObject impactEffect;
 
@@ -26,6 +22,7 @@ public class Bullet : MonoBehaviour
     {
         target = _target;
     }
+
 
     /* Update() - done once per frame
      *
@@ -57,6 +54,7 @@ public class Bullet : MonoBehaviour
         transform.LookAt(target);
     }
 
+
     /* HitTarget()
      *
      * Creates impact effect, destroys bullet, destroys target/enemy
@@ -71,19 +69,16 @@ public class Bullet : MonoBehaviour
         {
             Damage(target);
         }
-
-
         Destroy(gameObject);
     }
 
 
-
     /* Damage(Transform enemy)
      *
-     * damages enemy - right now just destroys it
+     * damages enemy
      *
      */
-    public void Damage(Transform enemy)
+    virtual public void Damage(Transform enemy)
     {
         Enemy e = enemy.GetComponent<Enemy>();
 
@@ -91,14 +86,12 @@ public class Bullet : MonoBehaviour
         {
             if (e.GetComponent<EnemyPink>() != null)
             {
-                e.GetComponent<EnemyPink>().TakeDamage(damage, poison);
+                e.GetComponent<EnemyPink>().TakeDamage(damage, 0);
             }
             else
             {
-                e.TakeDamage(damage, poison);
+                e.TakeDamage(damage, 0);
             }
         }
     }
-
-
 }

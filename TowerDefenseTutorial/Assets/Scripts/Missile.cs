@@ -1,12 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Missile : Bullet
 {
     public float explosionRadius = 0f;
 
 
+    /* HitTarget()
+     *
+     * explodes, kills black enemies, and calls base's HitTarget
+     *
+     */
     override public void HitTarget()
     {       
         Explode();
@@ -18,6 +21,7 @@ public class Missile : Bullet
 
         base.HitTarget();
     }
+
 
     /* Explode()
      *
@@ -38,7 +42,7 @@ public class Missile : Bullet
     }
 
 
-        /* OnDrawGizmosSelected()
+    /* OnDrawGizmosSelected()
      *
      * shows range of turret using a red sphere
      * Only works in "create" mode

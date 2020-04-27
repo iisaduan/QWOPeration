@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2406057272559077840}
   - component: {fileID: 8520184567872626816}
   - component: {fileID: 9040881681151574026}
+  - component: {fileID: 114488647841299180}
   m_Layer: 0
   m_Name: PoisonBullet
   m_TagString: Untagged
@@ -85,15 +86,29 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2395160587519512874}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 14853a3cae20744af9c42b23898b17ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 70
   damage: 50
-  explosionRadius: 0
-  poison: 5
-  direction: {x: 0, y: 0, z: 0}
   impactEffect: {fileID: 550574705404481195, guid: 959b94baa66b7428d972cea752475843,
     type: 3}
+--- !u!114 &114488647841299180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2395160587519512874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f7cb2bb35e754c9c9231cc56bbddd22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 70
+  damage: 50
+  impactEffect: {fileID: 550574705404481195, guid: 959b94baa66b7428d972cea752475843,
+    type: 3}
+  poison: 5

@@ -56,7 +56,7 @@ public class TurretEncyclopedia : MonoBehaviour
             // if poison turret
             if (poison != null)
             {
-                poison.text = "Poison rate: " + t.bulletPrefab.GetComponent<Bullet>().poison;
+                poison.text = "Poison rate: " + t.bulletPrefab.GetComponent<PoisonBullet>().poison;
             }
         }
     }

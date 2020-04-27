@@ -341,8 +341,10 @@ public class Turret : MonoBehaviour
         GameObject bulletGO = (GameObject) Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Bullet bullet = bulletGO.GetComponent<Bullet>();
         Missile missile = bulletGO.GetComponent<Missile>();
+        PoisonBullet poisBullet = bulletGO.GetComponent<PoisonBullet>();
         Destroy(bullet, 5f);
         Destroy(missile, 5f);
+        Destroy(poisBullet, 5f);
         if (bullet != null)
         {
             bullet.Seek(target);
@@ -352,6 +354,10 @@ public class Turret : MonoBehaviour
         {
             missile.Seek(target);
 
+        }
+        if (poisBullet != null)
+        {
+            poisBullet.Seek(target);
         }
     }
 
