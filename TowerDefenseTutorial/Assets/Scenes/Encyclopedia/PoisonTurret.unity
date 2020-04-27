@@ -898,7 +898,6 @@ GameObject:
   m_Component:
   - component: {fileID: 956386826}
   - component: {fileID: 956386827}
-  - component: {fileID: 956386828}
   m_Layer: 0
   m_Name: LevelSelector
   m_TagString: Untagged
@@ -933,18 +932,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fader: {fileID: 1559815357}
---- !u!114 &956386828
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 956386825}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ab4ccea41d684678ad21dc8ec71ff13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1170423629
 GameObject:
   m_ObjectHideFlags: 0
