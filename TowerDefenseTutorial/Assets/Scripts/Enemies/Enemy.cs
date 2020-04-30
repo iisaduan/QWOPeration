@@ -23,6 +23,7 @@ public class Enemy : MonoBehaviour
     public int spawnNumber = 0;
 
     private bool poisoned = false;
+    private int poisonTicksLeft = 0;
 
     private bool dead = false;
 
@@ -69,9 +70,16 @@ public class Enemy : MonoBehaviour
             Die();
         }
 
-        if(!poisoned && poison > 0f)
+        if (poison > 0f)
         {
-            StartCoroutine(Poison(this, poison));
+            if (!poisoned)
+            {
+                StartCoroutine(Poison(this, poison));
+            }
+            else
+            {
+                poisonTicksLeft = 3;
+            }
         }
     }
 
@@ -160,20 +168,25 @@ public class Enemy : MonoBehaviour
      */
     public IEnumerator Poison(Enemy e, float poison)
     {
+        // labels enemy as poisoned so it can't be poisoned twice
+        poisoned = true;
         // while enemy is alive
-        while (e.health > 0f)
+        while (poisonTicksLeft > 0)
         {
+            poisonTicksLeft -= 1;
             // decrease health and update UI
             health -= poison;
             healthBar.fillAmount = health / startHealth;
             // wait one second (slowly decreases health)
+            // one health is 0, die
+            if (health <= 0)
+            {
+                Die();
+            }
             yield return new WaitForSeconds(1f);
         }
-        // one health is 0, die
-        if (health <= 0)
-        {
-            Die();
-        }
+        // allows for the enemy to be poisoned again
+        poisoned = false;
     }
 
 }
