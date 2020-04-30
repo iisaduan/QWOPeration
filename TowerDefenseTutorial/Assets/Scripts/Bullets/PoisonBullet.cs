@@ -3,7 +3,7 @@
 public class PoisonBullet : Bullet
 {
 
-    public float poison = 0f;
+    public float poison = 30f;
 
 
     /* Damage(Transform enemy)
