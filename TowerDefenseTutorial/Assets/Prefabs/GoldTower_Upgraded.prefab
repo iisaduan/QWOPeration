@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 7081945305923312903}
   - component: {fileID: 7834842368499643412}
   m_Layer: 0
-  m_Name: GoldTowerUpgraded
+  m_Name: GoldTower_Upgraded
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 663bd30d779714d3ebbdca281a3f7646, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 30
+  range: 0
   shootType: 3
   enemyTag: Enemy
   partToRotate: {fileID: 3544421149949367941}
@@ -96,15 +96,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21192dea0db0d41d3831eaadc21fc36f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 30
+  range: 0
   shootType: 3
   enemyTag: Enemy
   partToRotate: {fileID: 3544421149949367941}
   turnSpeed: 10
   firePoint: {fileID: 1514567080756397991}
-  bulletPrefab: {fileID: 485393640925158601, guid: 2e22bbbaa621443649ffa2976917c639,
+  bulletPrefab: {fileID: 485393640925158601, guid: 208b45762cd014ab4ae46428f0c500d3,
     type: 3}
-  fireRate: 0.25
+  fireRate: 0
 --- !u!1 &6023657317434627653
 GameObject:
   m_ObjectHideFlags: 0
